@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPDRC_PROGRAM", "SPDRC_PROGRAM\SPDRC_PROGRAM.csproj", "{24BD418D-B41B-4711-A9CB-2B46F73F2CC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24BD418D-B41B-4711-A9CB-2B46F73F2CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BD418D-B41B-4711-A9CB-2B46F73F2CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BD418D-B41B-4711-A9CB-2B46F73F2CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BD418D-B41B-4711-A9CB-2B46F73F2CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE9AFE4A-7D4C-41C5-96F6-19000B050D2C}
+	EndGlobalSection
+EndGlobal
