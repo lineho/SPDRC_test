@@ -53,7 +53,7 @@
             this.btn_DbConnect.Name = "btn_DbConnect";
             this.btn_DbConnect.Size = new System.Drawing.Size(147, 23);
             this.btn_DbConnect.TabIndex = 0;
-            this.btn_DbConnect.Text = "데이터베이스 연결하기";
+            this.btn_DbConnect.Text = "Database 연결하기";
             this.btn_DbConnect.UseVisualStyleBackColor = true;
             this.btn_DbConnect.Click += new System.EventHandler(this.btn_DbConnect_Click);
             // 
@@ -106,7 +106,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(179, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "데이터베이스 불러오기";
+            this.button1.Text = "Database 불러오기";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -133,7 +133,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(179, 23);
             this.button2.TabIndex = 9;
-            this.button2.Text = "불러오기";
+            this.button2.Text = "CSV 불러오기";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // groupBox1
