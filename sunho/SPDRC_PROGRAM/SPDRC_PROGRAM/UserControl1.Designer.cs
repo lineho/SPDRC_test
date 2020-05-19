@@ -255,7 +255,6 @@
             this.cbB_bFinishRow.Name = "cbB_bFinishRow";
             this.cbB_bFinishRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_bFinishRow.TabIndex = 3;
-            this.cbB_bFinishRow.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -283,7 +282,6 @@
             this.cbB_bStartRow.Name = "cbB_bStartRow";
             this.cbB_bStartRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_bStartRow.TabIndex = 0;
-            this.cbB_bStartRow.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // btn_cal
             // 
