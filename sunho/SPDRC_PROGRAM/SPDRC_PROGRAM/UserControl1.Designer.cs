@@ -28,155 +28,164 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dgv_1 = new System.Windows.Forms.DataGridView();
+            this.dgv_2 = new System.Windows.Forms.DataGridView();
+            this.dgv_3 = new System.Windows.Forms.DataGridView();
+            this.btn_aFileLoad = new System.Windows.Forms.Button();
+            this.btn_bFileLoad = new System.Windows.Forms.Button();
+            this.grpB_fileLoad = new System.Windows.Forms.GroupBox();
+            this.lbl_grid1 = new System.Windows.Forms.Label();
+            this.lbl_grid2 = new System.Windows.Forms.Label();
+            this.lbl_grid3 = new System.Windows.Forms.Label();
+            this.grpB_aSetRow = new System.Windows.Forms.GroupBox();
+            this.lbl_aRowNum = new System.Windows.Forms.Label();
+            this.lbl_aRow = new System.Windows.Forms.Label();
+            this.cbB_aFinishRow = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbB_aStartRow = new System.Windows.Forms.ComboBox();
+            this.grpB_bSetRow = new System.Windows.Forms.GroupBox();
+            this.lbl_bRowNum = new System.Windows.Forms.Label();
+            this.lbl_bRow = new System.Windows.Forms.Label();
+            this.cbB_bFinishRow = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.cbB_bStartRow = new System.Windows.Forms.ComboBox();
+            this.btn_cal = new System.Windows.Forms.Button();
+            this.btn_graph = new System.Windows.Forms.Button();
+            this.btn_cSaveFile = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
+            this.grpB_fileLoad.SuspendLayout();
+            this.grpB_aSetRow.SuspendLayout();
+            this.grpB_bSetRow.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 38);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(268, 475);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_1.Location = new System.Drawing.Point(4, 38);
+            this.dgv_1.Name = "dgv_1";
+            this.dgv_1.RowTemplate.Height = 23;
+            this.dgv_1.Size = new System.Drawing.Size(268, 475);
+            this.dgv_1.TabIndex = 0;
             // 
-            // dataGridView2
+            // dgv_2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(278, 38);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(268, 475);
-            this.dataGridView2.TabIndex = 1;
+            this.dgv_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_2.Location = new System.Drawing.Point(278, 38);
+            this.dgv_2.Name = "dgv_2";
+            this.dgv_2.RowTemplate.Height = 23;
+            this.dgv_2.Size = new System.Drawing.Size(268, 475);
+            this.dgv_2.TabIndex = 1;
             // 
-            // dataGridView3
+            // dgv_3
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(552, 38);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 23;
-            this.dataGridView3.Size = new System.Drawing.Size(268, 475);
-            this.dataGridView3.TabIndex = 2;
+            this.dgv_3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_3.Location = new System.Drawing.Point(552, 38);
+            this.dgv_3.Name = "dgv_3";
+            this.dgv_3.RowTemplate.Height = 23;
+            this.dgv_3.Size = new System.Drawing.Size(268, 475);
+            this.dgv_3.TabIndex = 2;
             // 
-            // button1
+            // btn_aFileLoad
             // 
-            this.button1.Location = new System.Drawing.Point(6, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(196, 27);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "A 파일 불러오기";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_aFileLoad.Location = new System.Drawing.Point(6, 20);
+            this.btn_aFileLoad.Name = "btn_aFileLoad";
+            this.btn_aFileLoad.Size = new System.Drawing.Size(196, 27);
+            this.btn_aFileLoad.TabIndex = 3;
+            this.btn_aFileLoad.Text = "A 파일 불러오기";
+            this.btn_aFileLoad.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btn_bFileLoad
             // 
-            this.button2.Location = new System.Drawing.Point(6, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 27);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "B 파일 불러오기";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_bFileLoad.Location = new System.Drawing.Point(6, 53);
+            this.btn_bFileLoad.Name = "btn_bFileLoad";
+            this.btn_bFileLoad.Size = new System.Drawing.Size(196, 27);
+            this.btn_bFileLoad.TabIndex = 4;
+            this.btn_bFileLoad.Text = "B 파일 불러오기";
+            this.btn_bFileLoad.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // grpB_fileLoad
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(826, 38);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(208, 88);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "파일 불러오기";
+            this.grpB_fileLoad.Controls.Add(this.btn_aFileLoad);
+            this.grpB_fileLoad.Controls.Add(this.btn_bFileLoad);
+            this.grpB_fileLoad.Location = new System.Drawing.Point(826, 38);
+            this.grpB_fileLoad.Name = "grpB_fileLoad";
+            this.grpB_fileLoad.Size = new System.Drawing.Size(208, 88);
+            this.grpB_fileLoad.TabIndex = 5;
+            this.grpB_fileLoad.TabStop = false;
+            this.grpB_fileLoad.Text = "파일 불러오기";
             // 
-            // label1
+            // lbl_grid1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "A 파일";
+            this.lbl_grid1.AutoSize = true;
+            this.lbl_grid1.Location = new System.Drawing.Point(3, 20);
+            this.lbl_grid1.Name = "lbl_grid1";
+            this.lbl_grid1.Size = new System.Drawing.Size(41, 12);
+            this.lbl_grid1.TabIndex = 6;
+            this.lbl_grid1.Text = "A 파일";
             // 
-            // label2
+            // lbl_grid2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(276, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "B 파일";
+            this.lbl_grid2.AutoSize = true;
+            this.lbl_grid2.Location = new System.Drawing.Point(276, 20);
+            this.lbl_grid2.Name = "lbl_grid2";
+            this.lbl_grid2.Size = new System.Drawing.Size(41, 12);
+            this.lbl_grid2.TabIndex = 7;
+            this.lbl_grid2.Text = "B 파일";
             // 
-            // label3
+            // lbl_grid3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(550, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "C 파일";
+            this.lbl_grid3.AutoSize = true;
+            this.lbl_grid3.Location = new System.Drawing.Point(550, 20);
+            this.lbl_grid3.Name = "lbl_grid3";
+            this.lbl_grid3.Size = new System.Drawing.Size(42, 12);
+            this.lbl_grid3.TabIndex = 8;
+            this.lbl_grid3.Text = "C 파일";
             // 
-            // groupBox2
+            // grpB_aSetRow
             // 
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Location = new System.Drawing.Point(827, 133);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 144);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "A 파일 행 설정";
+            this.grpB_aSetRow.Controls.Add(this.lbl_aRowNum);
+            this.grpB_aSetRow.Controls.Add(this.lbl_aRow);
+            this.grpB_aSetRow.Controls.Add(this.cbB_aFinishRow);
+            this.grpB_aSetRow.Controls.Add(this.label5);
+            this.grpB_aSetRow.Controls.Add(this.label4);
+            this.grpB_aSetRow.Controls.Add(this.cbB_aStartRow);
+            this.grpB_aSetRow.Location = new System.Drawing.Point(827, 133);
+            this.grpB_aSetRow.Name = "grpB_aSetRow";
+            this.grpB_aSetRow.Size = new System.Drawing.Size(200, 144);
+            this.grpB_aSetRow.TabIndex = 9;
+            this.grpB_aSetRow.TabStop = false;
+            this.grpB_aSetRow.Text = "A 파일 행 설정";
             // 
-            // comboBox1
+            // lbl_aRowNum
             // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(7, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 20);
-            this.comboBox1.TabIndex = 0;
+            this.lbl_aRowNum.AutoSize = true;
+            this.lbl_aRowNum.Location = new System.Drawing.Point(67, 119);
+            this.lbl_aRowNum.Name = "lbl_aRowNum";
+            this.lbl_aRowNum.Size = new System.Drawing.Size(29, 12);
+            this.lbl_aRowNum.TabIndex = 5;
+            this.lbl_aRowNum.Text = "숫자";
             // 
-            // label4
+            // lbl_aRow
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 12);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "시작할 행 값";
+            this.lbl_aRow.AutoSize = true;
+            this.lbl_aRow.Location = new System.Drawing.Point(7, 119);
+            this.lbl_aRow.Name = "lbl_aRow";
+            this.lbl_aRow.Size = new System.Drawing.Size(53, 12);
+            this.lbl_aRow.TabIndex = 4;
+            this.lbl_aRow.Text = "행 갯수 :";
+            // 
+            // cbB_aFinishRow
+            // 
+            this.cbB_aFinishRow.Enabled = false;
+            this.cbB_aFinishRow.FormattingEnabled = true;
+            this.cbB_aFinishRow.Location = new System.Drawing.Point(6, 86);
+            this.cbB_aFinishRow.Name = "cbB_aFinishRow";
+            this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_aFinishRow.TabIndex = 3;
             // 
             // label5
             // 
@@ -187,74 +196,66 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "끝나는 행 값";
             // 
-            // comboBox2
+            // label4
             // 
-            this.comboBox2.Enabled = false;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 86);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 20);
-            this.comboBox2.TabIndex = 3;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "시작할 행 값";
             // 
-            // label6
+            // cbB_aStartRow
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 119);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "행 갯수 :";
+            this.cbB_aStartRow.Enabled = false;
+            this.cbB_aStartRow.FormattingEnabled = true;
+            this.cbB_aStartRow.Location = new System.Drawing.Point(7, 38);
+            this.cbB_aStartRow.Name = "cbB_aStartRow";
+            this.cbB_aStartRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_aStartRow.TabIndex = 0;
             // 
-            // label7
+            // grpB_bSetRow
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(67, 119);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "숫자";
+            this.grpB_bSetRow.Controls.Add(this.lbl_bRowNum);
+            this.grpB_bSetRow.Controls.Add(this.lbl_bRow);
+            this.grpB_bSetRow.Controls.Add(this.cbB_bFinishRow);
+            this.grpB_bSetRow.Controls.Add(this.label10);
+            this.grpB_bSetRow.Controls.Add(this.label11);
+            this.grpB_bSetRow.Controls.Add(this.cbB_bStartRow);
+            this.grpB_bSetRow.Location = new System.Drawing.Point(828, 283);
+            this.grpB_bSetRow.Name = "grpB_bSetRow";
+            this.grpB_bSetRow.Size = new System.Drawing.Size(200, 144);
+            this.grpB_bSetRow.TabIndex = 10;
+            this.grpB_bSetRow.TabStop = false;
+            this.grpB_bSetRow.Text = "B 파일 행 설정(자동)";
             // 
-            // groupBox3
+            // lbl_bRowNum
             // 
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.comboBox3);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Location = new System.Drawing.Point(828, 283);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 144);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "B 파일 행 설정(자동)";
+            this.lbl_bRowNum.AutoSize = true;
+            this.lbl_bRowNum.Location = new System.Drawing.Point(67, 119);
+            this.lbl_bRowNum.Name = "lbl_bRowNum";
+            this.lbl_bRowNum.Size = new System.Drawing.Size(29, 12);
+            this.lbl_bRowNum.TabIndex = 5;
+            this.lbl_bRowNum.Text = "숫자";
             // 
-            // label8
+            // lbl_bRow
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(67, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 12);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "숫자";
+            this.lbl_bRow.AutoSize = true;
+            this.lbl_bRow.Location = new System.Drawing.Point(7, 119);
+            this.lbl_bRow.Name = "lbl_bRow";
+            this.lbl_bRow.Size = new System.Drawing.Size(53, 12);
+            this.lbl_bRow.TabIndex = 4;
+            this.lbl_bRow.Text = "행 갯수 :";
             // 
-            // label9
+            // cbB_bFinishRow
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 119);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "행 갯수 :";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Enabled = false;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(6, 86);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(187, 20);
-            this.comboBox3.TabIndex = 3;
+            this.cbB_bFinishRow.Enabled = false;
+            this.cbB_bFinishRow.FormattingEnabled = true;
+            this.cbB_bFinishRow.Location = new System.Drawing.Point(6, 86);
+            this.cbB_bFinishRow.Name = "cbB_bFinishRow";
+            this.cbB_bFinishRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_bFinishRow.TabIndex = 3;
+            this.cbB_bFinishRow.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -274,69 +275,70 @@
             this.label11.TabIndex = 1;
             this.label11.Text = "시작할 행 값";
             // 
-            // comboBox4
+            // cbB_bStartRow
             // 
-            this.comboBox4.Enabled = false;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(7, 38);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(187, 20);
-            this.comboBox4.TabIndex = 0;
+            this.cbB_bStartRow.Enabled = false;
+            this.cbB_bStartRow.FormattingEnabled = true;
+            this.cbB_bStartRow.Location = new System.Drawing.Point(7, 38);
+            this.cbB_bStartRow.Name = "cbB_bStartRow";
+            this.cbB_bStartRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_bStartRow.TabIndex = 0;
+            this.cbB_bStartRow.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
-            // button3
+            // btn_cal
             // 
-            this.button3.Location = new System.Drawing.Point(828, 434);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(199, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "연산하기";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_cal.Location = new System.Drawing.Point(828, 434);
+            this.btn_cal.Name = "btn_cal";
+            this.btn_cal.Size = new System.Drawing.Size(199, 23);
+            this.btn_cal.TabIndex = 11;
+            this.btn_cal.Text = "연산하기";
+            this.btn_cal.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_graph
             // 
-            this.button4.Location = new System.Drawing.Point(827, 463);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(199, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "그래프 확인";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_graph.Location = new System.Drawing.Point(827, 463);
+            this.btn_graph.Name = "btn_graph";
+            this.btn_graph.Size = new System.Drawing.Size(199, 23);
+            this.btn_graph.TabIndex = 12;
+            this.btn_graph.Text = "그래프 확인";
+            this.btn_graph.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btn_cSaveFile
             // 
-            this.button5.Location = new System.Drawing.Point(826, 490);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(199, 23);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "C 파일 저장하기";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_cSaveFile.Location = new System.Drawing.Point(826, 490);
+            this.btn_cSaveFile.Name = "btn_cSaveFile";
+            this.btn_cSaveFile.Size = new System.Drawing.Size(199, 23);
+            this.btn_cSaveFile.TabIndex = 13;
+            this.btn_cSaveFile.Text = "C 파일 저장하기";
+            this.btn_cSaveFile.UseVisualStyleBackColor = true;
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btn_cSaveFile);
+            this.Controls.Add(this.btn_graph);
+            this.Controls.Add(this.btn_cal);
+            this.Controls.Add(this.grpB_bSetRow);
+            this.Controls.Add(this.grpB_aSetRow);
+            this.Controls.Add(this.lbl_grid3);
+            this.Controls.Add(this.lbl_grid2);
+            this.Controls.Add(this.lbl_grid1);
+            this.Controls.Add(this.grpB_fileLoad);
+            this.Controls.Add(this.dgv_3);
+            this.Controls.Add(this.dgv_2);
+            this.Controls.Add(this.dgv_1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(1037, 519);
             this.Load += new System.EventHandler(this.UserControl1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).EndInit();
+            this.grpB_fileLoad.ResumeLayout(false);
+            this.grpB_aSetRow.ResumeLayout(false);
+            this.grpB_aSetRow.PerformLayout();
+            this.grpB_bSetRow.ResumeLayout(false);
+            this.grpB_bSetRow.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,31 +346,31 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgv_1;
+        private System.Windows.Forms.DataGridView dgv_2;
+        private System.Windows.Forms.DataGridView dgv_3;
+        private System.Windows.Forms.Button btn_aFileLoad;
+        private System.Windows.Forms.Button btn_bFileLoad;
+        private System.Windows.Forms.GroupBox grpB_fileLoad;
+        private System.Windows.Forms.Label lbl_grid1;
+        private System.Windows.Forms.Label lbl_grid2;
+        private System.Windows.Forms.Label lbl_grid3;
+        private System.Windows.Forms.GroupBox grpB_aSetRow;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbB_aStartRow;
+        private System.Windows.Forms.Label lbl_aRowNum;
+        private System.Windows.Forms.Label lbl_aRow;
+        private System.Windows.Forms.ComboBox cbB_aFinishRow;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.GroupBox grpB_bSetRow;
+        private System.Windows.Forms.Label lbl_bRowNum;
+        private System.Windows.Forms.Label lbl_bRow;
+        private System.Windows.Forms.ComboBox cbB_bFinishRow;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox cbB_bStartRow;
+        private System.Windows.Forms.Button btn_cal;
+        private System.Windows.Forms.Button btn_graph;
+        private System.Windows.Forms.Button btn_cSaveFile;
     }
 }
