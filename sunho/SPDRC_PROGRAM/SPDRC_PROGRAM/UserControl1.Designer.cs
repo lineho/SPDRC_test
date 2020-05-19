@@ -54,6 +54,7 @@
             this.btn_cal = new System.Windows.Forms.Button();
             this.btn_graph = new System.Windows.Forms.Button();
             this.btn_cSaveFile = new System.Windows.Forms.Button();
+            this.sampleCB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -188,6 +189,7 @@
             this.cbB_aFinishRow.Name = "cbB_aFinishRow";
             this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_aFinishRow.TabIndex = 3;
+            this.cbB_aFinishRow.SelectedIndexChanged += new System.EventHandler(this.cbB_aFinishRow_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -215,9 +217,11 @@
             this.cbB_aStartRow.Name = "cbB_aStartRow";
             this.cbB_aStartRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_aStartRow.TabIndex = 0;
+            this.cbB_aStartRow.SelectedIndexChanged += new System.EventHandler(this.cbB_aStartRow_SelectedIndexChanged);
             // 
             // grpB_bSetRow
             // 
+            this.grpB_bSetRow.Controls.Add(this.sampleCB);
             this.grpB_bSetRow.Controls.Add(this.lbl_bRowNum);
             this.grpB_bSetRow.Controls.Add(this.lbl_bRow);
             this.grpB_bSetRow.Controls.Add(this.cbB_bFinishRow);
@@ -257,6 +261,7 @@
             this.cbB_bFinishRow.Name = "cbB_bFinishRow";
             this.cbB_bFinishRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_bFinishRow.TabIndex = 3;
+            this.cbB_bFinishRow.SelectedIndexChanged += new System.EventHandler(this.cbB_bFinishRow_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -284,6 +289,7 @@
             this.cbB_bStartRow.Name = "cbB_bStartRow";
             this.cbB_bStartRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_bStartRow.TabIndex = 0;
+            this.cbB_bStartRow.SelectedIndexChanged += new System.EventHandler(this.cbB_bStartRow_SelectedIndexChanged);
             // 
             // btn_cal
             // 
@@ -311,6 +317,15 @@
             this.btn_cSaveFile.TabIndex = 13;
             this.btn_cSaveFile.Text = "C 파일 저장하기";
             this.btn_cSaveFile.UseVisualStyleBackColor = true;
+            // 
+            // sampleCB
+            // 
+            this.sampleCB.FormattingEnabled = true;
+            this.sampleCB.Location = new System.Drawing.Point(38, 35);
+            this.sampleCB.Name = "sampleCB";
+            this.sampleCB.Size = new System.Drawing.Size(121, 20);
+            this.sampleCB.TabIndex = 14;
+            this.sampleCB.SelectedIndexChanged += new System.EventHandler(this.sampleCB_SelectedIndexChanged);
             // 
             // UserControl1
             // 
@@ -372,5 +387,6 @@
         private System.Windows.Forms.Button btn_cal;
         private System.Windows.Forms.Button btn_graph;
         private System.Windows.Forms.Button btn_cSaveFile;
+        private System.Windows.Forms.ComboBox sampleCB;
     }
 }

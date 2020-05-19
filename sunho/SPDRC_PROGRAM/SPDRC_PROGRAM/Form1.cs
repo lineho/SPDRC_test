@@ -26,5 +26,10 @@ namespace SPDRC_PROGRAM
         {
             userControl11.Hide();
         }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
