@@ -97,6 +97,7 @@
             this.btn_aFileLoad.TabIndex = 3;
             this.btn_aFileLoad.Text = "A 파일 불러오기";
             this.btn_aFileLoad.UseVisualStyleBackColor = true;
+            this.btn_aFileLoad.Click += new System.EventHandler(this.btn_aFileLoad_Click);
             // 
             // btn_bFileLoad
             // 

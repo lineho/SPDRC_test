@@ -22,6 +22,10 @@ namespace SPDRC_PROGRAM
 
         }
 
-
+        private void btn_aFileLoad_Click(object sender, EventArgs e)
+        {
+            SPDRC_PROGRAM.DatabaseLoadForm aDatabaseLoadForm = new SPDRC_PROGRAM.DatabaseLoadForm();
+            aDatabaseLoadForm.ShowDialog();
+        }
     }
 }
