@@ -107,6 +107,7 @@
             this.btn_bFileLoad.TabIndex = 4;
             this.btn_bFileLoad.Text = "B 파일 불러오기";
             this.btn_bFileLoad.UseVisualStyleBackColor = true;
+            this.btn_bFileLoad.Click += new System.EventHandler(this.btn_bFileLoad_Click);
             // 
             // grpB_fileLoad
             // 
