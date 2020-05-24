@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.userControl11 = new SPDRC_PROGRAM.UserControl1();
             this.grp_Menu = new System.Windows.Forms.GroupBox();
             this.btn_Rga = new System.Windows.Forms.Button();
             this.btn_Oes = new System.Windows.Forms.Button();
+            this.userControl11 = new SPDRC_PROGRAM.UserControl1();
             this.grp_Menu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // userControl11
-            // 
-            this.userControl11.Location = new System.Drawing.Point(264, 26);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(1039, 523);
-            this.userControl11.TabIndex = 0;
-            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // grp_Menu
             // 
@@ -74,12 +66,20 @@
             this.btn_Oes.UseVisualStyleBackColor = true;
             this.btn_Oes.Click += new System.EventHandler(this.btn_Oes_Click);
             // 
+            // userControl11
+            // 
+            this.userControl11.Location = new System.Drawing.Point(258, 30);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(1216, 643);
+            this.userControl11.TabIndex = 0;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            // 
             // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1315, 561);
+            this.ClientSize = new System.Drawing.Size(1486, 663);
             this.Controls.Add(this.grp_Menu);
             this.Controls.Add(this.userControl11);
             this.Name = "Form_main";

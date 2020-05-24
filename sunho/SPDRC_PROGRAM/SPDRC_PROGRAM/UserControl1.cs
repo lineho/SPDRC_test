@@ -17,10 +17,6 @@ namespace SPDRC_PROGRAM
         public UserControl1()
         {
             InitializeComponent();
-            cbB_bStartRow.Items.Add("1");
-
-            cbB_bStartRow.SelectedIndex = 0;
-
         }
 
         private void UserControl1_Load(object sender, EventArgs e)
@@ -51,12 +47,12 @@ namespace SPDRC_PROGRAM
 
                 if (filePath.EndsWith(".csv"))
                     dtB = CSVconvertToDataTable(filePath);   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
-                if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
+                else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
                     dtB = Xlsx_xlsConvertToDataTable(filePath);
                 
             }
 
-            CountLineNumOf_dtB();
+            CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers();
         }
         private DataTable Xlsx_xlsConvertToDataTable(string filePath)
         {
@@ -132,7 +128,7 @@ namespace SPDRC_PROGRAM
             return dt;
         }
 
-        private void CountLineNumOf_dtB( )
+        private void CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers( )
         {
             string[] data = new string[1];
             Array.Resize(ref data, dtB.Rows.Count);
@@ -142,8 +138,8 @@ namespace SPDRC_PROGRAM
                 data[i] = (i + 1).ToString();
                 //data[4] = i + 1;
             }
-            sampleCB.Items.Clear();
-            sampleCB.Items.AddRange(data);
+            cbB_bStartRow.Items.Clear();
+            cbB_bStartRow.Items.AddRange(data);
         }
 
         private void cbB_bStartRow_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,6 +163,11 @@ namespace SPDRC_PROGRAM
         }
 
         private void sampleCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
