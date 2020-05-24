@@ -24,10 +24,31 @@ namespace SPDRC_PROGRAM
 
         }
 
+        DataTable dtA = new DataTable();
+
         private void btn_aFileLoad_Click(object sender, EventArgs e)
         {
-            SPDRC_PROGRAM.DatabaseLoadForm aDatabaseLoadForm = new SPDRC_PROGRAM.DatabaseLoadForm();
-            aDatabaseLoadForm.ShowDialog();
+            Console.WriteLine("btn_aFileLoad_Clicked");
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = "";
+
+
+                filePath = dialog.FileName;
+                Console.WriteLine(String.Format("{0} was imported by btn_aFileLoad_Click", filePath));
+
+                if (filePath.EndsWith(".csv"))
+                    dtA = CSVconvertToDataTable(filePath , "dtA");   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
+                else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
+                    dtA = Xlsx_xlsConvertToDataTable(filePath , "dtA");
+
+            }
+
+            CountLineNumOf_dtA_AndSet_cbB_aStartRowFinishRowWithNumbers();
+            //SPDRC_PROGRAM.DatabaseLoadForm aDatabaseLoadForm = new SPDRC_PROGRAM.DatabaseLoadForm();
+            //aDatabaseLoadForm.ShowDialog();
         }
 
         DataTable dtB = new DataTable();
@@ -46,15 +67,15 @@ namespace SPDRC_PROGRAM
                 Console.WriteLine(String.Format("{0} was imported by btn_bFileLoad_Click", filePath));
 
                 if (filePath.EndsWith(".csv"))
-                    dtB = CSVconvertToDataTable(filePath);   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
+                    dtB = CSVconvertToDataTable(filePath, "dtB");   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
                 else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
-                    dtB = Xlsx_xlsConvertToDataTable(filePath);
+                    dtB = Xlsx_xlsConvertToDataTable(filePath , "dtB");
                 
             }
 
             CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers();
         }
-        private DataTable Xlsx_xlsConvertToDataTable(string filePath)
+        private DataTable Xlsx_xlsConvertToDataTable(string filePath, string dtType)
         {
             string dirName = Path.GetDirectoryName(filePath);
             string fileName = Path.GetFileName(filePath);
@@ -85,11 +106,14 @@ namespace SPDRC_PROGRAM
             DataSet excelDs = new DataSet();
             myDataAdapter.Fill(excelDs);
             DataTable excelTable = excelDs.Tables[0];
-            dgv_2.DataSource = excelTable;
+            if (dtType == "dtA")
+                dgv_1.DataSource = excelTable;
+            else if (dtType == "dtB")
+                dgv_2.DataSource = excelTable;
             return excelTable;
         }
 
-        private DataTable CSVconvertToDataTable(string filePath)
+        private DataTable CSVconvertToDataTable(string filePath , string dtType)
         {
             DataTable dt = new DataTable();
             string[] lines = System.IO.File.ReadAllLines(filePath);
@@ -122,7 +146,10 @@ namespace SPDRC_PROGRAM
 
                 if (dt.Rows.Count > 0)
                 {
-                    dgv_2.DataSource = dt;
+                    if (dtType == "dtA")
+                        dgv_1.DataSource = dt;
+                    else if (dtType == "dtB")
+                        dgv_2.DataSource = dt;
                 }
             }
             return dt;
@@ -140,6 +167,22 @@ namespace SPDRC_PROGRAM
             }
             cbB_bStartRow.Items.Clear();
             cbB_bStartRow.Items.AddRange(data);
+        }
+
+        private void CountLineNumOf_dtA_AndSet_cbB_aStartRowFinishRowWithNumbers()
+        {
+            string[] data = new string[1];
+            Array.Resize(ref data, dtA.Rows.Count);
+
+            for (int i = 0; i < dtA.Rows.Count; i++)
+            {
+                data[i] = (i + 1).ToString();
+                //data[4] = i + 1;
+            }
+            cbB_aStartRow.Items.Clear();
+            cbB_aStartRow.Items.AddRange(data);
+            cbB_aFinishRow.Items.Clear();
+            cbB_aFinishRow.Items.AddRange(data);
         }
 
         private void cbB_bStartRow_SelectedIndexChanged(object sender, EventArgs e)

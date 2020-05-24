@@ -84,6 +84,7 @@
             this.Controls.Add(this.userControl11);
             this.Name = "Form_main";
             this.Text = "SPDRC";
+            this.Load += new System.EventHandler(this.Form_main_Load);
             this.grp_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
 

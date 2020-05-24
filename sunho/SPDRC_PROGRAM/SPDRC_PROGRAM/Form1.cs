@@ -31,5 +31,10 @@ namespace SPDRC_PROGRAM
         {
 
         }
+
+        private void Form_main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

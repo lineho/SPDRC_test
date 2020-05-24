@@ -54,8 +54,8 @@
             this.btn_cSaveFile = new System.Windows.Forms.Button();
             this.cbB_aStartRow = new System.Windows.Forms.ComboBox();
             this.cbB_aFinishRow = new System.Windows.Forms.ComboBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox_dtAseletedFile = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox_dtBselectedFile = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -314,28 +314,28 @@
             this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_aFinishRow.TabIndex = 16;
             // 
-            // checkedListBox1
+            // checkedListBox_dtAseletedFile
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(14, 3);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(314, 100);
-            this.checkedListBox1.TabIndex = 14;
+            this.checkedListBox_dtAseletedFile.FormattingEnabled = true;
+            this.checkedListBox_dtAseletedFile.Location = new System.Drawing.Point(14, 3);
+            this.checkedListBox_dtAseletedFile.Name = "checkedListBox_dtAseletedFile";
+            this.checkedListBox_dtAseletedFile.Size = new System.Drawing.Size(314, 100);
+            this.checkedListBox_dtAseletedFile.TabIndex = 14;
             // 
-            // checkedListBox2
+            // checkedListBox_dtBselectedFile
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(344, 3);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(314, 100);
-            this.checkedListBox2.TabIndex = 15;
+            this.checkedListBox_dtBselectedFile.FormattingEnabled = true;
+            this.checkedListBox_dtBselectedFile.Location = new System.Drawing.Point(344, 3);
+            this.checkedListBox_dtBselectedFile.Name = "checkedListBox_dtBselectedFile";
+            this.checkedListBox_dtBselectedFile.Size = new System.Drawing.Size(314, 100);
+            this.checkedListBox_dtBselectedFile.TabIndex = 15;
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkedListBox2);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.checkedListBox_dtBselectedFile);
+            this.Controls.Add(this.checkedListBox_dtAseletedFile);
             this.Controls.Add(this.btn_cSaveFile);
             this.Controls.Add(this.btn_graph);
             this.Controls.Add(this.btn_cal);
@@ -392,7 +392,7 @@
         private System.Windows.Forms.ComboBox cbB_bStartRow;
         private System.Windows.Forms.ComboBox cbB_aFinishRow;
         private System.Windows.Forms.ComboBox cbB_aStartRow;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox checkedListBox_dtAseletedFile;
+        private System.Windows.Forms.CheckedListBox checkedListBox_dtBselectedFile;
     }
 }
