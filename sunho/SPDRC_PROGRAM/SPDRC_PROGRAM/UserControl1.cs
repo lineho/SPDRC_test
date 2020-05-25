@@ -18,6 +18,7 @@ namespace SPDRC_PROGRAM
         DataTable dtB = new DataTable();
         DataTable selectedRangeOf_dtA = new DataTable();
         DataTable selectedRangeOf_dtB = new DataTable();
+        DataTable preProcessedDt = new DataTable();
         int cbB_aStartRowNum = 0;
         int cbB_aFinishRowNum = 0;
         int cbB_bStartRowNum = 0;
@@ -248,6 +249,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtA = dtA.Copy();
                 selectedRangeOf_dtB = dtB.Copy();
 
+                selectedRangeOf_dtA.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtA.Rows)
                 {
                     if (cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum)
@@ -256,7 +258,20 @@ namespace SPDRC_PROGRAM
                         row.Delete();
                 }
                 selectedRangeOf_dtA.AcceptChanges();
-                dgv_3.DataSource = selectedRangeOf_dtA;
+
+                selectedRangeOf_dtB.AcceptChanges();
+                foreach (DataRow row in selectedRangeOf_dtB.Rows)
+                {
+                    if (cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum+cbB_aFinishRowNum-cbB_aStartRowNum)
+                        ;
+                    else
+                        row.Delete();
+                }
+                selectedRangeOf_dtB.AcceptChanges();
+
+                foreach (DataRow row in selectedRangeOf_dtA.Rows) 
+
+                dgv_3.DataSource = selectedRangeOf_dtB;
             }
             else
                 MessageBox.Show("'A파일의 시작 행과 끝 행' 그리고 'B파일의 시작 행'을 모두 선택해 주십시오.");
