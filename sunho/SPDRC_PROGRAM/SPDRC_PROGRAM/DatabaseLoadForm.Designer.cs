@@ -184,6 +184,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "DatabaseLoadForm";
             this.Text = "DatabaseLoadForm";
+            this.Load += new System.EventHandler(this.DatabaseLoadForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

@@ -26,5 +26,10 @@ namespace SPDRC_PROGRAM
         {
 
         }
+
+        private void DatabaseLoadForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

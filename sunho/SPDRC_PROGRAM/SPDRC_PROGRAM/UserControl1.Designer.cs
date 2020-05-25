@@ -38,6 +38,8 @@
             this.lbl_grid2 = new System.Windows.Forms.Label();
             this.lbl_grid3 = new System.Windows.Forms.Label();
             this.grpB_aSetRow = new System.Windows.Forms.GroupBox();
+            this.cbB_aFinishRow = new System.Windows.Forms.ComboBox();
+            this.cbB_aStartRow = new System.Windows.Forms.ComboBox();
             this.lbl_aRowNum = new System.Windows.Forms.Label();
             this.lbl_aRow = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,8 +54,6 @@
             this.btn_cal = new System.Windows.Forms.Button();
             this.btn_graph = new System.Windows.Forms.Button();
             this.btn_cSaveFile = new System.Windows.Forms.Button();
-            this.cbB_aStartRow = new System.Windows.Forms.ComboBox();
-            this.cbB_aFinishRow = new System.Windows.Forms.ComboBox();
             this.checkedListBox_dtAseletedFile = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox_dtBselectedFile = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
@@ -164,6 +164,24 @@
             this.grpB_aSetRow.TabIndex = 9;
             this.grpB_aSetRow.TabStop = false;
             this.grpB_aSetRow.Text = "A 파일 행 설정";
+            // 
+            // cbB_aFinishRow
+            // 
+            this.cbB_aFinishRow.FormattingEnabled = true;
+            this.cbB_aFinishRow.Location = new System.Drawing.Point(7, 86);
+            this.cbB_aFinishRow.Name = "cbB_aFinishRow";
+            this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_aFinishRow.TabIndex = 16;
+            this.cbB_aFinishRow.SelectedIndexChanged += new System.EventHandler(this.cbB_aFinishRow_SelectedIndexChanged_1);
+            // 
+            // cbB_aStartRow
+            // 
+            this.cbB_aStartRow.FormattingEnabled = true;
+            this.cbB_aStartRow.Location = new System.Drawing.Point(7, 35);
+            this.cbB_aStartRow.Name = "cbB_aStartRow";
+            this.cbB_aStartRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_aStartRow.TabIndex = 15;
+            this.cbB_aStartRow.SelectedIndexChanged += new System.EventHandler(this.cbB_aStartRow_SelectedIndexChanged_1);
             // 
             // lbl_aRowNum
             // 
@@ -279,6 +297,7 @@
             this.btn_cal.TabIndex = 11;
             this.btn_cal.Text = "연산하기";
             this.btn_cal.UseVisualStyleBackColor = true;
+            this.btn_cal.Click += new System.EventHandler(this.btn_cal_Click);
             // 
             // btn_graph
             // 
@@ -297,22 +316,6 @@
             this.btn_cSaveFile.TabIndex = 13;
             this.btn_cSaveFile.Text = "C 파일 저장하기";
             this.btn_cSaveFile.UseVisualStyleBackColor = true;
-            // 
-            // cbB_aStartRow
-            // 
-            this.cbB_aStartRow.FormattingEnabled = true;
-            this.cbB_aStartRow.Location = new System.Drawing.Point(7, 35);
-            this.cbB_aStartRow.Name = "cbB_aStartRow";
-            this.cbB_aStartRow.Size = new System.Drawing.Size(187, 20);
-            this.cbB_aStartRow.TabIndex = 15;
-            // 
-            // cbB_aFinishRow
-            // 
-            this.cbB_aFinishRow.FormattingEnabled = true;
-            this.cbB_aFinishRow.Location = new System.Drawing.Point(7, 86);
-            this.cbB_aFinishRow.Name = "cbB_aFinishRow";
-            this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
-            this.cbB_aFinishRow.TabIndex = 16;
             // 
             // checkedListBox_dtAseletedFile
             // 

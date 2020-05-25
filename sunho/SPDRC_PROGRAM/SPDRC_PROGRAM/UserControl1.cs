@@ -14,6 +14,17 @@ namespace SPDRC_PROGRAM
 {
     public partial class UserControl1 : UserControl
     {
+        DataTable dtA = new DataTable();
+        DataTable dtB = new DataTable();
+        DataTable selectedRangeOf_dtA = new DataTable();
+        DataTable selectedRangeOf_dtB = new DataTable();
+        int cbB_aStartRowNum = 0;
+        int cbB_aFinishRowNum = 0;
+        int cbB_bStartRowNum = 0;
+        bool cbB_aStartRowIsChecked = false;
+        bool cbB_aFinishRowIsChecked = false;
+        bool cbB_bStartRowIsChecked = false;
+
         public UserControl1()
         {
             InitializeComponent();
@@ -24,7 +35,6 @@ namespace SPDRC_PROGRAM
 
         }
 
-        DataTable dtA = new DataTable();
 
         private void btn_aFileLoad_Click(object sender, EventArgs e)
         {
@@ -51,8 +61,6 @@ namespace SPDRC_PROGRAM
             //aDatabaseLoadForm.ShowDialog();
         }
 
-        DataTable dtB = new DataTable();
-
         private void btn_bFileLoad_Click(object sender, EventArgs e)
         {
             Console.WriteLine("btn_bFileLoad_Clicked");
@@ -75,6 +83,7 @@ namespace SPDRC_PROGRAM
 
             CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers();
         }
+
         private DataTable Xlsx_xlsConvertToDataTable(string filePath, string dtType)
         {
             string dirName = Path.GetDirectoryName(filePath);
@@ -207,12 +216,50 @@ namespace SPDRC_PROGRAM
 
         private void sampleCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Console.WriteLine(string.Format("Selected cbB_bStartRowNum is {0}", cbB_bStartRow.SelectedItem));
+            cbB_bStartRowNum = Int32.Parse(cbB_bStartRow.SelectedItem.ToString());
+            cbB_bStartRowIsChecked = true;
 
         }
 
         private void dgv_3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void cbB_aStartRow_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Console.WriteLine(string.Format("Selected cbB_aStartRowNum is {0}", cbB_aStartRow.SelectedItem));
+            cbB_aStartRowNum = Int32.Parse(cbB_aStartRow.SelectedItem.ToString());
+            cbB_aStartRowIsChecked = true;
+        }
+
+        private void cbB_aFinishRow_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Console.WriteLine(string.Format("Selected cbB_aFinishRowNum is {0}", cbB_aFinishRow.SelectedItem));
+            cbB_aFinishRowNum = Int32.Parse(cbB_aFinishRow.SelectedItem.ToString());
+            cbB_aFinishRowIsChecked = true;
+        }
+
+        private void btn_cal_Click(object sender, EventArgs e)
+        {
+            if (cbB_aStartRowIsChecked && cbB_aFinishRowIsChecked && cbB_bStartRowIsChecked)
+            {
+                selectedRangeOf_dtA = dtA.Copy();
+                selectedRangeOf_dtB = dtB.Copy();
+
+                foreach (DataRow row in selectedRangeOf_dtA.Rows)
+                {
+                    if (cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum)
+                        ;
+                    else
+                        row.Delete();
+                }
+                selectedRangeOf_dtA.AcceptChanges();
+                dgv_3.DataSource = selectedRangeOf_dtA;
+            }
+            else
+                MessageBox.Show("'A파일의 시작 행과 끝 행' 그리고 'B파일의 시작 행'을 모두 선택해 주십시오.");
         }
     }
 }
