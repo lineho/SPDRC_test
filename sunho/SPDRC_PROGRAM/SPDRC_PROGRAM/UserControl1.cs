@@ -247,26 +247,7 @@ namespace SPDRC_PROGRAM
         {
             Minus_dtA_dtB();
 
-            preProcessedDt.Columns.Add("lineRatio");
-            preProcessedDt.Columns.Add("Te");
-
-            string[] waveLength1 = new string[preProcessedDt.Rows.Count];
-            string[] waveLength2 = new string[preProcessedDt.Rows.Count];
-
-            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
-            {
-                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString();
-                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString();
-                Console.WriteLine(waveLength1[rowNum]);
-            }
-
-            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count-1; rowNum++)
-            {
-                preProcessedDt.Rows[rowNum]["lineRatio"] = Int32.Parse(waveLength1[rowNum]) / Int32.Parse(waveLength2[rowNum]);
-                preProcessedDt.Rows[rowNum]["Te"] = -5/Math.Log(Int32.Parse(waveLength1[rowNum]) / Int32.Parse(waveLength2[rowNum]));
-            }
-
-            dgv_3.DataSource = preProcessedDt;
+            CalculateLineRatioAndTeThenAddToPreProcessedDt();
         }
 
         private void Minus_dtA_dtB()
@@ -313,6 +294,31 @@ namespace SPDRC_PROGRAM
             }
             else
                 MessageBox.Show("'A파일의 시작 행과 끝 행' 그리고 'B파일의 시작 행'을 모두 선택해 주십시오.");
+        }
+
+        private void CalculateLineRatioAndTeThenAddToPreProcessedDt()
+        {
+            preProcessedDt.Columns.Add("lineRatio");
+            preProcessedDt.Columns.Add("Te");
+
+            string[] waveLength1 = new string[preProcessedDt.Rows.Count];
+            string[] waveLength2 = new string[preProcessedDt.Rows.Count];
+
+            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
+            {
+                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString();
+                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString();
+                Console.WriteLine(waveLength1[rowNum]);
+            }
+
+            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
+            {
+                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]);
+                preProcessedDt.Rows[rowNum]["Te"] = -5 / Math.Log(double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]));
+            }
+
+            dgv_3.DataSource = preProcessedDt;
+
         }
 
         private void lbl_aRowNum_Click(object sender, EventArgs e)
