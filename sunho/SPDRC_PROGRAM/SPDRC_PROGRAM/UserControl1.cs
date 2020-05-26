@@ -252,7 +252,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtA.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtA.Rows)
                 {
-                    if (cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum)
+                    if (     cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum    )
                         ;
                     else
                         row.Delete();
@@ -262,16 +262,27 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtB.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtB.Rows)
                 {
-                    if (cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum+cbB_aFinishRowNum-cbB_aStartRowNum)
+                    if (    cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum+cbB_aFinishRowNum-cbB_aStartRowNum    )
                         ;
                     else
                         row.Delete();
                 }
                 selectedRangeOf_dtB.AcceptChanges();
 
-                foreach (DataRow row in selectedRangeOf_dtA.Rows) 
+                preProcessedDt = selectedRangeOf_dtA.Copy(); //형식 복사
 
-                dgv_3.DataSource = selectedRangeOf_dtB;
+                for (int rowNum = 0; rowNum<=selectedRangeOf_dtA.Rows.Count-1 ;rowNum++)
+                {
+                    for (int columnNum=0; columnNum <= selectedRangeOf_dtA.Columns.Count-1 ;columnNum++)
+                    {
+                        if (columnNum == 0)
+                            preProcessedDt.Rows[rowNum][columnNum]= (rowNum+1).ToString();
+                        else
+                            preProcessedDt.Rows[rowNum][columnNum] = (       Int32.Parse(selectedRangeOf_dtA.Rows[rowNum][columnNum].ToString())   -   Int32.Parse(selectedRangeOf_dtB.Rows[rowNum][columnNum].ToString())    ).ToString();
+                    }
+                }
+
+                dgv_3.DataSource = preProcessedDt;
             }
             else
                 MessageBox.Show("'A파일의 시작 행과 끝 행' 그리고 'B파일의 시작 행'을 모두 선택해 주십시오.");
