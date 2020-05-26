@@ -191,6 +191,7 @@
             this.lbl_aRowNum.Size = new System.Drawing.Size(29, 12);
             this.lbl_aRowNum.TabIndex = 5;
             this.lbl_aRowNum.Text = "숫자";
+            this.lbl_aRowNum.Click += new System.EventHandler(this.lbl_aRowNum_Click);
             // 
             // lbl_aRow
             // 

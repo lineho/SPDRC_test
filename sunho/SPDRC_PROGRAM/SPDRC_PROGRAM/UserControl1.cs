@@ -167,8 +167,7 @@ namespace SPDRC_PROGRAM
 
         private void CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers()
         {
-            string[] data = new string[1];
-            Array.Resize(ref data, dtB.Rows.Count);
+            string[] data = new string[dtB.Rows.Count];
 
             for (int i = 0; i < dtB.Rows.Count; i++)
             {
@@ -181,8 +180,7 @@ namespace SPDRC_PROGRAM
 
         private void CountLineNumOf_dtA_AndSet_cbB_aStartRowFinishRowWithNumbers()
         {
-            string[] data = new string[1];
-            Array.Resize(ref data, dtA.Rows.Count);
+            string[] data = new string[dtA.Rows.Count];
 
             for (int i = 0; i < dtA.Rows.Count; i++)
             {
@@ -240,11 +238,35 @@ namespace SPDRC_PROGRAM
             Console.WriteLine(string.Format("Selected cbB_aFinishRowNum is {0}", cbB_aFinishRow.SelectedItem));
             cbB_aFinishRowNum = Int32.Parse(cbB_aFinishRow.SelectedItem.ToString());
             cbB_aFinishRowIsChecked = true;
+
+            if (cbB_aStartRowIsChecked)
+                lbl_aRowNum.Text = (cbB_aFinishRowNum - cbB_aStartRowNum+1).ToString();
         }
 
         private void btn_cal_Click(object sender, EventArgs e)
         {
             Minus_dtA_dtB();
+
+            preProcessedDt.Columns.Add("lineRatio");
+            preProcessedDt.Columns.Add("Te");
+
+            string[] waveLength1 = new string[preProcessedDt.Rows.Count];
+            string[] waveLength2 = new string[preProcessedDt.Rows.Count];
+
+            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
+            {
+                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString();
+                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString();
+                Console.WriteLine(waveLength1[rowNum]);
+            }
+
+            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count-1; rowNum++)
+            {
+                preProcessedDt.Rows[rowNum]["lineRatio"] = Int32.Parse(waveLength1[rowNum]) / Int32.Parse(waveLength2[rowNum]);
+                preProcessedDt.Rows[rowNum]["Te"] = -5/Math.Log(Int32.Parse(waveLength1[rowNum]) / Int32.Parse(waveLength2[rowNum]));
+            }
+
+            dgv_3.DataSource = preProcessedDt;
         }
 
         private void Minus_dtA_dtB()
@@ -291,6 +313,10 @@ namespace SPDRC_PROGRAM
             }
             else
                 MessageBox.Show("'A파일의 시작 행과 끝 행' 그리고 'B파일의 시작 행'을 모두 선택해 주십시오.");
+        }
+
+        private void lbl_aRowNum_Click(object sender, EventArgs e)
+        {
         }
     }
 }
