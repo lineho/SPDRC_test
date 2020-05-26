@@ -51,9 +51,9 @@ namespace SPDRC_PROGRAM
                 Console.WriteLine(String.Format("{0} was imported by btn_aFileLoad_Click", filePath));
 
                 if (filePath.EndsWith(".csv"))
-                    dtA = CSVconvertToDataTable(filePath , "dtA");   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
+                    dtA = CSVconvertToDataTable(filePath, "dtA");   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
                 else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
-                    dtA = Xlsx_xlsConvertToDataTable(filePath , "dtA");
+                    dtA = Xlsx_xlsConvertToDataTable(filePath, "dtA");
 
             }
 
@@ -69,7 +69,7 @@ namespace SPDRC_PROGRAM
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath="";
+                string filePath = "";
 
 
                 filePath = dialog.FileName;
@@ -78,8 +78,8 @@ namespace SPDRC_PROGRAM
                 if (filePath.EndsWith(".csv"))
                     dtB = CSVconvertToDataTable(filePath, "dtB");   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
                 else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
-                    dtB = Xlsx_xlsConvertToDataTable(filePath , "dtB");
-                
+                    dtB = Xlsx_xlsConvertToDataTable(filePath, "dtB");
+
             }
 
             CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers();
@@ -106,7 +106,7 @@ namespace SPDRC_PROGRAM
                     break;
 
                 case ".csv":
-                    pathConn = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dirName};" + "Extended Properties=\"text; HDR=Yes; IMEX=1; FMT=Delimited\""; 
+                    pathConn = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dirName};" + "Extended Properties=\"text; HDR=Yes; IMEX=1; FMT=Delimited\"";
                     excelsql = $"SELECT * FROM [{fileName}]";
                     break;
             }
@@ -123,7 +123,7 @@ namespace SPDRC_PROGRAM
             return excelTable;
         }
 
-        private DataTable CSVconvertToDataTable(string filePath , string dtType)
+        private DataTable CSVconvertToDataTable(string filePath, string dtType)
         {
             DataTable dt = new DataTable();
             string[] lines = System.IO.File.ReadAllLines(filePath);
@@ -165,7 +165,7 @@ namespace SPDRC_PROGRAM
             return dt;
         }
 
-        private void CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers( )
+        private void CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers()
         {
             string[] data = new string[1];
             Array.Resize(ref data, dtB.Rows.Count);
@@ -244,6 +244,10 @@ namespace SPDRC_PROGRAM
 
         private void btn_cal_Click(object sender, EventArgs e)
         {
+            Minus_dtA_dtB();
+        }
+        private void Minus_dtA_dtB()
+        {
             if (cbB_aStartRowIsChecked && cbB_aFinishRowIsChecked && cbB_bStartRowIsChecked)
             {
                 selectedRangeOf_dtA = dtA.Copy();
@@ -252,7 +256,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtA.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtA.Rows)
                 {
-                    if (     cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum    )
+                    if (cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString()) && Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum)
                         ;
                     else
                         row.Delete();
@@ -262,7 +266,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtB.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtB.Rows)
                 {
-                    if (    cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString())         &&          Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum+cbB_aFinishRowNum-cbB_aStartRowNum    )
+                    if (cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString()) && Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum + cbB_aFinishRowNum - cbB_aStartRowNum)
                         ;
                     else
                         row.Delete();
@@ -271,14 +275,14 @@ namespace SPDRC_PROGRAM
 
                 preProcessedDt = selectedRangeOf_dtA.Copy(); //형식 복사
 
-                for (int rowNum = 0; rowNum<=selectedRangeOf_dtA.Rows.Count-1 ;rowNum++)
+                for (int rowNum = 0; rowNum <= selectedRangeOf_dtA.Rows.Count - 1; rowNum++)
                 {
-                    for (int columnNum=0; columnNum <= selectedRangeOf_dtA.Columns.Count-1 ;columnNum++)
+                    for (int columnNum = 0; columnNum <= selectedRangeOf_dtA.Columns.Count - 1; columnNum++)
                     {
                         if (columnNum == 0)
-                            preProcessedDt.Rows[rowNum][columnNum]= (rowNum+1).ToString();
+                            preProcessedDt.Rows[rowNum][columnNum] = (rowNum + 1).ToString();
                         else
-                            preProcessedDt.Rows[rowNum][columnNum] = (       Int32.Parse(selectedRangeOf_dtA.Rows[rowNum][columnNum].ToString())   -   Int32.Parse(selectedRangeOf_dtB.Rows[rowNum][columnNum].ToString())    ).ToString();
+                            preProcessedDt.Rows[rowNum][columnNum] = (Int32.Parse(selectedRangeOf_dtA.Rows[rowNum][columnNum].ToString()) - Int32.Parse(selectedRangeOf_dtB.Rows[rowNum][columnNum].ToString())).ToString();
                     }
                 }
 
