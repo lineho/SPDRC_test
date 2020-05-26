@@ -246,6 +246,7 @@ namespace SPDRC_PROGRAM
         {
             Minus_dtA_dtB();
         }
+
         private void Minus_dtA_dtB()
         {
             if (cbB_aStartRowIsChecked && cbB_aFinishRowIsChecked && cbB_bStartRowIsChecked)
