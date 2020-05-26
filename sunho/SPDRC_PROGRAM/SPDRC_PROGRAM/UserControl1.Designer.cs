@@ -38,22 +38,24 @@
             this.lbl_grid2 = new System.Windows.Forms.Label();
             this.lbl_grid3 = new System.Windows.Forms.Label();
             this.grpB_aSetRow = new System.Windows.Forms.GroupBox();
+            this.cbB_aFinishRow = new System.Windows.Forms.ComboBox();
+            this.cbB_aStartRow = new System.Windows.Forms.ComboBox();
             this.lbl_aRowNum = new System.Windows.Forms.Label();
             this.lbl_aRow = new System.Windows.Forms.Label();
-            this.cbB_aFinishRow = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbB_aStartRow = new System.Windows.Forms.ComboBox();
             this.grpB_bSetRow = new System.Windows.Forms.GroupBox();
+            this.cbB_bStartRow = new System.Windows.Forms.ComboBox();
             this.lbl_bRowNum = new System.Windows.Forms.Label();
             this.lbl_bRow = new System.Windows.Forms.Label();
             this.cbB_bFinishRow = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.cbB_bStartRow = new System.Windows.Forms.ComboBox();
             this.btn_cal = new System.Windows.Forms.Button();
             this.btn_graph = new System.Windows.Forms.Button();
             this.btn_cSaveFile = new System.Windows.Forms.Button();
+            this.checkedListBox_dtAseletedFile = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox_dtBselectedFile = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -65,29 +67,30 @@
             // dgv_1
             // 
             this.dgv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_1.Location = new System.Drawing.Point(4, 38);
+            this.dgv_1.Location = new System.Drawing.Point(14, 135);
             this.dgv_1.Name = "dgv_1";
             this.dgv_1.RowTemplate.Height = 23;
-            this.dgv_1.Size = new System.Drawing.Size(268, 475);
+            this.dgv_1.Size = new System.Drawing.Size(314, 475);
             this.dgv_1.TabIndex = 0;
             // 
             // dgv_2
             // 
             this.dgv_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_2.Location = new System.Drawing.Point(278, 38);
+            this.dgv_2.Location = new System.Drawing.Point(344, 135);
             this.dgv_2.Name = "dgv_2";
             this.dgv_2.RowTemplate.Height = 23;
-            this.dgv_2.Size = new System.Drawing.Size(268, 475);
+            this.dgv_2.Size = new System.Drawing.Size(314, 475);
             this.dgv_2.TabIndex = 1;
             // 
             // dgv_3
             // 
             this.dgv_3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_3.Location = new System.Drawing.Point(552, 38);
+            this.dgv_3.Location = new System.Drawing.Point(674, 135);
             this.dgv_3.Name = "dgv_3";
             this.dgv_3.RowTemplate.Height = 23;
-            this.dgv_3.Size = new System.Drawing.Size(268, 475);
+            this.dgv_3.Size = new System.Drawing.Size(314, 475);
             this.dgv_3.TabIndex = 2;
+            this.dgv_3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_3_CellContentClick);
             // 
             // btn_aFileLoad
             // 
@@ -107,12 +110,13 @@
             this.btn_bFileLoad.TabIndex = 4;
             this.btn_bFileLoad.Text = "B 파일 불러오기";
             this.btn_bFileLoad.UseVisualStyleBackColor = true;
+            this.btn_bFileLoad.Click += new System.EventHandler(this.btn_bFileLoad_Click);
             // 
             // grpB_fileLoad
             // 
             this.grpB_fileLoad.Controls.Add(this.btn_aFileLoad);
             this.grpB_fileLoad.Controls.Add(this.btn_bFileLoad);
-            this.grpB_fileLoad.Location = new System.Drawing.Point(826, 38);
+            this.grpB_fileLoad.Location = new System.Drawing.Point(1007, 135);
             this.grpB_fileLoad.Name = "grpB_fileLoad";
             this.grpB_fileLoad.Size = new System.Drawing.Size(208, 88);
             this.grpB_fileLoad.TabIndex = 5;
@@ -122,7 +126,7 @@
             // lbl_grid1
             // 
             this.lbl_grid1.AutoSize = true;
-            this.lbl_grid1.Location = new System.Drawing.Point(3, 20);
+            this.lbl_grid1.Location = new System.Drawing.Point(13, 117);
             this.lbl_grid1.Name = "lbl_grid1";
             this.lbl_grid1.Size = new System.Drawing.Size(41, 12);
             this.lbl_grid1.TabIndex = 6;
@@ -131,7 +135,7 @@
             // lbl_grid2
             // 
             this.lbl_grid2.AutoSize = true;
-            this.lbl_grid2.Location = new System.Drawing.Point(276, 20);
+            this.lbl_grid2.Location = new System.Drawing.Point(342, 117);
             this.lbl_grid2.Name = "lbl_grid2";
             this.lbl_grid2.Size = new System.Drawing.Size(41, 12);
             this.lbl_grid2.TabIndex = 7;
@@ -140,7 +144,7 @@
             // lbl_grid3
             // 
             this.lbl_grid3.AutoSize = true;
-            this.lbl_grid3.Location = new System.Drawing.Point(550, 20);
+            this.lbl_grid3.Location = new System.Drawing.Point(673, 117);
             this.lbl_grid3.Name = "lbl_grid3";
             this.lbl_grid3.Size = new System.Drawing.Size(42, 12);
             this.lbl_grid3.TabIndex = 8;
@@ -148,18 +152,36 @@
             // 
             // grpB_aSetRow
             // 
+            this.grpB_aSetRow.Controls.Add(this.cbB_aFinishRow);
+            this.grpB_aSetRow.Controls.Add(this.cbB_aStartRow);
             this.grpB_aSetRow.Controls.Add(this.lbl_aRowNum);
             this.grpB_aSetRow.Controls.Add(this.lbl_aRow);
-            this.grpB_aSetRow.Controls.Add(this.cbB_aFinishRow);
             this.grpB_aSetRow.Controls.Add(this.label5);
             this.grpB_aSetRow.Controls.Add(this.label4);
-            this.grpB_aSetRow.Controls.Add(this.cbB_aStartRow);
-            this.grpB_aSetRow.Location = new System.Drawing.Point(827, 133);
+            this.grpB_aSetRow.Location = new System.Drawing.Point(1008, 230);
             this.grpB_aSetRow.Name = "grpB_aSetRow";
             this.grpB_aSetRow.Size = new System.Drawing.Size(200, 144);
             this.grpB_aSetRow.TabIndex = 9;
             this.grpB_aSetRow.TabStop = false;
             this.grpB_aSetRow.Text = "A 파일 행 설정";
+            // 
+            // cbB_aFinishRow
+            // 
+            this.cbB_aFinishRow.FormattingEnabled = true;
+            this.cbB_aFinishRow.Location = new System.Drawing.Point(7, 86);
+            this.cbB_aFinishRow.Name = "cbB_aFinishRow";
+            this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_aFinishRow.TabIndex = 16;
+            this.cbB_aFinishRow.SelectedIndexChanged += new System.EventHandler(this.cbB_aFinishRow_SelectedIndexChanged_1);
+            // 
+            // cbB_aStartRow
+            // 
+            this.cbB_aStartRow.FormattingEnabled = true;
+            this.cbB_aStartRow.Location = new System.Drawing.Point(7, 35);
+            this.cbB_aStartRow.Name = "cbB_aStartRow";
+            this.cbB_aStartRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_aStartRow.TabIndex = 15;
+            this.cbB_aStartRow.SelectedIndexChanged += new System.EventHandler(this.cbB_aStartRow_SelectedIndexChanged_1);
             // 
             // lbl_aRowNum
             // 
@@ -179,15 +201,6 @@
             this.lbl_aRow.TabIndex = 4;
             this.lbl_aRow.Text = "행 갯수 :";
             // 
-            // cbB_aFinishRow
-            // 
-            this.cbB_aFinishRow.Enabled = false;
-            this.cbB_aFinishRow.FormattingEnabled = true;
-            this.cbB_aFinishRow.Location = new System.Drawing.Point(6, 86);
-            this.cbB_aFinishRow.Name = "cbB_aFinishRow";
-            this.cbB_aFinishRow.Size = new System.Drawing.Size(187, 20);
-            this.cbB_aFinishRow.TabIndex = 3;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -206,29 +219,29 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "시작할 행 값";
             // 
-            // cbB_aStartRow
-            // 
-            this.cbB_aStartRow.Enabled = false;
-            this.cbB_aStartRow.FormattingEnabled = true;
-            this.cbB_aStartRow.Location = new System.Drawing.Point(7, 38);
-            this.cbB_aStartRow.Name = "cbB_aStartRow";
-            this.cbB_aStartRow.Size = new System.Drawing.Size(187, 20);
-            this.cbB_aStartRow.TabIndex = 0;
-            // 
             // grpB_bSetRow
             // 
+            this.grpB_bSetRow.Controls.Add(this.cbB_bStartRow);
             this.grpB_bSetRow.Controls.Add(this.lbl_bRowNum);
             this.grpB_bSetRow.Controls.Add(this.lbl_bRow);
             this.grpB_bSetRow.Controls.Add(this.cbB_bFinishRow);
             this.grpB_bSetRow.Controls.Add(this.label10);
             this.grpB_bSetRow.Controls.Add(this.label11);
-            this.grpB_bSetRow.Controls.Add(this.cbB_bStartRow);
-            this.grpB_bSetRow.Location = new System.Drawing.Point(828, 283);
+            this.grpB_bSetRow.Location = new System.Drawing.Point(1009, 380);
             this.grpB_bSetRow.Name = "grpB_bSetRow";
             this.grpB_bSetRow.Size = new System.Drawing.Size(200, 144);
             this.grpB_bSetRow.TabIndex = 10;
             this.grpB_bSetRow.TabStop = false;
             this.grpB_bSetRow.Text = "B 파일 행 설정(자동)";
+            // 
+            // cbB_bStartRow
+            // 
+            this.cbB_bStartRow.FormattingEnabled = true;
+            this.cbB_bStartRow.Location = new System.Drawing.Point(6, 36);
+            this.cbB_bStartRow.Name = "cbB_bStartRow";
+            this.cbB_bStartRow.Size = new System.Drawing.Size(187, 20);
+            this.cbB_bStartRow.TabIndex = 14;
+            this.cbB_bStartRow.SelectedIndexChanged += new System.EventHandler(this.sampleCB_SelectedIndexChanged);
             // 
             // lbl_bRowNum
             // 
@@ -256,6 +269,7 @@
             this.cbB_bFinishRow.Name = "cbB_bFinishRow";
             this.cbB_bFinishRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_bFinishRow.TabIndex = 3;
+            this.cbB_bFinishRow.SelectedIndexChanged += new System.EventHandler(this.cbB_bFinishRow_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -275,27 +289,19 @@
             this.label11.TabIndex = 1;
             this.label11.Text = "시작할 행 값";
             // 
-            // cbB_bStartRow
-            // 
-            this.cbB_bStartRow.Enabled = false;
-            this.cbB_bStartRow.FormattingEnabled = true;
-            this.cbB_bStartRow.Location = new System.Drawing.Point(7, 38);
-            this.cbB_bStartRow.Name = "cbB_bStartRow";
-            this.cbB_bStartRow.Size = new System.Drawing.Size(187, 20);
-            this.cbB_bStartRow.TabIndex = 0;
-            // 
             // btn_cal
             // 
-            this.btn_cal.Location = new System.Drawing.Point(828, 434);
+            this.btn_cal.Location = new System.Drawing.Point(1009, 531);
             this.btn_cal.Name = "btn_cal";
             this.btn_cal.Size = new System.Drawing.Size(199, 23);
             this.btn_cal.TabIndex = 11;
             this.btn_cal.Text = "연산하기";
             this.btn_cal.UseVisualStyleBackColor = true;
+            this.btn_cal.Click += new System.EventHandler(this.btn_cal_Click);
             // 
             // btn_graph
             // 
-            this.btn_graph.Location = new System.Drawing.Point(827, 463);
+            this.btn_graph.Location = new System.Drawing.Point(1008, 560);
             this.btn_graph.Name = "btn_graph";
             this.btn_graph.Size = new System.Drawing.Size(199, 23);
             this.btn_graph.TabIndex = 12;
@@ -304,17 +310,35 @@
             // 
             // btn_cSaveFile
             // 
-            this.btn_cSaveFile.Location = new System.Drawing.Point(826, 490);
+            this.btn_cSaveFile.Location = new System.Drawing.Point(1007, 587);
             this.btn_cSaveFile.Name = "btn_cSaveFile";
             this.btn_cSaveFile.Size = new System.Drawing.Size(199, 23);
             this.btn_cSaveFile.TabIndex = 13;
             this.btn_cSaveFile.Text = "C 파일 저장하기";
             this.btn_cSaveFile.UseVisualStyleBackColor = true;
             // 
+            // checkedListBox_dtAseletedFile
+            // 
+            this.checkedListBox_dtAseletedFile.FormattingEnabled = true;
+            this.checkedListBox_dtAseletedFile.Location = new System.Drawing.Point(14, 3);
+            this.checkedListBox_dtAseletedFile.Name = "checkedListBox_dtAseletedFile";
+            this.checkedListBox_dtAseletedFile.Size = new System.Drawing.Size(314, 100);
+            this.checkedListBox_dtAseletedFile.TabIndex = 14;
+            // 
+            // checkedListBox_dtBselectedFile
+            // 
+            this.checkedListBox_dtBselectedFile.FormattingEnabled = true;
+            this.checkedListBox_dtBselectedFile.Location = new System.Drawing.Point(344, 3);
+            this.checkedListBox_dtBselectedFile.Name = "checkedListBox_dtBselectedFile";
+            this.checkedListBox_dtBselectedFile.Size = new System.Drawing.Size(314, 100);
+            this.checkedListBox_dtBselectedFile.TabIndex = 15;
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkedListBox_dtBselectedFile);
+            this.Controls.Add(this.checkedListBox_dtAseletedFile);
             this.Controls.Add(this.btn_cSaveFile);
             this.Controls.Add(this.btn_graph);
             this.Controls.Add(this.btn_cal);
@@ -328,7 +352,7 @@
             this.Controls.Add(this.dgv_2);
             this.Controls.Add(this.dgv_1);
             this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(1037, 519);
+            this.Size = new System.Drawing.Size(1218, 624);
             this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).EndInit();
@@ -356,10 +380,8 @@
         private System.Windows.Forms.Label lbl_grid3;
         private System.Windows.Forms.GroupBox grpB_aSetRow;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbB_aStartRow;
         private System.Windows.Forms.Label lbl_aRowNum;
         private System.Windows.Forms.Label lbl_aRow;
-        private System.Windows.Forms.ComboBox cbB_aFinishRow;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox grpB_bSetRow;
         private System.Windows.Forms.Label lbl_bRowNum;
@@ -367,9 +389,13 @@
         private System.Windows.Forms.ComboBox cbB_bFinishRow;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbB_bStartRow;
         private System.Windows.Forms.Button btn_cal;
         private System.Windows.Forms.Button btn_graph;
         private System.Windows.Forms.Button btn_cSaveFile;
+        private System.Windows.Forms.ComboBox cbB_bStartRow;
+        private System.Windows.Forms.ComboBox cbB_aFinishRow;
+        private System.Windows.Forms.ComboBox cbB_aStartRow;
+        private System.Windows.Forms.CheckedListBox checkedListBox_dtAseletedFile;
+        private System.Windows.Forms.CheckedListBox checkedListBox_dtBselectedFile;
     }
 }
