@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.dgv_2 = new System.Windows.Forms.DataGridView();
             this.dgv_3 = new System.Windows.Forms.DataGridView();
@@ -54,20 +57,20 @@
             this.btn_cal = new System.Windows.Forms.Button();
             this.btn_graph = new System.Windows.Forms.Button();
             this.btn_cSaveFile = new System.Windows.Forms.Button();
-            this.checkedListBox_dtAseletedFile = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox_dtBselectedFile = new System.Windows.Forms.CheckedListBox();
+            this.lineRatioGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
             this.grpB_fileLoad.SuspendLayout();
             this.grpB_aSetRow.SuspendLayout();
             this.grpB_bSetRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_1
             // 
             this.dgv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_1.Location = new System.Drawing.Point(14, 135);
+            this.dgv_1.Location = new System.Drawing.Point(11, 23);
             this.dgv_1.Name = "dgv_1";
             this.dgv_1.RowTemplate.Height = 23;
             this.dgv_1.Size = new System.Drawing.Size(314, 475);
@@ -76,7 +79,7 @@
             // dgv_2
             // 
             this.dgv_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_2.Location = new System.Drawing.Point(344, 135);
+            this.dgv_2.Location = new System.Drawing.Point(341, 23);
             this.dgv_2.Name = "dgv_2";
             this.dgv_2.RowTemplate.Height = 23;
             this.dgv_2.Size = new System.Drawing.Size(314, 475);
@@ -85,7 +88,7 @@
             // dgv_3
             // 
             this.dgv_3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_3.Location = new System.Drawing.Point(674, 135);
+            this.dgv_3.Location = new System.Drawing.Point(671, 23);
             this.dgv_3.Name = "dgv_3";
             this.dgv_3.RowTemplate.Height = 23;
             this.dgv_3.Size = new System.Drawing.Size(314, 475);
@@ -116,7 +119,7 @@
             // 
             this.grpB_fileLoad.Controls.Add(this.btn_aFileLoad);
             this.grpB_fileLoad.Controls.Add(this.btn_bFileLoad);
-            this.grpB_fileLoad.Location = new System.Drawing.Point(1007, 135);
+            this.grpB_fileLoad.Location = new System.Drawing.Point(1004, 23);
             this.grpB_fileLoad.Name = "grpB_fileLoad";
             this.grpB_fileLoad.Size = new System.Drawing.Size(208, 88);
             this.grpB_fileLoad.TabIndex = 5;
@@ -126,7 +129,7 @@
             // lbl_grid1
             // 
             this.lbl_grid1.AutoSize = true;
-            this.lbl_grid1.Location = new System.Drawing.Point(13, 117);
+            this.lbl_grid1.Location = new System.Drawing.Point(10, 5);
             this.lbl_grid1.Name = "lbl_grid1";
             this.lbl_grid1.Size = new System.Drawing.Size(41, 12);
             this.lbl_grid1.TabIndex = 6;
@@ -135,7 +138,7 @@
             // lbl_grid2
             // 
             this.lbl_grid2.AutoSize = true;
-            this.lbl_grid2.Location = new System.Drawing.Point(342, 117);
+            this.lbl_grid2.Location = new System.Drawing.Point(339, 5);
             this.lbl_grid2.Name = "lbl_grid2";
             this.lbl_grid2.Size = new System.Drawing.Size(41, 12);
             this.lbl_grid2.TabIndex = 7;
@@ -144,7 +147,7 @@
             // lbl_grid3
             // 
             this.lbl_grid3.AutoSize = true;
-            this.lbl_grid3.Location = new System.Drawing.Point(673, 117);
+            this.lbl_grid3.Location = new System.Drawing.Point(670, 5);
             this.lbl_grid3.Name = "lbl_grid3";
             this.lbl_grid3.Size = new System.Drawing.Size(42, 12);
             this.lbl_grid3.TabIndex = 8;
@@ -158,7 +161,7 @@
             this.grpB_aSetRow.Controls.Add(this.lbl_aRow);
             this.grpB_aSetRow.Controls.Add(this.label5);
             this.grpB_aSetRow.Controls.Add(this.label4);
-            this.grpB_aSetRow.Location = new System.Drawing.Point(1008, 230);
+            this.grpB_aSetRow.Location = new System.Drawing.Point(1005, 118);
             this.grpB_aSetRow.Name = "grpB_aSetRow";
             this.grpB_aSetRow.Size = new System.Drawing.Size(200, 144);
             this.grpB_aSetRow.TabIndex = 9;
@@ -228,7 +231,7 @@
             this.grpB_bSetRow.Controls.Add(this.cbB_bFinishRow);
             this.grpB_bSetRow.Controls.Add(this.label10);
             this.grpB_bSetRow.Controls.Add(this.label11);
-            this.grpB_bSetRow.Location = new System.Drawing.Point(1009, 380);
+            this.grpB_bSetRow.Location = new System.Drawing.Point(1006, 268);
             this.grpB_bSetRow.Name = "grpB_bSetRow";
             this.grpB_bSetRow.Size = new System.Drawing.Size(200, 144);
             this.grpB_bSetRow.TabIndex = 10;
@@ -292,7 +295,7 @@
             // 
             // btn_cal
             // 
-            this.btn_cal.Location = new System.Drawing.Point(1009, 531);
+            this.btn_cal.Location = new System.Drawing.Point(1006, 419);
             this.btn_cal.Name = "btn_cal";
             this.btn_cal.Size = new System.Drawing.Size(199, 23);
             this.btn_cal.TabIndex = 11;
@@ -302,44 +305,46 @@
             // 
             // btn_graph
             // 
-            this.btn_graph.Location = new System.Drawing.Point(1008, 560);
+            this.btn_graph.Location = new System.Drawing.Point(1005, 448);
             this.btn_graph.Name = "btn_graph";
             this.btn_graph.Size = new System.Drawing.Size(199, 23);
             this.btn_graph.TabIndex = 12;
             this.btn_graph.Text = "그래프 확인";
             this.btn_graph.UseVisualStyleBackColor = true;
+            this.btn_graph.Click += new System.EventHandler(this.btn_graph_Click);
             // 
             // btn_cSaveFile
             // 
-            this.btn_cSaveFile.Location = new System.Drawing.Point(1007, 587);
+            this.btn_cSaveFile.Location = new System.Drawing.Point(1004, 475);
             this.btn_cSaveFile.Name = "btn_cSaveFile";
             this.btn_cSaveFile.Size = new System.Drawing.Size(199, 23);
             this.btn_cSaveFile.TabIndex = 13;
             this.btn_cSaveFile.Text = "C 파일 저장하기";
             this.btn_cSaveFile.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox_dtAseletedFile
+            // lineRatioGraph
             // 
-            this.checkedListBox_dtAseletedFile.FormattingEnabled = true;
-            this.checkedListBox_dtAseletedFile.Location = new System.Drawing.Point(14, 3);
-            this.checkedListBox_dtAseletedFile.Name = "checkedListBox_dtAseletedFile";
-            this.checkedListBox_dtAseletedFile.Size = new System.Drawing.Size(314, 100);
-            this.checkedListBox_dtAseletedFile.TabIndex = 14;
-            // 
-            // checkedListBox_dtBselectedFile
-            // 
-            this.checkedListBox_dtBselectedFile.FormattingEnabled = true;
-            this.checkedListBox_dtBselectedFile.Location = new System.Drawing.Point(344, 3);
-            this.checkedListBox_dtBselectedFile.Name = "checkedListBox_dtBselectedFile";
-            this.checkedListBox_dtBselectedFile.Size = new System.Drawing.Size(314, 100);
-            this.checkedListBox_dtBselectedFile.TabIndex = 15;
+            this.lineRatioGraph.AccessibleDescription = "ph";
+            chartArea1.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend1);
+            this.lineRatioGraph.Location = new System.Drawing.Point(11, 513);
+            this.lineRatioGraph.Name = "lineRatioGraph";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series1);
+            this.lineRatioGraph.Size = new System.Drawing.Size(974, 365);
+            this.lineRatioGraph.TabIndex = 14;
+            this.lineRatioGraph.Text = "chart1";
+            this.lineRatioGraph.Click += new System.EventHandler(this.lineRatioGraph_Click);
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkedListBox_dtBselectedFile);
-            this.Controls.Add(this.checkedListBox_dtAseletedFile);
+            this.Controls.Add(this.lineRatioGraph);
             this.Controls.Add(this.btn_cSaveFile);
             this.Controls.Add(this.btn_graph);
             this.Controls.Add(this.btn_cal);
@@ -353,7 +358,7 @@
             this.Controls.Add(this.dgv_2);
             this.Controls.Add(this.dgv_1);
             this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(1218, 624);
+            this.Size = new System.Drawing.Size(1224, 881);
             this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).EndInit();
@@ -363,6 +368,7 @@
             this.grpB_aSetRow.PerformLayout();
             this.grpB_bSetRow.ResumeLayout(false);
             this.grpB_bSetRow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -396,7 +402,6 @@
         private System.Windows.Forms.ComboBox cbB_bStartRow;
         private System.Windows.Forms.ComboBox cbB_aFinishRow;
         private System.Windows.Forms.ComboBox cbB_aStartRow;
-        private System.Windows.Forms.CheckedListBox checkedListBox_dtAseletedFile;
-        private System.Windows.Forms.CheckedListBox checkedListBox_dtBselectedFile;
+        private System.Windows.Forms.DataVisualization.Charting.Chart lineRatioGraph;
     }
 }

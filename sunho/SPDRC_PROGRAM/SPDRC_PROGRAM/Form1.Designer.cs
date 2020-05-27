@@ -68,9 +68,9 @@
             // 
             // userControl11
             // 
-            this.userControl11.Location = new System.Drawing.Point(258, 30);
+            this.userControl11.Location = new System.Drawing.Point(258, 12);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(1216, 643);
+            this.userControl11.Size = new System.Drawing.Size(1216, 895);
             this.userControl11.TabIndex = 0;
             this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
@@ -79,7 +79,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1486, 663);
+            this.ClientSize = new System.Drawing.Size(1479, 874);
             this.Controls.Add(this.grp_Menu);
             this.Controls.Add(this.userControl11);
             this.Name = "Form_main";

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SPDRC_PROGRAM
 {
@@ -29,6 +30,7 @@ namespace SPDRC_PROGRAM
         public UserControl1()
         {
             InitializeComponent();
+            this.lineRatioGraph.Series.Clear();
         }
 
         private void UserControl1_Load(object sender, EventArgs e)
@@ -306,15 +308,15 @@ namespace SPDRC_PROGRAM
 
             for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
             {
-                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString();
-                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString();
+                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString(); //
+                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString(); //
                 Console.WriteLine(waveLength1[rowNum]);
             }
 
             for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
             {
-                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]);
-                preProcessedDt.Rows[rowNum]["Te"] = -5 / Math.Log(double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]));
+                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]);  // line ratio 구하는 부분
+                preProcessedDt.Rows[rowNum]["Te"] = -2 / Math.Log(double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]));  // electron temperature 구하는 부분
             }
 
             dgv_3.DataSource = preProcessedDt;
@@ -323,6 +325,41 @@ namespace SPDRC_PROGRAM
 
         private void lbl_aRowNum_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btn_graph_Click(object sender, EventArgs e)
+        {
+            Minus_dtA_dtB();
+
+            CalculateLineRatioAndTeThenAddToPreProcessedDt();
+
+            DrawGraph();
+        }
+
+        private void DrawGraph()
+        {
+            //this.lineRatioGraph.Titles.Add("lineRatio");
+            //this.lineRatioGraph.Titles.Add("Te");
+            Series lineRatio = this.lineRatioGraph.Series.Add("Line Ratio");
+            lineRatio.ChartType = SeriesChartType.Spline;
+            lineRatio.Color = Color.Red;
+            lineRatio.MarkerSize = 10; // 선 두께 설정
+
+            Series Te = this.lineRatioGraph.Series.Add("Electron Temperature");
+            Te.ChartType = SeriesChartType.Spline;
+            Te.MarkerSize = 30; // 선 두께 설정
+            Te.Color = Color.Blue;
+
+            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
+            {
+                lineRatio.Points.AddXY(preProcessedDt.Rows[rowNum]["lineNum"], preProcessedDt.Rows[rowNum]["lineRatio"]);
+                Te.Points.AddXY(preProcessedDt.Rows[rowNum]["lineNum"], preProcessedDt.Rows[rowNum]["Te"]);
+            }
+        }
+
+        private void lineRatioGraph_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
