@@ -67,6 +67,12 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_OES_KSP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_OES_KSP.Designer.cs">
+      <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +90,9 @@
     </Compile>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_OES_KSP.resx">
+      <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

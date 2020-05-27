@@ -338,8 +338,8 @@ namespace SPDRC_PROGRAM
 
         private void DrawGraph()
         {
-            //this.lineRatioGraph.Titles.Add("lineRatio");
-            //this.lineRatioGraph.Titles.Add("Te");
+            this.lineRatioGraph.Series.Clear(); // 그래프 초기화
+
             Series lineRatio = this.lineRatioGraph.Series.Add("Line Ratio");
             lineRatio.ChartType = SeriesChartType.Spline;
             lineRatio.Color = Color.Red;
@@ -359,7 +359,10 @@ namespace SPDRC_PROGRAM
 
         private void lineRatioGraph_Click(object sender, EventArgs e)
         {
-
+            lineRatioGraph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
+            lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true; 
+            lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
         }
     }
+
 }
