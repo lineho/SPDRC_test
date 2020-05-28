@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.OleDb;
+using System.Windows.Forms.DataVisualization.Charting;
 
 
 
@@ -17,12 +18,17 @@ namespace SPDRC_PROGRAM
     public partial class UserControl_OES_KSP : UserControl
     {
         DataTable dtA;
+        string waveLength1 = "";
+        string waveLength2 = "";
+        Boolean cbBoxWavelength1Checked = false;
+        Boolean cbBoxWavelength2Checked = false;
+
 
         public UserControl_OES_KSP()
         {
             InitializeComponent();
-            chart1.Series.Clear();
-          //  KSPwaveLengthChooseSetting();
+            lineRatioGraph.Series.Clear();
+            KSPwaveLengthChooseSetting();
         }
 
         private void UserControl_OES_KSP_Load(object sender, EventArgs e)
@@ -58,31 +64,30 @@ namespace SPDRC_PROGRAM
             }
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Fileload_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("btn_Fileload_Clicked");
-            OpenFileDialog dialog = new OpenFileDialog();
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (cbBoxWavelength1Checked  && cbBoxWavelength2Checked )
             {
-                string filePath = "";
+                Console.WriteLine("btn_Fileload_Clicked");
+                OpenFileDialog dialog = new OpenFileDialog();
 
-                filePath = dialog.FileName;
-                Console.WriteLine(String.Format("{0} was imported bybtn_Fileload_Click", filePath));
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = "";
 
-                checkedListBox_OESdataCollect.Items.Add(filePath, true);
+                    filePath = dialog.FileName;
+                    Console.WriteLine(String.Format("{0} was imported bybtn_Fileload_Click", filePath));
 
-                if (filePath.EndsWith(".csv"))
-                    dtA = CSVconvertToDataTable(filePath);   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
-                else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
-                    dtA = Xlsx_xlsConvertToDataTable(filePath);
+                    checkedListBox_OESdataCollect.Items.Add(filePath, false);
 
+                    if (filePath.EndsWith(".csv"))
+                        dtA = CSVdataSortByWaveLengths(filePath);   // 이 함수 쓰려면 csv 파일 맨 윗줄의 cell이 하나라도 비어있으면 안됨.
+                    else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
+                        dtA = Xlsx_xlsConvertToDataTable(filePath);
+                    }
             }
+            else
+                MessageBox.Show("'파장1' 그리고 '파장2'를 모두 선택해 주십시오.");
         }
 
         private DataTable Xlsx_xlsConvertToDataTable(string filePath)
@@ -163,12 +168,208 @@ namespace SPDRC_PROGRAM
 
         private void checkedListBox_OESdataCollect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("ddd");
+            int iSelectedIndex = checkedListBox_OESdataCollect.SelectedIndex;
+            if (iSelectedIndex == -1)
+                return;
+            for (int iIndex = 0; iIndex < checkedListBox_OESdataCollect.Items.Count; iIndex++)
+                checkedListBox_OESdataCollect.SetItemCheckState(iIndex, CheckState.Unchecked);
+            checkedListBox_OESdataCollect.SetItemCheckState(iSelectedIndex, CheckState.Checked);
+
+            Console.WriteLine(checkedListBox_OESdataCollect.SelectedItem.ToString());
+
+            dtA = CSVdataSortByWaveLengths(checkedListBox_OESdataCollect.SelectedItem.ToString());
         }
-        private void checkedListBox_OESdataCollect_ItemCheck(object sender, ItemCheckEventArgs e)
+
+
+        private void cbBox_waveLength1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            for (int ix = 0; ix < checkedListBox_OESdataCollect.Items.Count; ++ix)
-                if (ix != e.Index) checkedListBox_OESdataCollect.SetItemChecked(ix, false);
+            waveLength1 = cbBox_waveLength1.SelectedItem.ToString();
+            cbBoxWavelength1Checked = true;
+            Console.WriteLine(waveLength1);
+        }
+
+        private void cbBox_waveLength2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            waveLength2 = cbBox_waveLength2.SelectedItem.ToString();
+            cbBoxWavelength2Checked = true;
+            Console.WriteLine(waveLength2);
+
+        }
+
+        private DataTable CSVdataSortByWaveLengths(string filePath)
+        {
+            //Int16 headWordIndex_lineNum = 0;
+            Int16 headWordIndex_time = 0;
+            Int16 headWordIndex_waveLength1 = 0;
+            Int16 headWordIndex_waveLength2 = 0;
+
+            DataTable dt = new DataTable();
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+
+            if (lines.Length > 0)
+            {
+                string thirdLine = lines[2]; // 2
+
+                string[] headerLabels = thirdLine.Split(',');
+
+                short columnIndex = 0;
+                foreach (string headerWord in headerLabels)   // create header of Datatale
+                {
+                    if (headerWord == "Time(sec)")
+                    {
+                        dt.Columns.Add(new DataColumn(headerWord));
+                        headWordIndex_time = columnIndex;
+                        Console.WriteLine(headWordIndex_time);
+                    }
+                    else if (headerWord == waveLength1)
+                    {
+                        dt.Columns.Add(new DataColumn(headerWord));
+                        headWordIndex_waveLength1 = columnIndex;
+                        Console.WriteLine(headWordIndex_waveLength1);
+                    }
+                    else if (headerWord == waveLength2)
+                    {
+                        dt.Columns.Add(new DataColumn(headerWord));
+                        headWordIndex_waveLength2 = columnIndex;
+                        Console.WriteLine(headWordIndex_waveLength2);
+                    }
+
+                    columnIndex++;
+                }
+
+
+                for (int lineNum = 3; lineNum < lines.Length; lineNum++) // fill data to Datatale // 3
+                {
+                    string[] dataWords = lines[lineNum].Split(',');
+                    DataRow dr = dt.NewRow();
+                    columnIndex = 0;
+                    foreach (string dataWord in dataWords)
+                    {
+                        if (columnIndex == headWordIndex_time) { dr["Time(sec)"] = dataWord; }
+                        else if (columnIndex == headWordIndex_waveLength1) { dr[waveLength1] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord
+                        else if (columnIndex == headWordIndex_waveLength2) { dr[waveLength2] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord
+
+                        columnIndex++;
+                    }
+                    dt.Rows.Add(dr);
+                }
+
+                if (dt.Rows.Count > 0)
+                {
+                    dgv_1.DataSource = dt;
+                }
+                
+            }
+
+            return dt;
+        }
+
+        private void Basic_CSVconvertToDataTable(string filePath)
+        {
+            DataTable dt = new DataTable();
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+
+            if (lines.Length > 0)
+            {
+                string firstLine = lines[2]; // 2
+
+                string[] headerLabels = firstLine.Split(',');
+
+                short columnIndex = 0;
+                foreach (string headerWord in headerLabels)   // create header of Datatale
+                {
+                    dt.Columns.Add(new DataColumn(headerWord));
+                    columnIndex++;
+                }
+
+
+                for (int lineNum = 3; lineNum < lines.Length; lineNum++) // fill data to Datatale // 3
+                {
+                    string[] dataWords = lines[lineNum].Split(',');
+                    DataRow dr = dt.NewRow();
+                    columnIndex = 0;
+                    foreach (string headerWord in headerLabels)
+                    {
+                        dr[headerWord] = dataWords[columnIndex++];
+                    }
+                    dt.Rows.Add(dr);
+                }
+
+                if (dt.Rows.Count > 0)
+                {
+                    dgv_1.DataSource = dt;
+                }
+            }
+        }
+
+        private void btn_drawGraph_Click(object sender, EventArgs e)
+        {
+            CalculateLineRatioAndTeThenAddToDtA();
+
+            DrawGraph();
+        }
+
+        private void CalculateLineRatioAndTeThenAddToDtA()
+        {
+            dtA.Columns.Add("lineRatio");
+            dtA.Columns.Add("Te");
+
+            string[] arrayWaveLength1 = new string[dtA.Rows.Count];
+            string[] arrayWaveLength2 = new string[dtA.Rows.Count];
+
+            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            {
+                arrayWaveLength1[rowNum] = dtA.Rows[rowNum][waveLength1].ToString(); //
+                arrayWaveLength2[rowNum] = dtA.Rows[rowNum][waveLength2].ToString(); //
+                //Console.WriteLine(arrayWaveLength1[rowNum]);
+            }
+
+            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            {
+                //if (double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]) <= -1000 || 1000 <= double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))  //   계산 과정에서 무한대가 나오는 것 방지
+                //    dtA.Rows[rowNum]["lineRatio"] =0;
+                //else
+                    dtA.Rows[rowNum]["lineRatio"] = double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]);  // line ratio 구하는 부분
+
+
+                if (-0.13 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -25 || 25 <= -0.13 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))) //   계산 과정에서 무한대가 나오는 것 방지
+                    dtA.Rows[rowNum]["Te"]=0;
+                else
+                    dtA.Rows[rowNum]["Te"] = -0.13 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+            }
+
+            dgv_1.DataSource = dtA;
+
+        }
+
+        private void DrawGraph()
+        {
+            this.lineRatioGraph.Series.Clear(); // 그래프 초기화
+
+            Series lineRatio = this.lineRatioGraph.Series.Add("Line Ratio");
+            lineRatio.ChartType = SeriesChartType.Spline;
+            lineRatio.Color = Color.Red;
+            lineRatio.MarkerSize = 10; // 선 두께 설정
+
+            Series Te = this.lineRatioGraph.Series.Add("Electron Temperature");
+            Te.ChartType = SeriesChartType.Spline;
+            Te.MarkerSize = 30; // 선 두께 설정
+            Te.Color = Color.Blue;
+
+            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            {
+                lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
+                Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+            }
+        }
+
+
+        private void lineRatioGraph_Click(object sender, EventArgs e)
+        {
+            lineRatioGraph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
+            lineRatioGraph.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
+            lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true;
+            lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
         }
     }
 }

@@ -28,38 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.checkedListBox_OESdataCollect = new System.Windows.Forms.CheckedListBox();
             this.btn_Fileload = new System.Windows.Forms.Button();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lineRatioGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbBox_waveLength1 = new System.Windows.Forms.ComboBox();
             this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_drawGraph = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btn_drawGraph = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkedListBox_OESdataCollect
             // 
+            this.checkedListBox_OESdataCollect.CheckOnClick = true;
             this.checkedListBox_OESdataCollect.FormattingEnabled = true;
             this.checkedListBox_OESdataCollect.Location = new System.Drawing.Point(29, 188);
             this.checkedListBox_OESdataCollect.Name = "checkedListBox_OESdataCollect";
-            this.checkedListBox_OESdataCollect.Size = new System.Drawing.Size(427, 132);
+            this.checkedListBox_OESdataCollect.Size = new System.Drawing.Size(779, 132);
             this.checkedListBox_OESdataCollect.TabIndex = 0;
             this.checkedListBox_OESdataCollect.SelectedIndexChanged += new System.EventHandler(this.checkedListBox_OESdataCollect_SelectedIndexChanged);
             // 
             // btn_Fileload
             // 
-            this.btn_Fileload.Location = new System.Drawing.Point(473, 207);
+            this.btn_Fileload.Location = new System.Drawing.Point(836, 209);
             this.btn_Fileload.Name = "btn_Fileload";
             this.btn_Fileload.Size = new System.Drawing.Size(132, 43);
             this.btn_Fileload.TabIndex = 1;
@@ -76,21 +77,22 @@
             this.dgv_1.Size = new System.Drawing.Size(427, 473);
             this.dgv_1.TabIndex = 2;
             // 
-            // chart1
+            // lineRatioGraph
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
-            this.chart1.Location = new System.Drawing.Point(473, 344);
-            this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(724, 473);
-            this.chart1.TabIndex = 3;
-            this.chart1.Text = "chart1";
+            chartArea1.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend1);
+            this.lineRatioGraph.Location = new System.Drawing.Point(473, 344);
+            this.lineRatioGraph.Name = "lineRatioGraph";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series1);
+            this.lineRatioGraph.Size = new System.Drawing.Size(724, 473);
+            this.lineRatioGraph.TabIndex = 3;
+            this.lineRatioGraph.Text = "chart1";
+            this.lineRatioGraph.Click += new System.EventHandler(this.lineRatioGraph_Click);
             // 
             // cbBox_waveLength1
             // 
@@ -99,6 +101,7 @@
             this.cbBox_waveLength1.Name = "cbBox_waveLength1";
             this.cbBox_waveLength1.Size = new System.Drawing.Size(121, 20);
             this.cbBox_waveLength1.TabIndex = 4;
+            this.cbBox_waveLength1.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength1_SelectedIndexChanged);
             // 
             // cbBox_waveLength2
             // 
@@ -107,7 +110,7 @@
             this.cbBox_waveLength2.Name = "cbBox_waveLength2";
             this.cbBox_waveLength2.Size = new System.Drawing.Size(121, 20);
             this.cbBox_waveLength2.TabIndex = 5;
-            this.cbBox_waveLength2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cbBox_waveLength2.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength2_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -123,23 +126,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "파장 선택";
             // 
-            // btn_drawGraph
+            // label3
             // 
-            this.btn_drawGraph.Location = new System.Drawing.Point(473, 258);
-            this.btn_drawGraph.Name = "btn_drawGraph";
-            this.btn_drawGraph.Size = new System.Drawing.Size(132, 40);
-            this.btn_drawGraph.TabIndex = 7;
-            this.btn_drawGraph.Text = "그래프로 나타내기\r\n";
-            this.btn_drawGraph.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SPDRC_PROGRAM.Properties.Resources.전자온도_관련_식;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(382, 75);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(215, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 12);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "파장 2";
             // 
             // label2
             // 
@@ -150,14 +144,24 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "파장 1";
             // 
-            // label3
+            // pictureBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(215, 109);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 12);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "파장 2";
+            this.pictureBox1.Image = global::SPDRC_PROGRAM.Properties.Resources.전자온도_관련_식;
+            this.pictureBox1.Location = new System.Drawing.Point(27, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(382, 75);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btn_drawGraph
+            // 
+            this.btn_drawGraph.Location = new System.Drawing.Point(836, 260);
+            this.btn_drawGraph.Name = "btn_drawGraph";
+            this.btn_drawGraph.Size = new System.Drawing.Size(132, 40);
+            this.btn_drawGraph.TabIndex = 7;
+            this.btn_drawGraph.Text = "그래프로 나타내기\r\n";
+            this.btn_drawGraph.UseVisualStyleBackColor = true;
+            this.btn_drawGraph.Click += new System.EventHandler(this.btn_drawGraph_Click);
             // 
             // UserControl_OES_KSP
             // 
@@ -165,7 +169,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btn_drawGraph);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.lineRatioGraph);
             this.Controls.Add(this.dgv_1);
             this.Controls.Add(this.btn_Fileload);
             this.Controls.Add(this.checkedListBox_OESdataCollect);
@@ -173,7 +177,7 @@
             this.Size = new System.Drawing.Size(1274, 838);
             this.Load += new System.EventHandler(this.UserControl_OES_KSP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -186,7 +190,7 @@
         private System.Windows.Forms.CheckedListBox checkedListBox_OESdataCollect;
         private System.Windows.Forms.Button btn_Fileload;
         private System.Windows.Forms.DataGridView dgv_1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart lineRatioGraph;
         private System.Windows.Forms.ComboBox cbBox_waveLength1;
         private System.Windows.Forms.ComboBox cbBox_waveLength2;
         private System.Windows.Forms.GroupBox groupBox1;
