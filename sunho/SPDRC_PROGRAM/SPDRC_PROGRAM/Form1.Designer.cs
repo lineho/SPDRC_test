@@ -92,7 +92,7 @@
             // 
             this.userControl_OES_KSP1.Location = new System.Drawing.Point(264, 12);
             this.userControl_OES_KSP1.Name = "userControl_OES_KSP1";
-            this.userControl_OES_KSP1.Size = new System.Drawing.Size(1210, 759);
+            this.userControl_OES_KSP1.Size = new System.Drawing.Size(1210, 908);
             this.userControl_OES_KSP1.TabIndex = 3;
             // 
             // Form_main
