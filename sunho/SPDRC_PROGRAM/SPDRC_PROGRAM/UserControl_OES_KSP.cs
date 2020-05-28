@@ -22,6 +22,7 @@ namespace SPDRC_PROGRAM
         string waveLength2 = "";
         Boolean cbBoxWavelength1Checked = false;
         Boolean cbBoxWavelength2Checked = false;
+        Dictionary<string, object> waveLength_thresholdEnergy = new Dictionary<string, object>();
 
 
         public UserControl_OES_KSP()
@@ -29,6 +30,11 @@ namespace SPDRC_PROGRAM
             InitializeComponent();
             lineRatioGraph.Series.Clear();
             KSPwaveLengthChooseSetting();
+            dtA = Basic_CSVconvertToDataTable("wavelength_thresholdEnergy.csv");
+            foreach (DataRow row in dtA.Rows)
+            {
+                waveLength_thresholdEnergy.Add(row["wavelength"].ToString() , row["thresholdEnergy"].ToString());
+            }
         }
 
         private void UserControl_OES_KSP_Load(object sender, EventArgs e)
@@ -264,14 +270,14 @@ namespace SPDRC_PROGRAM
             return dt;
         }
 
-        private void Basic_CSVconvertToDataTable(string filePath)
+        private DataTable Basic_CSVconvertToDataTable(string filePath)
         {
             DataTable dt = new DataTable();
             string[] lines = System.IO.File.ReadAllLines(filePath);
 
             if (lines.Length > 0)
             {
-                string firstLine = lines[2]; // 2
+                string firstLine = lines[0]; // 2
 
                 string[] headerLabels = firstLine.Split(',');
 
@@ -283,7 +289,7 @@ namespace SPDRC_PROGRAM
                 }
 
 
-                for (int lineNum = 3; lineNum < lines.Length; lineNum++) // fill data to Datatale // 3
+                for (int lineNum = 1; lineNum < lines.Length; lineNum++) // fill data to Datatale // 3
                 {
                     string[] dataWords = lines[lineNum].Split(',');
                     DataRow dr = dt.NewRow();
@@ -300,6 +306,8 @@ namespace SPDRC_PROGRAM
                     dgv_1.DataSource = dt;
                 }
             }
+
+            return dt;
         }
 
         private void btn_drawGraph_Click(object sender, EventArgs e)
@@ -324,6 +332,10 @@ namespace SPDRC_PROGRAM
                 //Console.WriteLine(arrayWaveLength1[rowNum]);
             }
 
+            double deltaE = (double.Parse(waveLength_thresholdEnergy[waveLength1].ToString()) - double.Parse(waveLength_thresholdEnergy[waveLength2].ToString()));  // 파장의 threshold Energy 차이 (전자온도를 구할 때 사용) , waveLength_thresholdEnergy는 dictionary 변수이다. 
+            Console.WriteLine("{0}", deltaE.ToString());
+
+
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
                 //if (double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]) <= -1000 || 1000 <= double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))  //   계산 과정에서 무한대가 나오는 것 방지
@@ -332,10 +344,10 @@ namespace SPDRC_PROGRAM
                     dtA.Rows[rowNum]["lineRatio"] = double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]);  // line ratio 구하는 부분
 
 
-                if (-0.13 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -25 || 25 <= -0.13 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))) //   계산 과정에서 무한대가 나오는 것 방지
+                if ( - deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -25 || 25 <= - deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))) //   계산 과정에서 무한대가 나오는 것 방지 , 무한대 값이 나오면 그래프에 표현이 안됨ㅠㅠ
                     dtA.Rows[rowNum]["Te"]=0;
                 else
-                    dtA.Rows[rowNum]["Te"] = -0.13 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+                    dtA.Rows[rowNum]["Te"] = - deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
             }
 
             dgv_1.DataSource = dtA;

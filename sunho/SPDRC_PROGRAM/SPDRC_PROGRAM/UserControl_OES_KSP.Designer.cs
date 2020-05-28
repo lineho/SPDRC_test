@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.checkedListBox_OESdataCollect = new System.Windows.Forms.CheckedListBox();
             this.btn_Fileload = new System.Windows.Forms.Button();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
@@ -79,16 +79,16 @@
             // 
             // lineRatioGraph
             // 
-            chartArea1.Name = "ChartArea1";
-            this.lineRatioGraph.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.lineRatioGraph.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend3);
             this.lineRatioGraph.Location = new System.Drawing.Point(473, 344);
             this.lineRatioGraph.Name = "lineRatioGraph";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.lineRatioGraph.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series3);
             this.lineRatioGraph.Size = new System.Drawing.Size(724, 473);
             this.lineRatioGraph.TabIndex = 3;
             this.lineRatioGraph.Text = "chart1";
@@ -97,7 +97,7 @@
             // cbBox_waveLength1
             // 
             this.cbBox_waveLength1.FormattingEnabled = true;
-            this.cbBox_waveLength1.Location = new System.Drawing.Point(27, 124);
+            this.cbBox_waveLength1.Location = new System.Drawing.Point(161, 124);
             this.cbBox_waveLength1.Name = "cbBox_waveLength1";
             this.cbBox_waveLength1.Size = new System.Drawing.Size(121, 20);
             this.cbBox_waveLength1.TabIndex = 4;
@@ -106,7 +106,7 @@
             // cbBox_waveLength2
             // 
             this.cbBox_waveLength2.FormattingEnabled = true;
-            this.cbBox_waveLength2.Location = new System.Drawing.Point(217, 124);
+            this.cbBox_waveLength2.Location = new System.Drawing.Point(288, 124);
             this.cbBox_waveLength2.Name = "cbBox_waveLength2";
             this.cbBox_waveLength2.Size = new System.Drawing.Size(121, 20);
             this.cbBox_waveLength2.TabIndex = 5;
@@ -119,7 +119,7 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.cbBox_waveLength1);
             this.groupBox1.Controls.Add(this.cbBox_waveLength2);
-            this.groupBox1.Location = new System.Drawing.Point(29, 19);
+            this.groupBox1.Location = new System.Drawing.Point(29, 14);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(427, 150);
             this.groupBox1.TabIndex = 6;
@@ -129,7 +129,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(215, 109);
+            this.label3.Location = new System.Drawing.Point(286, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 12);
             this.label3.TabIndex = 10;
@@ -138,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 109);
+            this.label2.Location = new System.Drawing.Point(159, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 12);
             this.label2.TabIndex = 9;
