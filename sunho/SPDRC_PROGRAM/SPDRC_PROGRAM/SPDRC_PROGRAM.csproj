@@ -95,6 +95,9 @@
     <EmbeddedResource Include="UserControl_OES_KSP.resx">
       <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
