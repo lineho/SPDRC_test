@@ -20,12 +20,14 @@ namespace SPDRC_PROGRAM
         private void btn_Oes_Click(object sender, EventArgs e)
         {
             userControl_OES_KSP1.Hide();
+            userControl_TES_EPD1.Hide();
             userControl11.Show();
         }
 
         private void btn_Rga_Click(object sender, EventArgs e)
         {
             userControl11.Hide();
+            userControl_TES_EPD1.Hide();
             userControl_OES_KSP1.Hide();
         }
 
@@ -42,6 +44,7 @@ namespace SPDRC_PROGRAM
         private void btn_OesKSP_Click(object sender, EventArgs e)
         {
             userControl11.Hide();
+            userControl_TES_EPD1.Hide();
             userControl_OES_KSP1.Show();
         }
 
@@ -54,6 +57,7 @@ namespace SPDRC_PROGRAM
         {
             userControl11.Hide();
             userControl_OES_KSP1.Hide();
+            userControl_TES_EPD1.Show();
         }
     }
 }

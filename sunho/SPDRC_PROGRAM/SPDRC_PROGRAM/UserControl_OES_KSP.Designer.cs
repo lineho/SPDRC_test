@@ -39,14 +39,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_drawGraph = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkedListBox_OESdataCollect
@@ -55,13 +55,13 @@
             this.checkedListBox_OESdataCollect.FormattingEnabled = true;
             this.checkedListBox_OESdataCollect.Location = new System.Drawing.Point(29, 188);
             this.checkedListBox_OESdataCollect.Name = "checkedListBox_OESdataCollect";
-            this.checkedListBox_OESdataCollect.Size = new System.Drawing.Size(779, 132);
+            this.checkedListBox_OESdataCollect.Size = new System.Drawing.Size(914, 132);
             this.checkedListBox_OESdataCollect.TabIndex = 0;
             this.checkedListBox_OESdataCollect.SelectedIndexChanged += new System.EventHandler(this.checkedListBox_OESdataCollect_SelectedIndexChanged);
             // 
             // btn_Fileload
             // 
-            this.btn_Fileload.Location = new System.Drawing.Point(836, 209);
+            this.btn_Fileload.Location = new System.Drawing.Point(965, 203);
             this.btn_Fileload.Name = "btn_Fileload";
             this.btn_Fileload.Size = new System.Drawing.Size(132, 43);
             this.btn_Fileload.TabIndex = 1;
@@ -136,18 +136,9 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "파장 1";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::SPDRC_PROGRAM.Properties.Resources.전자온도_관련_식;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(382, 75);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
             // btn_drawGraph
             // 
-            this.btn_drawGraph.Location = new System.Drawing.Point(836, 260);
+            this.btn_drawGraph.Location = new System.Drawing.Point(965, 262);
             this.btn_drawGraph.Name = "btn_drawGraph";
             this.btn_drawGraph.Size = new System.Drawing.Size(132, 40);
             this.btn_drawGraph.TabIndex = 7;
@@ -173,6 +164,15 @@
             this.dgv_1.TabIndex = 2;
             this.dgv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellContentClick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SPDRC_PROGRAM.Properties.Resources.전자온도_관련_식;
+            this.pictureBox1.Location = new System.Drawing.Point(27, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(382, 75);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // UserControl_OES_KSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -190,8 +190,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
