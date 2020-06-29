@@ -252,7 +252,7 @@ namespace SPDRC_PROGRAM
                     foreach (string dataWord in dataWords)
                     {
                         if (columnIndex == headWordIndex_time) { dr["Time(sec)"] = dataWord; }
-                        else if (columnIndex == headWordIndex_waveLength1) { dr[waveLength1] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord
+                        else if (columnIndex == headWordIndex_waveLength1) { dr[waveLength1] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord  // noise 제거를 위해 raw 데이터에서 2000을 뺌
                         else if (columnIndex == headWordIndex_waveLength2) { dr[waveLength2] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord
 
                         columnIndex++;
@@ -321,17 +321,20 @@ namespace SPDRC_PROGRAM
 
         private void CalculateLineRatioAndTeThenAddToDtA()
         {
-            dtA.Columns.Add("lineRatio");
-            dtA.Columns.Add("Te");
-            dtA.Columns.Add("movingAverageFilterd_Te");
+            if (!dtA.Columns.Contains("lineRatio"))
+            { 
+                dtA.Columns.Add("lineRatio");
+                dtA.Columns.Add("Te");
+                dtA.Columns.Add("movingAverageFiltered_Te");
+            }
 
             string[] arrayWaveLength1 = new string[dtA.Rows.Count];
             string[] arrayWaveLength2 = new string[dtA.Rows.Count];
 
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
-                arrayWaveLength1[rowNum] = dtA.Rows[rowNum][waveLength1].ToString(); // -2000
-                arrayWaveLength2[rowNum] = dtA.Rows[rowNum][waveLength2].ToString(); // -2000 추가 z
+                arrayWaveLength1[rowNum] = dtA.Rows[rowNum][waveLength1].ToString(); // 
+                arrayWaveLength2[rowNum] = dtA.Rows[rowNum][waveLength2].ToString(); //
                 //Console.WriteLine(arrayWaveLength1[rowNum]);
             }
 
@@ -347,10 +350,16 @@ namespace SPDRC_PROGRAM
                     dtA.Rows[rowNum]["lineRatio"] = double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]);  // line ratio 구하는 부분
 
 
-                if (-deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -25 || 25 <= -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))) //   계산 과정에서 무한대가 나오는 것 방지 , 무한대 값이 나오면 그래프에 표현이 안됨ㅠㅠ
-                    dtA.Rows[rowNum]["Te"] = 0;
+                //if (-deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -25 || 25 <= -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]))) //   계산 과정에서 무한대가 나오는 것 방지 , 무한대 값이 나오면 그래프에 표현이 안됨ㅠㅠ
+                //    dtA.Rows[rowNum]["Te"] = 0;
+                //else
+                //    dtA.Rows[rowNum]["Te"] = - deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+                if (-deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -13)
+                    dtA.Rows[rowNum]["Te"] = -13;
+                else if (13 <= -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])))
+                    dtA.Rows[rowNum]["Te"] = 13;
                 else
-                    dtA.Rows[rowNum]["Te"] = - deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+                    dtA.Rows[rowNum]["Te"] = -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
             }
 
         }
@@ -360,19 +369,19 @@ namespace SPDRC_PROGRAM
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
                 if (rowNum <= 8)
-                    dtA.Rows[rowNum]["movingAverageFilterd_Te"] = 0;
+                    dtA.Rows[rowNum]["movingAverageFiltered_Te"] = 0;
                 else
                 {
                     switch (timeRate)
                     {
                         case "0.1":
                             double sum = 0;
-                            dtA.Rows[rowNum]["movingAverageFilterd_Te"] = null;
+                            dtA.Rows[rowNum]["movingAverageFiltered_Te"] = null;
                             for (int Num = 0; Num <= 9; Num++)
                             {
                                 sum += double.Parse(dtA.Rows[rowNum - Num]["Te"].ToString());  // row[9] ~row[0] 까지 모두 합함
                             }
-                            dtA.Rows[rowNum]["movingAverageFilterd_Te"] = (sum / 10).ToString(); // Sum의 평균을 냄
+                            dtA.Rows[rowNum]["movingAverageFiltered_Te"] = (sum / 10).ToString(); // Sum의 평균을 냄
                             break;
                     }
                 }
@@ -398,7 +407,7 @@ namespace SPDRC_PROGRAM
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
                 lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
-                Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFilterd_Te"]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+                Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_Te"]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
             }
         }
 
