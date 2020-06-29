@@ -73,6 +73,12 @@
     <Compile Include="UserControl_OES_KSP.Designer.cs">
       <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_TES_EPD.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_TES_EPD.Designer.cs">
+      <DependentUpon>UserControl_TES_EPD.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_OES_KSP.resx">
       <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_TES_EPD.resx">
+      <DependentUpon>UserControl_TES_EPD.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>

@@ -394,6 +394,10 @@ namespace SPDRC_PROGRAM
         {
             this.lineRatioGraph.Series.Clear(); // 그래프 초기화
 
+            lineRatioGraph.ChartAreas[0].AxisY.Title = "전자온도 (eV)";
+            lineRatioGraph.ChartAreas[0].AxisY2.Title = "lineRatio";
+            lineRatioGraph.ChartAreas[0].AxisX.Title = "시간 (sec)";
+
             Series lineRatio = this.lineRatioGraph.Series.Add("Line Ratio");
             lineRatio.ChartType = SeriesChartType.Spline;
             lineRatio.Color = Color.Red;
@@ -418,6 +422,16 @@ namespace SPDRC_PROGRAM
             lineRatioGraph.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
             lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true;
             lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+        }
+
+        private void dgv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
