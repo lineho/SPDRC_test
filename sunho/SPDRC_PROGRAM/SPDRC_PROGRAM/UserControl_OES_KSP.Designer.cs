@@ -43,6 +43,7 @@
             this.btn_drawGraph = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -173,10 +174,20 @@
             this.dgv_1.TabIndex = 2;
             this.dgv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellContentClick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(912, 111);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // UserControl_OES_KSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.btn_drawGraph);
             this.Controls.Add(this.groupBox1);
@@ -210,5 +221,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridView dgv_1;
+        private System.Windows.Forms.Button button1;
     }
 }
