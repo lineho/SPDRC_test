@@ -424,15 +424,12 @@ namespace SPDRC_PROGRAM
             lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
         }
 
-        private void dgv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_1_CellContentClick(object sender, DataGridViewCellEventArgs e) // asdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsdf
         {
 
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+    
 
     }
 }
