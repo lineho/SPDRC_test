@@ -327,8 +327,8 @@ namespace SPDRC_PROGRAM
 
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
-                arrayWaveLength1[rowNum] = dtA.Rows[rowNum][waveLength1].ToString(); //
-                arrayWaveLength2[rowNum] = dtA.Rows[rowNum][waveLength2].ToString(); //
+                arrayWaveLength1[rowNum] = dtA.Rows[rowNum][waveLength1].ToString(); // -2000
+                arrayWaveLength2[rowNum] = dtA.Rows[rowNum][waveLength2].ToString(); // -2000 추가 
                 //Console.WriteLine(arrayWaveLength1[rowNum]);
             }
 
