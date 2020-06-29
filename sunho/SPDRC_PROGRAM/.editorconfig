@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0642: 빈 문에 오류가 있는 것 같습니다.
+dotnet_diagnostic.CS0642.severity = none

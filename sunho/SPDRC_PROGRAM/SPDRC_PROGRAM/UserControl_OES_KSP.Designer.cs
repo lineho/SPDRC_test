@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.checkedListBox_OESdataCollect = new System.Windows.Forms.CheckedListBox();
             this.btn_Fileload = new System.Windows.Forms.Button();
-            this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.lineRatioGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbBox_waveLength1 = new System.Windows.Forms.ComboBox();
             this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
@@ -42,10 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_drawGraph = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.dgv_1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkedListBox_OESdataCollect
@@ -68,27 +69,18 @@
             this.btn_Fileload.UseVisualStyleBackColor = true;
             this.btn_Fileload.Click += new System.EventHandler(this.btn_Fileload_Click);
             // 
-            // dgv_1
-            // 
-            this.dgv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_1.Location = new System.Drawing.Point(29, 344);
-            this.dgv_1.Name = "dgv_1";
-            this.dgv_1.RowTemplate.Height = 23;
-            this.dgv_1.Size = new System.Drawing.Size(427, 473);
-            this.dgv_1.TabIndex = 2;
-            // 
             // lineRatioGraph
             // 
-            chartArea3.Name = "ChartArea1";
-            this.lineRatioGraph.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.lineRatioGraph.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend1);
             this.lineRatioGraph.Location = new System.Drawing.Point(473, 344);
             this.lineRatioGraph.Name = "lineRatioGraph";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.lineRatioGraph.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series1);
             this.lineRatioGraph.Size = new System.Drawing.Size(724, 473);
             this.lineRatioGraph.TabIndex = 3;
             this.lineRatioGraph.Text = "chart1";
@@ -163,10 +155,29 @@
             this.btn_drawGraph.UseVisualStyleBackColor = true;
             this.btn_drawGraph.Click += new System.EventHandler(this.btn_drawGraph_Click);
             // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 838);
+            this.splitter1.TabIndex = 8;
+            this.splitter1.TabStop = false;
+            // 
+            // dgv_1
+            // 
+            this.dgv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_1.Location = new System.Drawing.Point(29, 344);
+            this.dgv_1.Name = "dgv_1";
+            this.dgv_1.RowTemplate.Height = 23;
+            this.dgv_1.Size = new System.Drawing.Size(427, 473);
+            this.dgv_1.TabIndex = 2;
+            this.dgv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellContentClick);
+            // 
             // UserControl_OES_KSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.btn_drawGraph);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lineRatioGraph);
@@ -176,11 +187,11 @@
             this.Name = "UserControl_OES_KSP";
             this.Size = new System.Drawing.Size(1274, 838);
             this.Load += new System.EventHandler(this.UserControl_OES_KSP_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,7 +200,6 @@
 
         private System.Windows.Forms.CheckedListBox checkedListBox_OESdataCollect;
         private System.Windows.Forms.Button btn_Fileload;
-        private System.Windows.Forms.DataGridView dgv_1;
         private System.Windows.Forms.DataVisualization.Charting.Chart lineRatioGraph;
         private System.Windows.Forms.ComboBox cbBox_waveLength1;
         private System.Windows.Forms.ComboBox cbBox_waveLength2;
@@ -198,5 +208,7 @@
         private System.Windows.Forms.Button btn_drawGraph;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.DataGridView dgv_1;
     }
 }
