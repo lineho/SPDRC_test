@@ -102,6 +102,10 @@ namespace SPDRC_PROGRAM
                     else if (filePath.EndsWith(".xlsx") || filePath.EndsWith(".xls"))
                         dtA = Xlsx_xlsConvertToDataTable(filePath);
                 }
+
+                ApplyMovingAverageFilterToWaveLength1And2();
+
+                DrawGraph();
             }
             else
                 MessageBox.Show("'파장1' 그리고 '파장2'를 모두 선택해 주십시오.");
@@ -166,10 +170,10 @@ namespace SPDRC_PROGRAM
                     dt.Rows.Add(dr);
                 }
 
-                if (dt.Rows.Count > 0)
-                {
-                    dgv_1.DataSource = dt;
-                }
+                //if (dt.Rows.Count > 0)
+                //{
+                //    dgv_1.DataSource = dt;
+                //}
 
             }
 
@@ -213,6 +217,77 @@ namespace SPDRC_PROGRAM
             return excelTable;
         }
 
+        private void ApplyMovingAverageFilterToWaveLength1And2()
+        {
+           if (!dtA.Columns.Contains("movingAverageFiltered_" + waveLength1) )
+           {
+                dtA.Columns.Add("movingAverageFiltered_" + waveLength1);
+                dtA.Columns.Add("movingAverageFiltered_" + waveLength2);
+           }
 
+            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            {
+                if (rowNum <= 8)
+                { 
+                    dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1] = dtA.Rows[rowNum][waveLength1];
+                    dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2] = dtA.Rows[rowNum][waveLength2];
+                }
+                else
+                {
+                    switch (timeRate)
+                    {
+                        case "0.1":
+                            double sum1 = 0;
+                            double sum2 = 0;
+                            dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1] = null;
+                            dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2] = null;
+                            for (int Num = 0; Num <= 9; Num++)
+                            {
+                                sum1 += double.Parse(dtA.Rows[rowNum - Num][waveLength1].ToString());  // row[9] ~row[0] 까지 모두 합함
+                                sum2 += double.Parse(dtA.Rows[rowNum - Num][waveLength2].ToString());  // row[9] ~row[0] 까지 모두 합함
+                            }
+                            dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1] = (sum1 / 10).ToString(); // Sum의 평균을 냄
+                            dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2] = (sum2 / 10).ToString(); // Sum의 평균을 냄
+
+                            break;
+                    }
+                }
+            }
+
+            dgv_1.DataSource = dtA;
+        }
+
+        private void DrawGraph()
+        {
+            this.EPD_chart.Series.Clear(); // 그래프 초기화
+
+            EPD_chart.ChartAreas[0].AxisY.Title = "Intensity";
+            EPD_chart.ChartAreas[0].AxisY2.Title = "lineRatio";
+            EPD_chart.ChartAreas[0].AxisX.Title = "시간 (sec)";
+
+            Series O = this.EPD_chart.Series.Add("O " + waveLength1);
+            O.ChartType = SeriesChartType.Spline;
+            O.Color = Color.Red;
+            O.MarkerSize = 10; // 선 두께 설정
+
+            Series CO = this.EPD_chart.Series.Add("CO "+waveLength2);
+            CO.ChartType = SeriesChartType.Spline;
+            CO.MarkerSize = 30; // 선 두께 설정
+            CO.Color = Color.Blue;
+
+            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            {
+                O.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
+                CO.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+            }
+        }
+
+        private void EPD_chart_Click_1(object sender, EventArgs e)
+        {
+            EPD_chart.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
+            EPD_chart.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
+            EPD_chart.ChartAreas[0].CursorX.AutoScroll = true;
+            EPD_chart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+        }
     }
 }

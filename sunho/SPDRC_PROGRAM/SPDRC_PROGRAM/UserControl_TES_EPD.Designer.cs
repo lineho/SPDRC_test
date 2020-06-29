@@ -64,6 +64,7 @@
             this.EPD_chart.Size = new System.Drawing.Size(714, 509);
             this.EPD_chart.TabIndex = 0;
             this.EPD_chart.Text = "chart1";
+            this.EPD_chart.Click += new System.EventHandler(this.EPD_chart_Click_1);
             // 
             // dgv_1
             // 
