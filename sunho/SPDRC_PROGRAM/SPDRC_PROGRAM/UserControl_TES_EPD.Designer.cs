@@ -39,10 +39,10 @@
             this.btn_FileLoad = new System.Windows.Forms.Button();
             this.btn_FindEPD = new System.Windows.Forms.Button();
             this.groupBox_EPD = new System.Windows.Forms.GroupBox();
-            this.groupBox_chooseWavelength = new System.Windows.Forms.GroupBox();
             this.listView_EPD = new System.Windows.Forms.ListView();
-            this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
+            this.groupBox_chooseWavelength = new System.Windows.Forms.GroupBox();
             this.cbBox_waveLength1 = new System.Windows.Forms.ComboBox();
+            this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.EPD_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             this.groupBox_EPD.SuspendLayout();
@@ -120,6 +120,7 @@
             this.btn_FindEPD.TabIndex = 8;
             this.btn_FindEPD.Text = "EPD 찾기";
             this.btn_FindEPD.UseVisualStyleBackColor = true;
+            this.btn_FindEPD.Click += new System.EventHandler(this.btn_FindEPD_Click);
             // 
             // groupBox_EPD
             // 
@@ -131,6 +132,15 @@
             this.groupBox_EPD.TabIndex = 9;
             this.groupBox_EPD.TabStop = false;
             this.groupBox_EPD.Text = "EPD";
+            // 
+            // listView_EPD
+            // 
+            this.listView_EPD.HideSelection = false;
+            this.listView_EPD.Location = new System.Drawing.Point(23, 55);
+            this.listView_EPD.Name = "listView_EPD";
+            this.listView_EPD.Size = new System.Drawing.Size(155, 59);
+            this.listView_EPD.TabIndex = 11;
+            this.listView_EPD.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox_chooseWavelength
             // 
@@ -145,14 +155,14 @@
             this.groupBox_chooseWavelength.TabStop = false;
             this.groupBox_chooseWavelength.Text = "파장 선택";
             // 
-            // listView_EPD
+            // cbBox_waveLength1
             // 
-            this.listView_EPD.HideSelection = false;
-            this.listView_EPD.Location = new System.Drawing.Point(23, 55);
-            this.listView_EPD.Name = "listView_EPD";
-            this.listView_EPD.Size = new System.Drawing.Size(155, 59);
-            this.listView_EPD.TabIndex = 11;
-            this.listView_EPD.UseCompatibleStateImageBehavior = false;
+            this.cbBox_waveLength1.FormattingEnabled = true;
+            this.cbBox_waveLength1.Location = new System.Drawing.Point(31, 59);
+            this.cbBox_waveLength1.Name = "cbBox_waveLength1";
+            this.cbBox_waveLength1.Size = new System.Drawing.Size(121, 20);
+            this.cbBox_waveLength1.TabIndex = 8;
+            this.cbBox_waveLength1.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength1_SelectedIndexChanged);
             // 
             // cbBox_waveLength2
             // 
@@ -162,15 +172,6 @@
             this.cbBox_waveLength2.Size = new System.Drawing.Size(121, 20);
             this.cbBox_waveLength2.TabIndex = 7;
             this.cbBox_waveLength2.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength2_SelectedIndexChanged);
-            // 
-            // cbBox_waveLength1
-            // 
-            this.cbBox_waveLength1.FormattingEnabled = true;
-            this.cbBox_waveLength1.Location = new System.Drawing.Point(31, 59);
-            this.cbBox_waveLength1.Name = "cbBox_waveLength1";
-            this.cbBox_waveLength1.Size = new System.Drawing.Size(121, 20);
-            this.cbBox_waveLength1.TabIndex = 8;
-            this.cbBox_waveLength1.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength1_SelectedIndexChanged);
             // 
             // UserControl_TES_EPD
             // 

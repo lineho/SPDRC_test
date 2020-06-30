@@ -23,6 +23,7 @@ namespace SPDRC_PROGRAM
         Boolean cbBoxWavelength1Checked = false;
         Boolean cbBoxWavelength2Checked = false;
         Dictionary<string, object> waveLength_thresholdEnergy = new Dictionary<string, object>();
+        List<string> list_EPDTime = new List<string>();
 
         public UserControl_TES_EPD()
         {
@@ -88,9 +89,10 @@ namespace SPDRC_PROGRAM
                 Console.WriteLine("btn_Fileload_Clicked");
                 OpenFileDialog dialog = new OpenFileDialog();
 
+                // 아래의 if 문을 통해 파일찾기 팝업이 뜸 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = "";
+                    string filePath = "";         
 
                     filePath = dialog.FileName;
                     Console.WriteLine(String.Format("{0} was imported bybtn_Fileload_Click", filePath));
@@ -227,6 +229,7 @@ namespace SPDRC_PROGRAM
 
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
+                //  1/timeRate -2
                 if (rowNum <= 8)
                 { 
                     dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1] = dtA.Rows[rowNum][waveLength1];
@@ -241,6 +244,8 @@ namespace SPDRC_PROGRAM
                             double sum2 = 0;
                             dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1] = null;
                             dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2] = null;
+
+                            //  1/timeRate -1     ,     1/timeRate
                             for (int Num = 0; Num <= 9; Num++)
                             {
                                 sum1 += double.Parse(dtA.Rows[rowNum - Num][waveLength1].ToString());  // row[9] ~row[0] 까지 모두 합함
@@ -260,7 +265,6 @@ namespace SPDRC_PROGRAM
         private void DrawGraph()
         {
             this.EPD_chart.Series.Clear(); // 그래프 초기화
-
             EPD_chart.ChartAreas[0].AxisY.Title = "Intensity";
             EPD_chart.ChartAreas[0].AxisY2.Title = "lineRatio";
             EPD_chart.ChartAreas[0].AxisX.Title = "시간 (sec)";
@@ -288,6 +292,29 @@ namespace SPDRC_PROGRAM
             EPD_chart.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
             EPD_chart.ChartAreas[0].CursorX.AutoScroll = true;
             EPD_chart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+        }
+
+        private void btn_FindEPD_Click(object sender, EventArgs e)
+        {
+            EPD();
+        }
+
+        private void EPD()
+        {
+            Console.WriteLine("EPD_button_clicked");
+            if (2 <= dtA.Rows.Count)
+            {
+                for (int rowNum = 1; rowNum <= dtA.Rows.Count - 1; rowNum++)
+                {
+                    // 아래는 O와 CO의 기울기가 각각 -1이상 1이하이며, O의 intensity가 14000이상일 때를 조건으로 함     ,   timeRate
+                    double O_gradient = (double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1].ToString()) - double.Parse(dtA.Rows[rowNum - 1]["movingAverageFiltered_" + waveLength1].ToString())) / 0.2;
+                    double CO_gradient = (double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2].ToString()) - double.Parse(dtA.Rows[rowNum - 1]["movingAverageFiltered_" + waveLength2].ToString())) / 0.2;
+                    if (-7.5 <= O_gradient && O_gradient < 7.5  && -7.5 <= CO_gradient && CO_gradient < 7.5 && 14000 <= double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1].ToString()))
+                    {
+                        listView_EPD.Items.Add(dtA.Rows[rowNum]["Time(sec)"].ToString());
+                    }
+                }
+            }
         }
     }
 }
