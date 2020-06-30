@@ -107,7 +107,7 @@ namespace SPDRC_PROGRAM
 
                 ApplyMovingAverageFilterToWaveLength1And2();
 
-                DrawGraph();
+                //DrawGraph();
             }
             else
                 MessageBox.Show("'파장1' 그리고 '파장2'를 모두 선택해 주십시오.");
@@ -279,10 +279,11 @@ namespace SPDRC_PROGRAM
             CO.MarkerSize = 30; // 선 두께 설정
             CO.Color = Color.Blue;
 
+
             for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
             {
-                O.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
-                CO.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+                CO.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
+                O.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
             }
         }
 
@@ -302,19 +303,48 @@ namespace SPDRC_PROGRAM
         private void EPD()
         {
             Console.WriteLine("EPD_button_clicked");
+            listBox_EPD.Items.Clear();
+
             if (2 <= dtA.Rows.Count)
             {
                 for (int rowNum = 1; rowNum <= dtA.Rows.Count - 1; rowNum++)
                 {
                     // 아래는 O와 CO의 기울기가 각각 -1이상 1이하이며, O의 intensity가 14000이상일 때를 조건으로 함     ,   timeRate
-                    double O_gradient = (double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1].ToString()) - double.Parse(dtA.Rows[rowNum - 1]["movingAverageFiltered_" + waveLength1].ToString())) / 0.2;
-                    double CO_gradient = (double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2].ToString()) - double.Parse(dtA.Rows[rowNum - 1]["movingAverageFiltered_" + waveLength2].ToString())) / 0.2;
-                    if (-7.5 <= O_gradient && O_gradient < 7.5  && -7.5 <= CO_gradient && CO_gradient < 7.5 && 14000 <= double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1].ToString()))
+                    double CO_gradient = (double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength1].ToString()) - double.Parse(dtA.Rows[rowNum - 1]["movingAverageFiltered_" + waveLength1].ToString())) / 0.2;
+                    double O_gradient = (double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2].ToString()) - double.Parse(dtA.Rows[rowNum - 1]["movingAverageFiltered_" + waveLength2].ToString())) / 0.2;
+                    double O_intensity = double.Parse(dtA.Rows[rowNum]["movingAverageFiltered_" + waveLength2].ToString());
+                    if (-4.5 <= O_gradient && O_gradient < 4.5  && -4.5 <= CO_gradient && CO_gradient < 4.5 && 14000 <= O_intensity)
                     {
-                        listView_EPD.Items.Add(dtA.Rows[rowNum]["Time(sec)"].ToString());
+                        listBox_EPD.Items.Add(dtA.Rows[rowNum]["Time(sec)"].ToString());
                     }
                 }
             }
+            listBox_EPD.Show();
+
+            int typicalRow = 0;
+            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            {
+                if (dtA.Rows[rowNum]["Time(sec)"] == listBox_EPD.Items[0])
+                { 
+                    typicalRow = rowNum;
+                    break;
+                }
+
+            }
+
+            Series endPoint = this.EPD_chart.Series.Add("End Point");
+            endPoint.ChartType = SeriesChartType.Spline;
+            endPoint.MarkerSize = 100;
+            endPoint.Color = Color.Red;
+            endPoint.BorderWidth = 100;
+            endPoint.wid
+            string point = dtA.Rows[typicalRow]["movingAverageFiltered_" + waveLength2].ToString();
+            endPoint.Points.AddXY(listBox_EPD.Items[0], point);
+        }
+
+        private void listBox_EPD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

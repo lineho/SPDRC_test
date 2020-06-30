@@ -31,6 +31,11 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.EPD_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.o_label = new System.Windows.Forms.Label();
@@ -39,14 +44,16 @@
             this.btn_FileLoad = new System.Windows.Forms.Button();
             this.btn_FindEPD = new System.Windows.Forms.Button();
             this.groupBox_EPD = new System.Windows.Forms.GroupBox();
-            this.listView_EPD = new System.Windows.Forms.ListView();
             this.groupBox_chooseWavelength = new System.Windows.Forms.GroupBox();
             this.cbBox_waveLength1 = new System.Windows.Forms.ComboBox();
             this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
+            this.listBox_EPD = new System.Windows.Forms.ListBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.EPD_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             this.groupBox_EPD.SuspendLayout();
             this.groupBox_chooseWavelength.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // EPD_chart
@@ -60,7 +67,16 @@
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            series3.BorderWidth = 4;
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series3";
             this.EPD_chart.Series.Add(series1);
+            this.EPD_chart.Series.Add(series2);
+            this.EPD_chart.Series.Add(series3);
             this.EPD_chart.Size = new System.Drawing.Size(714, 509);
             this.EPD_chart.TabIndex = 0;
             this.EPD_chart.Text = "chart1";
@@ -80,9 +96,9 @@
             this.o_label.AutoSize = true;
             this.o_label.Location = new System.Drawing.Point(39, 33);
             this.o_label.Name = "o_label";
-            this.o_label.Size = new System.Drawing.Size(104, 12);
+            this.o_label.Size = new System.Drawing.Size(113, 12);
             this.o_label.TabIndex = 4;
-            this.o_label.Text = "O 560.041 , 560.11";
+            this.o_label.Text = "CO 560.041 , 560.11";
             this.o_label.Click += new System.EventHandler(this.o_label_Click);
             // 
             // co_label
@@ -90,9 +106,9 @@
             this.co_label.AutoSize = true;
             this.co_label.Location = new System.Drawing.Point(188, 32);
             this.co_label.Name = "co_label";
-            this.co_label.Size = new System.Drawing.Size(119, 12);
+            this.co_label.Size = new System.Drawing.Size(110, 12);
             this.co_label.TabIndex = 5;
-            this.co_label.Text = "CO 777.042 , 777.013";
+            this.co_label.Text = "O 777.042 , 777.013";
             // 
             // checkedListBox_OESdataCollect
             // 
@@ -124,7 +140,7 @@
             // 
             // groupBox_EPD
             // 
-            this.groupBox_EPD.Controls.Add(this.listView_EPD);
+            this.groupBox_EPD.Controls.Add(this.listBox_EPD);
             this.groupBox_EPD.Controls.Add(this.btn_FindEPD);
             this.groupBox_EPD.Location = new System.Drawing.Point(962, 165);
             this.groupBox_EPD.Name = "groupBox_EPD";
@@ -132,15 +148,6 @@
             this.groupBox_EPD.TabIndex = 9;
             this.groupBox_EPD.TabStop = false;
             this.groupBox_EPD.Text = "EPD";
-            // 
-            // listView_EPD
-            // 
-            this.listView_EPD.HideSelection = false;
-            this.listView_EPD.Location = new System.Drawing.Point(23, 55);
-            this.listView_EPD.Name = "listView_EPD";
-            this.listView_EPD.Size = new System.Drawing.Size(155, 59);
-            this.listView_EPD.TabIndex = 11;
-            this.listView_EPD.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox_chooseWavelength
             // 
@@ -173,11 +180,38 @@
             this.cbBox_waveLength2.TabIndex = 7;
             this.cbBox_waveLength2.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength2_SelectedIndexChanged);
             // 
+            // listBox_EPD
+            // 
+            this.listBox_EPD.FormattingEnabled = true;
+            this.listBox_EPD.ItemHeight = 12;
+            this.listBox_EPD.Location = new System.Drawing.Point(23, 53);
+            this.listBox_EPD.Name = "listBox_EPD";
+            this.listBox_EPD.Size = new System.Drawing.Size(155, 64);
+            this.listBox_EPD.TabIndex = 11;
+            this.listBox_EPD.SelectedIndexChanged += new System.EventHandler(this.listBox_EPD_SelectedIndexChanged);
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(962, 711);
+            this.chart1.Name = "chart1";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart1.Series.Add(series4);
+            this.chart1.Size = new System.Drawing.Size(8, 8);
+            this.chart1.TabIndex = 11;
+            this.chart1.Text = "chart1";
+            // 
             // UserControl_TES_EPD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.groupBox_chooseWavelength);
             this.Controls.Add(this.groupBox_EPD);
             this.Controls.Add(this.btn_FileLoad);
@@ -191,6 +225,7 @@
             this.groupBox_EPD.ResumeLayout(false);
             this.groupBox_chooseWavelength.ResumeLayout(false);
             this.groupBox_chooseWavelength.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,9 +240,10 @@
         private System.Windows.Forms.Button btn_FileLoad;
         private System.Windows.Forms.Button btn_FindEPD;
         private System.Windows.Forms.GroupBox groupBox_EPD;
-        private System.Windows.Forms.ListView listView_EPD;
         private System.Windows.Forms.GroupBox groupBox_chooseWavelength;
         private System.Windows.Forms.ComboBox cbBox_waveLength2;
         private System.Windows.Forms.ComboBox cbBox_waveLength1;
+        private System.Windows.Forms.ListBox listBox_EPD;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
