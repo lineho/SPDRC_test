@@ -30,7 +30,7 @@ namespace SPDRC_PROGRAM
             InitializeComponent();
             lineRatioGraph.Series.Clear();
             KSPwaveLengthChooseSetting();
-            dtA = Basic_CSVconvertToDataTable("wavelength_thresholdEnergy.csv");
+            dtA = Basic_CSVconvertToDataTable(@"../SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv");
             foreach (DataRow row in dtA.Rows)
             {
                 waveLength_thresholdEnergy.Add(row["wavelength"].ToString() , row["thresholdEnergy"].ToString());
@@ -54,7 +54,7 @@ namespace SPDRC_PROGRAM
 
         private void KSPwaveLengthChooseSetting( )
         {
-            string filePath = "kspOES_baseWaveLength.csv";
+            string filePath = "../OES_KSP/kspOES_baseWaveLength.csv";
             string[] lines = System.IO.File.ReadAllLines(filePath);
 
             if (lines.Length > 0)
