@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.dgv_2 = new System.Windows.Forms.DataGridView();
             this.dgv_3 = new System.Windows.Forms.DataGridView();
@@ -58,6 +58,10 @@
             this.btn_graph = new System.Windows.Forms.Button();
             this.btn_cSaveFile = new System.Windows.Forms.Button();
             this.lineRatioGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -65,33 +69,37 @@
             this.grpB_aSetRow.SuspendLayout();
             this.grpB_bSetRow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_1
             // 
             this.dgv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_1.Location = new System.Drawing.Point(11, 23);
+            this.dgv_1.Location = new System.Drawing.Point(16, 26);
             this.dgv_1.Name = "dgv_1";
             this.dgv_1.RowTemplate.Height = 23;
-            this.dgv_1.Size = new System.Drawing.Size(314, 475);
+            this.dgv_1.Size = new System.Drawing.Size(944, 442);
             this.dgv_1.TabIndex = 0;
             // 
             // dgv_2
             // 
             this.dgv_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_2.Location = new System.Drawing.Point(341, 23);
+            this.dgv_2.Location = new System.Drawing.Point(16, 26);
             this.dgv_2.Name = "dgv_2";
             this.dgv_2.RowTemplate.Height = 23;
-            this.dgv_2.Size = new System.Drawing.Size(314, 475);
+            this.dgv_2.Size = new System.Drawing.Size(944, 442);
             this.dgv_2.TabIndex = 1;
             // 
             // dgv_3
             // 
             this.dgv_3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_3.Location = new System.Drawing.Point(671, 23);
+            this.dgv_3.Location = new System.Drawing.Point(16, 26);
             this.dgv_3.Name = "dgv_3";
             this.dgv_3.RowTemplate.Height = 23;
-            this.dgv_3.Size = new System.Drawing.Size(314, 475);
+            this.dgv_3.Size = new System.Drawing.Size(944, 442);
             this.dgv_3.TabIndex = 2;
             this.dgv_3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_3_CellContentClick);
             // 
@@ -129,7 +137,7 @@
             // lbl_grid1
             // 
             this.lbl_grid1.AutoSize = true;
-            this.lbl_grid1.Location = new System.Drawing.Point(10, 5);
+            this.lbl_grid1.Location = new System.Drawing.Point(14, 11);
             this.lbl_grid1.Name = "lbl_grid1";
             this.lbl_grid1.Size = new System.Drawing.Size(41, 12);
             this.lbl_grid1.TabIndex = 6;
@@ -138,7 +146,7 @@
             // lbl_grid2
             // 
             this.lbl_grid2.AutoSize = true;
-            this.lbl_grid2.Location = new System.Drawing.Point(339, 5);
+            this.lbl_grid2.Location = new System.Drawing.Point(14, 11);
             this.lbl_grid2.Name = "lbl_grid2";
             this.lbl_grid2.Size = new System.Drawing.Size(41, 12);
             this.lbl_grid2.TabIndex = 7;
@@ -147,7 +155,7 @@
             // lbl_grid3
             // 
             this.lbl_grid3.AutoSize = true;
-            this.lbl_grid3.Location = new System.Drawing.Point(670, 5);
+            this.lbl_grid3.Location = new System.Drawing.Point(14, 11);
             this.lbl_grid3.Name = "lbl_grid3";
             this.lbl_grid3.Size = new System.Drawing.Size(42, 12);
             this.lbl_grid3.TabIndex = 8;
@@ -325,38 +333,80 @@
             // lineRatioGraph
             // 
             this.lineRatioGraph.AccessibleDescription = "ph";
-            chartArea1.Name = "ChartArea1";
-            this.lineRatioGraph.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.lineRatioGraph.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend4);
             this.lineRatioGraph.Location = new System.Drawing.Point(11, 513);
             this.lineRatioGraph.Name = "lineRatioGraph";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.lineRatioGraph.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series4);
             this.lineRatioGraph.Size = new System.Drawing.Size(974, 365);
             this.lineRatioGraph.TabIndex = 14;
             this.lineRatioGraph.Text = "chart1";
             this.lineRatioGraph.Click += new System.EventHandler(this.lineRatioGraph_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(14, 11);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(974, 500);
+            this.tabControl1.TabIndex = 15;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dgv_1);
+            this.tabPage1.Controls.Add(this.lbl_grid1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(966, 474);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgv_2);
+            this.tabPage2.Controls.Add(this.lbl_grid2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(966, 474);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgv_3);
+            this.tabPage3.Controls.Add(this.lbl_grid3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(966, 474);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lineRatioGraph);
             this.Controls.Add(this.btn_cSaveFile);
             this.Controls.Add(this.btn_graph);
             this.Controls.Add(this.btn_cal);
             this.Controls.Add(this.grpB_bSetRow);
             this.Controls.Add(this.grpB_aSetRow);
-            this.Controls.Add(this.lbl_grid3);
-            this.Controls.Add(this.lbl_grid2);
-            this.Controls.Add(this.lbl_grid1);
             this.Controls.Add(this.grpB_fileLoad);
-            this.Controls.Add(this.dgv_3);
-            this.Controls.Add(this.dgv_2);
-            this.Controls.Add(this.dgv_1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(1224, 881);
             this.Load += new System.EventHandler(this.UserControl1_Load);
@@ -369,8 +419,14 @@
             this.grpB_bSetRow.ResumeLayout(false);
             this.grpB_bSetRow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -403,5 +459,9 @@
         private System.Windows.Forms.ComboBox cbB_aFinishRow;
         private System.Windows.Forms.ComboBox cbB_aStartRow;
         private System.Windows.Forms.DataVisualization.Charting.Chart lineRatioGraph;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
