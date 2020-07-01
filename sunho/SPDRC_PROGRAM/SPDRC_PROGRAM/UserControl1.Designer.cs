@@ -101,7 +101,6 @@
             this.dgv_3.RowTemplate.Height = 23;
             this.dgv_3.Size = new System.Drawing.Size(944, 442);
             this.dgv_3.TabIndex = 2;
-            this.dgv_3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_3_CellContentClick);
             // 
             // btn_aFileLoad
             // 
@@ -202,7 +201,6 @@
             this.lbl_aRowNum.Size = new System.Drawing.Size(29, 12);
             this.lbl_aRowNum.TabIndex = 5;
             this.lbl_aRowNum.Text = "숫자";
-            this.lbl_aRowNum.Click += new System.EventHandler(this.lbl_aRowNum_Click);
             // 
             // lbl_aRow
             // 
@@ -281,7 +279,6 @@
             this.cbB_bFinishRow.Name = "cbB_bFinishRow";
             this.cbB_bFinishRow.Size = new System.Drawing.Size(187, 20);
             this.cbB_bFinishRow.TabIndex = 3;
-            this.cbB_bFinishRow.SelectedIndexChanged += new System.EventHandler(this.cbB_bFinishRow_SelectedIndexChanged);
             // 
             // label10
             // 

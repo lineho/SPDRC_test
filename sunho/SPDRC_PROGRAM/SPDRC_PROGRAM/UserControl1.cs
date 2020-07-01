@@ -38,7 +38,11 @@ namespace SPDRC_PROGRAM
 
         }
 
-
+        /// <summary>
+        /// CSV A파일 LOAD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_aFileLoad_Click(object sender, EventArgs e)
         {
             Console.WriteLine("btn_aFileLoad_Clicked");
@@ -64,6 +68,11 @@ namespace SPDRC_PROGRAM
             //aDatabaseLoadForm.ShowDialog();
         }
 
+        /// <summary>
+        /// CSV B파일 LOAD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_bFileLoad_Click(object sender, EventArgs e)
         {
             Console.WriteLine("btn_bFileLoad_Clicked");
@@ -86,6 +95,7 @@ namespace SPDRC_PROGRAM
 
             CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers();
         }
+
 
         private DataTable Xlsx_xlsConvertToDataTable(string filePath, string dtType)
         {
@@ -195,36 +205,12 @@ namespace SPDRC_PROGRAM
             cbB_aFinishRow.Items.AddRange(data);
         }
 
-        private void cbB_bStartRow_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbB_aStartRow_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbB_aFinishRow_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbB_bFinishRow_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void sampleCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine(string.Format("Selected cbB_bStartRowNum is {0}", cbB_bStartRow.SelectedItem));
             cbB_bStartRowNum = Int32.Parse(cbB_bStartRow.SelectedItem.ToString());
             cbB_bStartRowIsChecked = true;
-
-        }
-
-        private void dgv_3_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
 
@@ -321,10 +307,6 @@ namespace SPDRC_PROGRAM
 
             dgv_3.DataSource = preProcessedDt;
 
-        }
-
-        private void lbl_aRowNum_Click(object sender, EventArgs e)
-        {
         }
 
         private void btn_graph_Click(object sender, EventArgs e)
