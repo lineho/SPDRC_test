@@ -54,7 +54,7 @@ namespace SPDRC_PROGRAM
 
         private void KSPwaveLengthChooseSetting( )
         {
-            string filePath = "../OES_KSP/kspOES_baseWaveLength.csv";
+            string filePath = "kspOES_baseWaveLength.csv";
             string[] lines = System.IO.File.ReadAllLines(filePath);
 
             if (lines.Length > 0)
