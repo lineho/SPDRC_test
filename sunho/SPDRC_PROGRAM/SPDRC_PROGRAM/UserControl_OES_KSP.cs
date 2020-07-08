@@ -29,12 +29,12 @@ namespace SPDRC_PROGRAM
         {
             InitializeComponent();
             lineRatioGraph.Series.Clear();
-            KSPwaveLengthChooseSetting();
-            dtA = Basic_CSVconvertToDataTable(@"../SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv");
-            foreach (DataRow row in dtA.Rows)
-            {
-                waveLength_thresholdEnergy.Add(row["wavelength"].ToString() , row["thresholdEnergy"].ToString());
-            }
+            //KSPwaveLengthChooseSetting();
+            //dtA = Basic_CSVconvertToDataTable(@"../SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv");
+            //foreach (DataRow row in dtA.Rows)
+            //{
+            //    waveLength_thresholdEnergy.Add(row["wavelength"].ToString() , row["thresholdEnergy"].ToString());
+            //}
         }
 
         private void UserControl_OES_KSP_Load(object sender, EventArgs e)

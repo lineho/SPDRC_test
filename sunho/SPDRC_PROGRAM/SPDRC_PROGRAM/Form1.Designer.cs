@@ -33,9 +33,10 @@
             this.btn_OesKSP = new System.Windows.Forms.Button();
             this.btn_Rga = new System.Windows.Forms.Button();
             this.btn_OesLam = new System.Windows.Forms.Button();
-            this.userControl11 = new SPDRC_PROGRAM.UserControl1();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.userControl_TES_EPD1 = new SPDRC_PROGRAM.UserControl_TES_EPD();
             this.userControl_OES_KSP1 = new SPDRC_PROGRAM.UserControl_OES_KSP();
+            this.userControl11 = new SPDRC_PROGRAM.UserControl1();
             this.grp_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,13 +93,17 @@
             this.btn_OesLam.UseVisualStyleBackColor = true;
             this.btn_OesLam.Click += new System.EventHandler(this.btn_Oes_Click);
             // 
-            // userControl11
+            // backgroundWorker1
             // 
-            this.userControl11.Location = new System.Drawing.Point(258, 12);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(1216, 895);
-            this.userControl11.TabIndex = 0;
-            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // userControl_TES_EPD1
+            // 
+            this.userControl_TES_EPD1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.userControl_TES_EPD1.Location = new System.Drawing.Point(274, 26);
+            this.userControl_TES_EPD1.Name = "userControl_TES_EPD1";
+            this.userControl_TES_EPD1.Size = new System.Drawing.Size(1200, 881);
+            this.userControl_TES_EPD1.TabIndex = 4;
             // 
             // userControl_OES_KSP1
             // 
@@ -107,12 +112,21 @@
             this.userControl_OES_KSP1.Size = new System.Drawing.Size(1210, 908);
             this.userControl_OES_KSP1.TabIndex = 3;
             // 
+            // userControl11
+            // 
+            this.userControl11.Location = new System.Drawing.Point(258, 12);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(1216, 895);
+            this.userControl11.TabIndex = 0;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
+            // 
             // Form_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1479, 874);
+            this.Controls.Add(this.userControl_TES_EPD1);
             this.Controls.Add(this.userControl_OES_KSP1);
             this.Controls.Add(this.grp_Menu);
             this.Controls.Add(this.userControl11);
@@ -134,6 +148,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private UserControl_OES_KSP userControl_OES_KSP1;
         private System.Windows.Forms.Button btn_TES_EPD;
+        private UserControl_TES_EPD userControl_TES_EPD1;
     }
 }
 

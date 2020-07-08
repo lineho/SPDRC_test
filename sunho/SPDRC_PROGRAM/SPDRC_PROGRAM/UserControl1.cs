@@ -177,6 +177,7 @@ namespace SPDRC_PROGRAM
             return dt;
         }
 
+        // 사용자가 불러온 B파일의 row number들을 모두 comboBox B의 시작 행 선택 요소들로 집어 넣음
         private void CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers()
         {
             string[] data = new string[dtB.Rows.Count];
@@ -190,6 +191,7 @@ namespace SPDRC_PROGRAM
             cbB_bStartRow.Items.AddRange(data);
         }
 
+        // 사용자가 불러온 A파일의 row number들을 모두 comboBox A의 시작 행 , 끝 행 선택 요소들로 집어 넣음
         private void CountLineNumOf_dtA_AndSet_cbB_aStartRowFinishRowWithNumbers()
         {
             string[] data = new string[dtA.Rows.Count];
@@ -238,6 +240,7 @@ namespace SPDRC_PROGRAM
             CalculateLineRatioAndTeThenAddToPreProcessedDt();
         }
 
+        // dtA 에서 dtB의 내용들을 뺌 
         private void Minus_dtA_dtB()
         {
             if (cbB_aStartRowIsChecked && cbB_aFinishRowIsChecked && cbB_bStartRowIsChecked)
@@ -245,6 +248,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtA = dtA.Copy();
                 selectedRangeOf_dtB = dtB.Copy();
 
+                //-------------------------------------------selectedRangeOf_dtA에서 사용자가 선택한 행 이외의 행들은 모두 지워버림-----------------------------------
                 selectedRangeOf_dtA.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtA.Rows)
                 {
@@ -255,6 +259,7 @@ namespace SPDRC_PROGRAM
                 }
                 selectedRangeOf_dtA.AcceptChanges();
 
+                //------------------------------------------------------------------- selectedRangeOf_dtB에서 사용자가 선택한 행 이외의 행들은 모두 지워버림------------------------------------------------------------------
                 selectedRangeOf_dtB.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtB.Rows)
                 {
@@ -265,6 +270,7 @@ namespace SPDRC_PROGRAM
                 }
                 selectedRangeOf_dtB.AcceptChanges();
 
+                //--------------------------------------------------------------------selectedRangeOf_dtA의 내용에서 selectedRangeOf_dtB 내용들을 빼기 하는 부분-------------------------------------------------------------------------------------------
                 preProcessedDt = selectedRangeOf_dtA.Copy(); //형식 복사
 
                 for (int rowNum = 0; rowNum <= selectedRangeOf_dtA.Rows.Count - 1; rowNum++)
@@ -278,12 +284,13 @@ namespace SPDRC_PROGRAM
                     }
                 }
 
-                dgv_3.DataSource = preProcessedDt;
+                dgv_3.DataSource = preProcessedDt;  // preProcessedDt = selectedRangeOf_dtA - selectedRangeOf_dtB
             }
             else
                 MessageBox.Show("'A파일의 시작 행과 끝 행' 그리고 'B파일의 시작 행'을 모두 선택해 주십시오.");
         }
 
+        // 전처리 완료된 preProcessedDt의 맨 끝에   "lineratio" , "Te"  column을 추가하고  preProcessedDt의 내부 요소들로 lineratio와 전자온도를 구하는 함수
         private void CalculateLineRatioAndTeThenAddToPreProcessedDt()
         {
             preProcessedDt.Columns.Add("lineRatio");
@@ -294,15 +301,15 @@ namespace SPDRC_PROGRAM
 
             for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
             {
-                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString(); //
-                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString(); //
+                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString(); // preProcessedDt의 column number가 0부터 시작된다고 가정했을 때 column number가 1인 열의 데이터들을 모두 하나의 배열에 담음
+                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString(); // preProcessedDt의 column number가 0부터 시작된다고 가정했을 때 column number가 2인 열의 데이터들을 모두 하나의 배열에 담음
                 Console.WriteLine(waveLength1[rowNum]);
             }
 
             for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
             {
-                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]);  // line ratio 구하는 부분
-                preProcessedDt.Rows[rowNum]["Te"] = -2 / Math.Log(double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]));  // electron temperature 구하는 부분
+                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]);  // line ratio를 구해서 preProcessedDt의 "lineRatio" column 부분에 차곡차곡 데이터를 입력 
+                preProcessedDt.Rows[rowNum]["Te"] = -2 / Math.Log(double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]));  //  electron temperature를 구해서 preProcessedDt의 "Te" column 부분에 차곡차곡 데이터를 입력
             }
 
             dgv_3.DataSource = preProcessedDt;
@@ -318,6 +325,7 @@ namespace SPDRC_PROGRAM
             DrawGraph();
         }
 
+        //preProcessedDt의 "lineRatio", "Te" column의 데이터들을 그래프에 띄우는 부분 
         private void DrawGraph()
         {
             this.lineRatioGraph.Series.Clear(); // 그래프 초기화
@@ -339,6 +347,7 @@ namespace SPDRC_PROGRAM
             }
         }
 
+        // 그래프에 마우스를 갖다대었을때 그래프가 줌인, 줌 아웃되게 하는 기능을 추가하는 부분
         private void lineRatioGraph_Click(object sender, EventArgs e)
         {
             lineRatioGraph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
