@@ -15,6 +15,7 @@ namespace SPDRC_PROGRAM
 {
     public partial class UserControl1 : UserControl
     {
+
         DataTable dtA = new DataTable();
         DataTable dtB = new DataTable();
         DataTable selectedRangeOf_dtA = new DataTable();
@@ -36,6 +37,26 @@ namespace SPDRC_PROGRAM
         private void UserControl1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// DataTable에서 컬럼 이름 얻어오는 메서드
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        private static List<string> GetColumnName(DataTable dt)
+        {
+            List<string> list = new List<string>();
+            string ColumnName = string.Empty;
+            foreach (DataRow row in dt.Rows)
+            {
+                foreach (DataColumn column in dt.Columns)
+                {
+                    ColumnName = column.ColumnName;
+                    list.Add(ColumnName);
+                }
+            }
+            return list;
         }
 
         /// <summary>
@@ -65,8 +86,20 @@ namespace SPDRC_PROGRAM
 
             CountLineNumOf_dtA_AndSet_cbB_aStartRowFinishRowWithNumbers();
             //SPDRC_PROGRAM.DatabaseLoadForm aDatabaseLoadForm = new SPDRC_PROGRAM.DatabaseLoadForm();
-            //aDatabaseLoadForm.ShowDialog();
+            //aDatabaseLoadForm.ShowDialog();\
+
+            //컬럼명 추출
+            List<string> colNameList = new List<string>();
+            //중복된 List는 빼고 저장
+            colNameList = GetColumnName(dtA).Distinct().ToList();
+            foreach (var str in colNameList)
+            {
+                cbB_aTotalColumnName.Items.Add(str.ToString());
+            }
+
         }
+
+
 
         /// <summary>
         /// CSV B파일 LOAD
@@ -94,45 +127,61 @@ namespace SPDRC_PROGRAM
             }
 
             CountLineNumOf_dtB_AndSet_cbB_bStartRowWithNumbers();
+
+            //컬럼명 추출
+            List<string> colNameList = new List<string>();
+            //중복된 List는 빼고 저장
+            colNameList = GetColumnName(dtB).Distinct().ToList();
+            foreach (var str in colNameList)
+            {
+                cbB_bTotalColumnName.Items.Add(str.ToString());
+            }
         }
 
 
         private DataTable Xlsx_xlsConvertToDataTable(string filePath, string dtType)
         {
-            string dirName = Path.GetDirectoryName(filePath);
-            string fileName = Path.GetFileName(filePath);
-            string fileExtension = Path.GetExtension(filePath);
-            string pathConn = string.Empty;
-            string excelsql = string.Empty;
-
-            switch (fileExtension)
+           
+                string dirName = Path.GetDirectoryName(filePath);
+                string fileName = Path.GetFileName(filePath);
+                string fileExtension = Path.GetExtension(filePath);
+                string pathConn = string.Empty;
+                string excelsql = string.Empty;
+            try
             {
-                case ".xls":
-                    pathConn = $@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={filePath};" + "Extended Properties=\"Excel 8.0; HDR=Yes; IMEX=1\"";
-                    excelsql = "SELECT * FROM [Sheet1$]";
-                    break;
+                switch (fileExtension)
+                {
+                    case ".xls":
+                        pathConn = $@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={filePath};" + "Extended Properties=\"Excel 8.0; HDR=Yes; IMEX=1\"";
+                        excelsql = "SELECT * FROM [WorkSheet$]";
+                        break;
 
-                case ".xlsx":
-                    pathConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0;HDR=YES'";
-                    excelsql = @"select * from[Sheet1$]";
-                    break;
+                    case ".xlsx":
+                        pathConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties='Excel 12.0;HDR=YES'";
+                        excelsql = @"select * from[WorkSheet$]";
+                        break;
 
-                case ".csv":
-                    pathConn = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dirName};" + "Extended Properties=\"text; HDR=Yes; IMEX=1; FMT=Delimited\"";
-                    excelsql = $"SELECT * FROM [{fileName}]";
-                    break;
+                    case ".csv":
+                        pathConn = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={dirName};" + "Extended Properties=\"text; HDR=Yes; IMEX=1; FMT=Delimited\"";
+                        excelsql = $"SELECT * FROM [{fileName}]";
+                        break;
+                }
             }
-
-            OleDbConnection conn = new OleDbConnection(pathConn);
-            OleDbDataAdapter myDataAdapter = new OleDbDataAdapter(excelsql, conn);
-            DataSet excelDs = new DataSet();
-            myDataAdapter.Fill(excelDs);
-            DataTable excelTable = excelDs.Tables[0];
-            if (dtType == "dtA")
-                dgv_1.DataSource = excelTable;
-            else if (dtType == "dtB")
-                dgv_2.DataSource = excelTable;
-            return excelTable;
+            catch(Exception e)
+            {
+                Console.WriteLine("오류의 건:"+e.Message);
+            }
+                OleDbConnection conn = new OleDbConnection(pathConn);
+                OleDbDataAdapter myDataAdapter = new OleDbDataAdapter(excelsql, conn);
+                DataSet excelDs = new DataSet();
+                myDataAdapter.Fill(excelDs);
+                DataTable excelTable = excelDs.Tables[0];
+                if (dtType == "dtA")
+                    dgv_1.DataSource = excelTable;
+                else if (dtType == "dtB")
+                    dgv_2.DataSource = excelTable;
+                return excelTable;
+ 
         }
 
         private DataTable CSVconvertToDataTable(string filePath, string dtType)
@@ -230,7 +279,7 @@ namespace SPDRC_PROGRAM
             cbB_aFinishRowIsChecked = true;
 
             if (cbB_aStartRowIsChecked)
-                lbl_aRowNum.Text = (cbB_aFinishRowNum - cbB_aStartRowNum+1).ToString();
+                lbl_aRowNum.Text = (cbB_aFinishRowNum - cbB_aStartRowNum + 1).ToString();
         }
 
         private void btn_cal_Click(object sender, EventArgs e)
@@ -351,9 +400,75 @@ namespace SPDRC_PROGRAM
         private void lineRatioGraph_Click(object sender, EventArgs e)
         {
             lineRatioGraph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
-            lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true; 
+            lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true;
             lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
         }
+
+        /// <summary>
+        /// A파일 좌클릭으로 선택 시작 행 인덱스 추출.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgv_1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow cbB_aStartRowNum_row = dgv_1.Rows[e.RowIndex];
+                cbB_aStartRowNum = cbB_aStartRowNum_row.Index;
+                Console.WriteLine("a시작 확인: " + cbB_aStartRowNum);
+                cbB_aStartRow.SelectedIndex = cbB_aStartRowNum;
+            }
+            catch
+            {
+                Console.WriteLine("열머리");
+            }
+        }
+
+
+        /// <summary>
+        /// A파일 우클릭으로 선택 끝 행 인덱스 추출.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgv_1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    DataGridViewRow cbB_aFinishRowNum_row = dgv_1.Rows[e.RowIndex];
+                    cbB_aFinishRowNum = cbB_aFinishRowNum_row.Index;
+                    Console.WriteLine("a끝 확인: " + cbB_aFinishRowNum);
+                    cbB_aFinishRow.SelectedIndex = cbB_aFinishRowNum;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("열머리");
+            }
+        }
+
+        /// <summary>
+        /// B파일 좌클릭으로 선택 시작 행 인덱스 추출.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgv_2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow cbB_bStartRowNum_row = dgv_1.Rows[e.RowIndex];
+                cbB_bStartRowNum = cbB_bStartRowNum_row.Index;
+                Console.WriteLine("b시작 확인: " + cbB_bStartRowNum);
+                cbB_bStartRow.SelectedIndex = cbB_bStartRowNum;
+            }
+            catch
+            {
+                Console.WriteLine("열머리");
+            }
+        }
+
+
     }
 
 }

@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.dgv_2 = new System.Windows.Forms.DataGridView();
             this.dgv_3 = new System.Windows.Forms.DataGridView();
@@ -62,6 +63,28 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbB_bSelectedColumnName = new System.Windows.Forms.ComboBox();
+            this.cbB_aSelectedColumnName = new System.Windows.Forms.ComboBox();
+            this.cbB_aColumnNameAdd = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cbB_aTotalColumnName = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cbB_bColumnNameAdd = new System.Windows.Forms.Button();
+            this.cbB_bTotalColumnName = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tb_selectedColumnNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -73,6 +96,8 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_1
@@ -83,15 +108,21 @@
             this.dgv_1.RowTemplate.Height = 23;
             this.dgv_1.Size = new System.Drawing.Size(944, 442);
             this.dgv_1.TabIndex = 0;
+            this.dgv_1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellClick);
+            this.dgv_1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_1_CellMouseUp);
             // 
             // dgv_2
             // 
             this.dgv_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.dgv_2.Location = new System.Drawing.Point(16, 26);
+            this.dgv_2.MultiSelect = false;
             this.dgv_2.Name = "dgv_2";
             this.dgv_2.RowTemplate.Height = 23;
+            this.dgv_2.RowTemplate.ReadOnly = true;
             this.dgv_2.Size = new System.Drawing.Size(944, 442);
             this.dgv_2.TabIndex = 1;
+            this.dgv_2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_2_CellClick);
             // 
             // dgv_3
             // 
@@ -104,6 +135,7 @@
             // 
             // btn_aFileLoad
             // 
+            this.btn_aFileLoad.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_aFileLoad.Location = new System.Drawing.Point(6, 20);
             this.btn_aFileLoad.Name = "btn_aFileLoad";
             this.btn_aFileLoad.Size = new System.Drawing.Size(196, 27);
@@ -114,6 +146,7 @@
             // 
             // btn_bFileLoad
             // 
+            this.btn_bFileLoad.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_bFileLoad.Location = new System.Drawing.Point(6, 53);
             this.btn_bFileLoad.Name = "btn_bFileLoad";
             this.btn_bFileLoad.Size = new System.Drawing.Size(196, 27);
@@ -126,6 +159,7 @@
             // 
             this.grpB_fileLoad.Controls.Add(this.btn_aFileLoad);
             this.grpB_fileLoad.Controls.Add(this.btn_bFileLoad);
+            this.grpB_fileLoad.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.grpB_fileLoad.Location = new System.Drawing.Point(1004, 23);
             this.grpB_fileLoad.Name = "grpB_fileLoad";
             this.grpB_fileLoad.Size = new System.Drawing.Size(208, 88);
@@ -168,6 +202,7 @@
             this.grpB_aSetRow.Controls.Add(this.lbl_aRow);
             this.grpB_aSetRow.Controls.Add(this.label5);
             this.grpB_aSetRow.Controls.Add(this.label4);
+            this.grpB_aSetRow.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.grpB_aSetRow.Location = new System.Drawing.Point(1005, 118);
             this.grpB_aSetRow.Name = "grpB_aSetRow";
             this.grpB_aSetRow.Size = new System.Drawing.Size(200, 144);
@@ -196,6 +231,7 @@
             // lbl_aRowNum
             // 
             this.lbl_aRowNum.AutoSize = true;
+            this.lbl_aRowNum.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_aRowNum.Location = new System.Drawing.Point(67, 119);
             this.lbl_aRowNum.Name = "lbl_aRowNum";
             this.lbl_aRowNum.Size = new System.Drawing.Size(29, 12);
@@ -205,6 +241,7 @@
             // lbl_aRow
             // 
             this.lbl_aRow.AutoSize = true;
+            this.lbl_aRow.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_aRow.Location = new System.Drawing.Point(7, 119);
             this.lbl_aRow.Name = "lbl_aRow";
             this.lbl_aRow.Size = new System.Drawing.Size(53, 12);
@@ -214,20 +251,22 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.Location = new System.Drawing.Point(7, 71);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 12);
+            this.label5.Size = new System.Drawing.Size(119, 12);
             this.label5.TabIndex = 2;
-            this.label5.Text = "끝나는 행 값";
+            this.label5.Text = "끝나는 행 값(우클릭)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.Location = new System.Drawing.Point(7, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 12);
+            this.label4.Size = new System.Drawing.Size(119, 12);
             this.label4.TabIndex = 1;
-            this.label4.Text = "시작할 행 값";
+            this.label4.Text = "시작할 행 값(좌클릭)";
             // 
             // grpB_bSetRow
             // 
@@ -237,6 +276,7 @@
             this.grpB_bSetRow.Controls.Add(this.cbB_bFinishRow);
             this.grpB_bSetRow.Controls.Add(this.label10);
             this.grpB_bSetRow.Controls.Add(this.label11);
+            this.grpB_bSetRow.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.grpB_bSetRow.Location = new System.Drawing.Point(1006, 268);
             this.grpB_bSetRow.Name = "grpB_bSetRow";
             this.grpB_bSetRow.Size = new System.Drawing.Size(200, 144);
@@ -256,6 +296,7 @@
             // lbl_bRowNum
             // 
             this.lbl_bRowNum.AutoSize = true;
+            this.lbl_bRowNum.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_bRowNum.Location = new System.Drawing.Point(67, 119);
             this.lbl_bRowNum.Name = "lbl_bRowNum";
             this.lbl_bRowNum.Size = new System.Drawing.Size(29, 12);
@@ -265,6 +306,7 @@
             // lbl_bRow
             // 
             this.lbl_bRow.AutoSize = true;
+            this.lbl_bRow.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbl_bRow.Location = new System.Drawing.Point(7, 119);
             this.lbl_bRow.Name = "lbl_bRow";
             this.lbl_bRow.Size = new System.Drawing.Size(53, 12);
@@ -283,6 +325,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label10.Location = new System.Drawing.Point(7, 71);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 12);
@@ -292,15 +335,17 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.Location = new System.Drawing.Point(7, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 12);
+            this.label11.Size = new System.Drawing.Size(119, 12);
             this.label11.TabIndex = 1;
-            this.label11.Text = "시작할 행 값";
+            this.label11.Text = "시작할 행 값(좌클릭)";
             // 
             // btn_cal
             // 
-            this.btn_cal.Location = new System.Drawing.Point(1006, 419);
+            this.btn_cal.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_cal.Location = new System.Drawing.Point(1009, 799);
             this.btn_cal.Name = "btn_cal";
             this.btn_cal.Size = new System.Drawing.Size(199, 23);
             this.btn_cal.TabIndex = 11;
@@ -310,7 +355,8 @@
             // 
             // btn_graph
             // 
-            this.btn_graph.Location = new System.Drawing.Point(1005, 448);
+            this.btn_graph.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_graph.Location = new System.Drawing.Point(1008, 828);
             this.btn_graph.Name = "btn_graph";
             this.btn_graph.Size = new System.Drawing.Size(199, 23);
             this.btn_graph.TabIndex = 12;
@@ -320,7 +366,8 @@
             // 
             // btn_cSaveFile
             // 
-            this.btn_cSaveFile.Location = new System.Drawing.Point(1004, 475);
+            this.btn_cSaveFile.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_cSaveFile.Location = new System.Drawing.Point(1007, 855);
             this.btn_cSaveFile.Name = "btn_cSaveFile";
             this.btn_cSaveFile.Size = new System.Drawing.Size(199, 23);
             this.btn_cSaveFile.TabIndex = 13;
@@ -330,16 +377,16 @@
             // lineRatioGraph
             // 
             this.lineRatioGraph.AccessibleDescription = "ph";
-            chartArea4.Name = "ChartArea1";
-            this.lineRatioGraph.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.lineRatioGraph.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend2);
             this.lineRatioGraph.Location = new System.Drawing.Point(11, 513);
             this.lineRatioGraph.Name = "lineRatioGraph";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.lineRatioGraph.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series2);
             this.lineRatioGraph.Size = new System.Drawing.Size(974, 365);
             this.lineRatioGraph.TabIndex = 14;
             this.lineRatioGraph.Text = "chart1";
@@ -392,10 +439,223 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tb_selectedColumnNumber);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cbB_bColumnNameAdd);
+            this.groupBox1.Controls.Add(this.cbB_bTotalColumnName);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.cbB_bSelectedColumnName);
+            this.groupBox1.Controls.Add(this.cbB_aSelectedColumnName);
+            this.groupBox1.Controls.Add(this.cbB_aColumnNameAdd);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.cbB_aTotalColumnName);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Location = new System.Drawing.Point(1004, 423);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(208, 233);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "열 선택(최대 10개의 열 선택가능)";
+            // 
+            // cbB_bSelectedColumnName
+            // 
+            this.cbB_bSelectedColumnName.FormattingEnabled = true;
+            this.cbB_bSelectedColumnName.Location = new System.Drawing.Point(8, 183);
+            this.cbB_bSelectedColumnName.Name = "cbB_bSelectedColumnName";
+            this.cbB_bSelectedColumnName.Size = new System.Drawing.Size(191, 19);
+            this.cbB_bSelectedColumnName.TabIndex = 18;
+            // 
+            // cbB_aSelectedColumnName
+            // 
+            this.cbB_aSelectedColumnName.FormattingEnabled = true;
+            this.cbB_aSelectedColumnName.Location = new System.Drawing.Point(8, 145);
+            this.cbB_aSelectedColumnName.Name = "cbB_aSelectedColumnName";
+            this.cbB_aSelectedColumnName.Size = new System.Drawing.Size(191, 19);
+            this.cbB_aSelectedColumnName.TabIndex = 17;
+            // 
+            // cbB_aColumnNameAdd
+            // 
+            this.cbB_aColumnNameAdd.Location = new System.Drawing.Point(124, 33);
+            this.cbB_aColumnNameAdd.Name = "cbB_aColumnNameAdd";
+            this.cbB_aColumnNameAdd.Size = new System.Drawing.Size(75, 23);
+            this.cbB_aColumnNameAdd.TabIndex = 16;
+            this.cbB_aColumnNameAdd.Text = "추가하기";
+            this.cbB_aColumnNameAdd.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.ForeColor = System.Drawing.Color.DarkRed;
+            this.label3.Location = new System.Drawing.Point(12, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(183, 22);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "열을 선택하지 않을 경우 자동으로 \r\n전체 A파일 대 전체 B파일로 계산됨";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(22, 167);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(133, 12);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "B파일의 선택된 열 이름";
+            // 
+            // cbB_aTotalColumnName
+            // 
+            this.cbB_aTotalColumnName.FormattingEnabled = true;
+            this.cbB_aTotalColumnName.Location = new System.Drawing.Point(8, 35);
+            this.cbB_aTotalColumnName.Name = "cbB_aTotalColumnName";
+            this.cbB_aTotalColumnName.Size = new System.Drawing.Size(110, 19);
+            this.cbB_aTotalColumnName.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(22, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "A파일의 선택된 열 이름";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(8, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "A파일 선택할 열의 이름";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox2.Location = new System.Drawing.Point(1004, 662);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(208, 131);
+            this.groupBox2.TabIndex = 18;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "생성될 열이름 지정(순서대로)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(43, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 12);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "추가된 열 이름 확인";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(6, 97);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(193, 20);
+            this.comboBox2.TabIndex = 14;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(63, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "추가하기";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(3, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "생성할 열 이름:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(102, 21);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 21);
+            this.textBox3.TabIndex = 0;
+            // 
+            // cbB_bColumnNameAdd
+            // 
+            this.cbB_bColumnNameAdd.Location = new System.Drawing.Point(125, 76);
+            this.cbB_bColumnNameAdd.Name = "cbB_bColumnNameAdd";
+            this.cbB_bColumnNameAdd.Size = new System.Drawing.Size(75, 23);
+            this.cbB_bColumnNameAdd.TabIndex = 21;
+            this.cbB_bColumnNameAdd.Text = "추가하기";
+            this.cbB_bColumnNameAdd.UseVisualStyleBackColor = true;
+            // 
+            // cbB_bTotalColumnName
+            // 
+            this.cbB_bTotalColumnName.FormattingEnabled = true;
+            this.cbB_bTotalColumnName.Location = new System.Drawing.Point(9, 78);
+            this.cbB_bTotalColumnName.Name = "cbB_bTotalColumnName";
+            this.cbB_bTotalColumnName.Size = new System.Drawing.Size(110, 19);
+            this.cbB_bTotalColumnName.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(9, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(133, 12);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "B파일 선택할 열의 이름";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(7, 214);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "선택된 열 갯수:";
+            // 
+            // tb_selectedColumnNumber
+            // 
+            this.tb_selectedColumnNumber.Location = new System.Drawing.Point(103, 209);
+            this.tb_selectedColumnNumber.Name = "tb_selectedColumnNumber";
+            this.tb_selectedColumnNumber.ReadOnly = true;
+            this.tb_selectedColumnNumber.Size = new System.Drawing.Size(100, 20);
+            this.tb_selectedColumnNumber.TabIndex = 16;
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lineRatioGraph);
             this.Controls.Add(this.btn_cSaveFile);
@@ -423,6 +683,10 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -460,5 +724,27 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cbB_aTotalColumnName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox cbB_bSelectedColumnName;
+        private System.Windows.Forms.ComboBox cbB_aSelectedColumnName;
+        private System.Windows.Forms.Button cbB_aColumnNameAdd;
+        private System.Windows.Forms.TextBox tb_selectedColumnNumber;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button cbB_bColumnNameAdd;
+        private System.Windows.Forms.ComboBox cbB_bTotalColumnName;
+        private System.Windows.Forms.Label label8;
     }
 }
