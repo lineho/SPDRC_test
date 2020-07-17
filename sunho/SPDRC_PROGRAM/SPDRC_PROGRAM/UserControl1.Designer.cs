@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.dgv_2 = new System.Windows.Forms.DataGridView();
             this.dgv_3 = new System.Windows.Forms.DataGridView();
@@ -64,6 +64,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_selectedColumnNumber = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbB_bColumnNameAdd = new System.Windows.Forms.Button();
+            this.cbB_bTotalColumnName = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.cbB_bSelectedColumnName = new System.Windows.Forms.ComboBox();
             this.cbB_aSelectedColumnName = new System.Windows.Forms.ComboBox();
             this.cbB_aColumnNameAdd = new System.Windows.Forms.Button();
@@ -74,17 +79,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.cbB_bColumnNameAdd = new System.Windows.Forms.Button();
-            this.cbB_bTotalColumnName = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tb_selectedColumnNumber = new System.Windows.Forms.TextBox();
+            this.btn_calc = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -97,7 +92,6 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_1
@@ -377,16 +371,16 @@
             // lineRatioGraph
             // 
             this.lineRatioGraph.AccessibleDescription = "ph";
-            chartArea2.Name = "ChartArea1";
-            this.lineRatioGraph.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.lineRatioGraph.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend3);
             this.lineRatioGraph.Location = new System.Drawing.Point(11, 513);
             this.lineRatioGraph.Name = "lineRatioGraph";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.lineRatioGraph.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series3);
             this.lineRatioGraph.Size = new System.Drawing.Size(974, 365);
             this.lineRatioGraph.TabIndex = 14;
             this.lineRatioGraph.Text = "chart1";
@@ -457,15 +451,62 @@
             this.groupBox1.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(1004, 423);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(208, 233);
+            this.groupBox1.Size = new System.Drawing.Size(208, 242);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "열 선택(최대 10개의 열 선택가능)";
+            this.groupBox1.Text = "열 선택(계산 순서로 선택해야함)";
+            // 
+            // tb_selectedColumnNumber
+            // 
+            this.tb_selectedColumnNumber.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tb_selectedColumnNumber.Location = new System.Drawing.Point(91, 211);
+            this.tb_selectedColumnNumber.Name = "tb_selectedColumnNumber";
+            this.tb_selectedColumnNumber.ReadOnly = true;
+            this.tb_selectedColumnNumber.Size = new System.Drawing.Size(113, 20);
+            this.tb_selectedColumnNumber.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(3, 215);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "선택된 열 갯수:";
+            // 
+            // cbB_bColumnNameAdd
+            // 
+            this.cbB_bColumnNameAdd.Location = new System.Drawing.Point(125, 76);
+            this.cbB_bColumnNameAdd.Name = "cbB_bColumnNameAdd";
+            this.cbB_bColumnNameAdd.Size = new System.Drawing.Size(75, 23);
+            this.cbB_bColumnNameAdd.TabIndex = 21;
+            this.cbB_bColumnNameAdd.Text = "추가하기";
+            this.cbB_bColumnNameAdd.UseVisualStyleBackColor = true;
+            this.cbB_bColumnNameAdd.Click += new System.EventHandler(this.cbB_bColumnNameAdd_Click);
+            // 
+            // cbB_bTotalColumnName
+            // 
+            this.cbB_bTotalColumnName.FormattingEnabled = true;
+            this.cbB_bTotalColumnName.Location = new System.Drawing.Point(9, 78);
+            this.cbB_bTotalColumnName.Name = "cbB_bTotalColumnName";
+            this.cbB_bTotalColumnName.Size = new System.Drawing.Size(110, 19);
+            this.cbB_bTotalColumnName.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(9, 59);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(133, 12);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "B파일 선택할 열의 이름";
             // 
             // cbB_bSelectedColumnName
             // 
             this.cbB_bSelectedColumnName.FormattingEnabled = true;
-            this.cbB_bSelectedColumnName.Location = new System.Drawing.Point(8, 183);
+            this.cbB_bSelectedColumnName.Location = new System.Drawing.Point(8, 182);
             this.cbB_bSelectedColumnName.Name = "cbB_bSelectedColumnName";
             this.cbB_bSelectedColumnName.Size = new System.Drawing.Size(191, 19);
             this.cbB_bSelectedColumnName.TabIndex = 18;
@@ -486,6 +527,7 @@
             this.cbB_aColumnNameAdd.TabIndex = 16;
             this.cbB_aColumnNameAdd.Text = "추가하기";
             this.cbB_aColumnNameAdd.UseVisualStyleBackColor = true;
+            this.cbB_aColumnNameAdd.Click += new System.EventHandler(this.cbB_aColumnNameAdd_Click);
             // 
             // label3
             // 
@@ -502,7 +544,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.Location = new System.Drawing.Point(22, 167);
+            this.label12.Location = new System.Drawing.Point(37, 167);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 12);
             this.label12.TabIndex = 8;
@@ -520,7 +562,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(22, 130);
+            this.label2.Location = new System.Drawing.Point(37, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 12);
             this.label2.TabIndex = 1;
@@ -546,115 +588,22 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // groupBox2
+            // btn_calc
             // 
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(1004, 662);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(208, 131);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "생성될 열이름 지정(순서대로)";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(43, 82);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 12);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "추가된 열 이름 확인";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(6, 97);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(193, 20);
-            this.comboBox2.TabIndex = 14;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(63, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "추가하기";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(3, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 12);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "생성할 열 이름:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(102, 21);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 0;
-            // 
-            // cbB_bColumnNameAdd
-            // 
-            this.cbB_bColumnNameAdd.Location = new System.Drawing.Point(125, 76);
-            this.cbB_bColumnNameAdd.Name = "cbB_bColumnNameAdd";
-            this.cbB_bColumnNameAdd.Size = new System.Drawing.Size(75, 23);
-            this.cbB_bColumnNameAdd.TabIndex = 21;
-            this.cbB_bColumnNameAdd.Text = "추가하기";
-            this.cbB_bColumnNameAdd.UseVisualStyleBackColor = true;
-            // 
-            // cbB_bTotalColumnName
-            // 
-            this.cbB_bTotalColumnName.FormattingEnabled = true;
-            this.cbB_bTotalColumnName.Location = new System.Drawing.Point(9, 78);
-            this.cbB_bTotalColumnName.Name = "cbB_bTotalColumnName";
-            this.cbB_bTotalColumnName.Size = new System.Drawing.Size(110, 19);
-            this.cbB_bTotalColumnName.TabIndex = 20;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(9, 59);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 12);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "B파일 선택할 열의 이름";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(7, 214);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 12);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "선택된 열 갯수:";
-            // 
-            // tb_selectedColumnNumber
-            // 
-            this.tb_selectedColumnNumber.Location = new System.Drawing.Point(103, 209);
-            this.tb_selectedColumnNumber.Name = "tb_selectedColumnNumber";
-            this.tb_selectedColumnNumber.ReadOnly = true;
-            this.tb_selectedColumnNumber.Size = new System.Drawing.Size(100, 20);
-            this.tb_selectedColumnNumber.TabIndex = 16;
+            this.btn_calc.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_calc.Location = new System.Drawing.Point(1006, 770);
+            this.btn_calc.Name = "btn_calc";
+            this.btn_calc.Size = new System.Drawing.Size(199, 23);
+            this.btn_calc.TabIndex = 16;
+            this.btn_calc.Text = "연산하기_테스트중";
+            this.btn_calc.UseVisualStyleBackColor = true;
+            this.btn_calc.Click += new System.EventHandler(this.btn_calc_Click);
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.btn_calc);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lineRatioGraph);
@@ -685,8 +634,6 @@
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -732,12 +679,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox cbB_bSelectedColumnName;
         private System.Windows.Forms.ComboBox cbB_aSelectedColumnName;
         private System.Windows.Forms.Button cbB_aColumnNameAdd;
@@ -746,5 +687,6 @@
         private System.Windows.Forms.Button cbB_bColumnNameAdd;
         private System.Windows.Forms.ComboBox cbB_bTotalColumnName;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_calc;
     }
 }
