@@ -30,7 +30,7 @@ namespace SPDRC_PROGRAM
             InitializeComponent();
 
             EPD_chart.Series.Clear();
-            //KSPwaveLengthChooseSetting();
+            //KSPwaveLengthChooseSetting();   // 주석처리해서 Commit 해야하는 부분
 
         }
 

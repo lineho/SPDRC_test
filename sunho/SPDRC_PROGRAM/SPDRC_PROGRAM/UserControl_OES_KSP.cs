@@ -27,14 +27,16 @@ namespace SPDRC_PROGRAM
 
         public UserControl_OES_KSP()
         {
+            // -----------------------------'-------------'---------주석처리하고 commit해야 하는 부분-------------------------'---------------------------'---------------------------------------------
             InitializeComponent();
             lineRatioGraph.Series.Clear();
-            //KSPwaveLengthChooseSetting();
-            //dtA = Basic_CSVconvertToDataTable(@"../SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv");
-            //foreach (DataRow row in dtA.Rows)
-            //{
-            //    waveLength_thresholdEnergy.Add(row["wavelength"].ToString() , row["thresholdEnergy"].ToString());
-            //}
+            KSPwaveLengthChooseSetting();
+            dtA = Basic_CSVconvertToDataTable("C:/Users/com/Documents/GitHub/SPDRC_test/sunho/SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv"); //@"../SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv"
+            //----------------------------------'----------------------------------------'----------------------------------------------------------'----------------------------------------------------------
+            foreach (DataRow row in dtA.Rows)
+            {
+                waveLength_thresholdEnergy.Add(row["wavelength"].ToString(), row["thresholdEnergy"].ToString());
+            }
         }
 
         private void UserControl_OES_KSP_Load(object sender, EventArgs e)
@@ -54,7 +56,7 @@ namespace SPDRC_PROGRAM
 
         private void KSPwaveLengthChooseSetting( )
         {
-            string filePath = "kspOES_baseWaveLength.csv";
+            string filePath = "C:/Users/com/Documents/GitHub/SPDRC_test/sunho/SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/kspOES_baseWaveLength.csv";
             string[] lines = System.IO.File.ReadAllLines(filePath);
 
             if (lines.Length > 0)
@@ -252,8 +254,8 @@ namespace SPDRC_PROGRAM
                     foreach (string dataWord in dataWords)
                     {
                         if (columnIndex == headWordIndex_time) { dr["Time(sec)"] = dataWord; }
-                        else if (columnIndex == headWordIndex_waveLength1) { dr[waveLength1] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord  // noise 제거를 위해 raw 데이터에서 2000을 뺌
-                        else if (columnIndex == headWordIndex_waveLength2) { dr[waveLength2] = (Int32.Parse(dataWord) - 2000).ToString(); } // dataWord
+                        else if (columnIndex == headWordIndex_waveLength1) { dr[waveLength1] = (Int32.Parse(dataWord) - 0).ToString(); } // dataWord  // noise 제거를 위해 raw 데이터에서 2000을 뺌
+                        else if (columnIndex == headWordIndex_waveLength2) { dr[waveLength2] = (Int32.Parse(dataWord) - 0).ToString(); } // dataWord
 
                         columnIndex++;
                     }
@@ -325,7 +327,12 @@ namespace SPDRC_PROGRAM
             { 
                 dtA.Columns.Add("lineRatio");
                 dtA.Columns.Add("Te");
+                dtA.Columns.Add("Te_14.7381_13.4798");
                 dtA.Columns.Add("movingAverageFiltered_Te");
+                dtA.Columns.Add("electronDensity_16.4_15.6");
+                dtA.Columns.Add("electronDensity_14.7381_13.4798");
+                dtA.Columns.Add("electronDensity_simpleA_16.4_15.6");
+                dtA.Columns.Add("electronDensity_simpleA_14.7381_13.4798");
             }
 
             string[] arrayWaveLength1 = new string[dtA.Rows.Count];
@@ -339,6 +346,7 @@ namespace SPDRC_PROGRAM
             }
 
             double deltaE = (double.Parse(waveLength_thresholdEnergy[waveLength1].ToString()) - double.Parse(waveLength_thresholdEnergy[waveLength2].ToString()));  // 파장의 threshold Energy 차이 (전자온도를 구할 때 사용) , waveLength_thresholdEnergy는 dictionary 변수이다. 
+            double deltaE_14_7381_13_4798 = 14.7381 - 13.4798;
             Console.WriteLine("{0}", deltaE.ToString());
 
 
@@ -354,12 +362,34 @@ namespace SPDRC_PROGRAM
                 //    dtA.Rows[rowNum]["Te"] = 0;
                 //else
                 //    dtA.Rows[rowNum]["Te"] = - deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
-                if (-deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -13)
-                    dtA.Rows[rowNum]["Te"] = -13;
-                else if (13 <= -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])))
-                    dtA.Rows[rowNum]["Te"] = 13;
-                else
-                    dtA.Rows[rowNum]["Te"] = -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+                //-----------------------------------------'-----------------------------------------------'--------------------------------------------'---------------------------'-------------------------------------------------------------------------------------------
+                //if (-deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])) <= -13)
+                //{
+                //    dtA.Rows[rowNum]["Te"] = -13;
+                //    dtA.Rows[rowNum]["electronDensity"] = -13;
+                //}
+                //else if (13 <= -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum])))
+                //{
+                //    dtA.Rows[rowNum]["Te"] = 13;
+                //    dtA.Rows[rowNum]["electronDensity"] = 13;
+                //}
+                //else
+                //{
+                //    dtA.Rows[rowNum]["Te"] = -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+                //}
+                //--------------------------------------------------'---------------------------------------------------------------------------'-----------------------------------------------'------------------------------------------------------------
+                dtA.Rows[rowNum]["Te"] = -deltaE / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));  // electron temperature 구하는 부분
+                dtA.Rows[rowNum]["Te_14.7381_13.4798"] = -deltaE_14_7381_13_4798 / Math.Log(double.Parse(arrayWaveLength1[rowNum]) / double.Parse(arrayWaveLength2[rowNum]));
+
+                double A = (30.6 * 7.5 * Math.Exp(-10) * 1 * Math.Exp(-16.4 / double.Parse(dtA.Rows[rowNum]["Te"].ToString()))) / (99.5 * 2 * Math.Exp(-9) * Math.Pow(double.Parse(dtA.Rows[rowNum]["Te"].ToString()),0.5) * Math.Exp(-15.6 / double.Parse(dtA.Rows[rowNum]["Te"].ToString())));
+                double A_14_7381_13_4798 = (30.6 * 7.5 * Math.Exp(-10) * 1 * Math.Exp(-16.4 / double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString()))) / (99.5 * 2 * Math.Exp(-9) * Math.Pow(double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString()), 0.5) * Math.Exp(-15.6 / double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString())));
+                double simple_A = (Math.Exp(-16.4 / double.Parse(dtA.Rows[rowNum]["Te"].ToString()))) / Math.Exp(-15.6 / double.Parse(dtA.Rows[rowNum]["Te"].ToString()));
+                double simple_A_14_7381_13_4798 = (Math.Exp(-14.7381 / double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString()))) / Math.Exp(-13.4798 / double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString()));
+
+                dtA.Rows[rowNum]["electronDensity_16.4_15.6"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - A) / (A / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_14.7381_13.4798"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - A_14_7381_13_4798) / (A_14_7381_13_4798 / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_simpleA_16.4_15.6"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - simple_A) / (simple_A / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_simpleA_14.7381_13.4798"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - simple_A_14_7381_13_4798) / (simple_A_14_7381_13_4798 / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
             }
 
         }
@@ -394,24 +424,80 @@ namespace SPDRC_PROGRAM
         {
             this.lineRatioGraph.Series.Clear(); // 그래프 초기화
 
-            lineRatioGraph.ChartAreas[0].AxisY.Title = "전자온도 (eV)";
-            lineRatioGraph.ChartAreas[0].AxisY2.Title = "lineRatio";
-            lineRatioGraph.ChartAreas[0].AxisX.Title = "시간 (sec)";
+            lineRatioGraph.ChartAreas[0].AxisY.Title = "전자밀도";
+            //lineRatioGraph.ChartAreas[0].AxisY2.Title = "lineRatio";
+            lineRatioGraph.ChartAreas[0].AxisX.Title = "전자온도 (eV)";
 
-            Series lineRatio = this.lineRatioGraph.Series.Add("Line Ratio");
-            lineRatio.ChartType = SeriesChartType.Spline;
-            lineRatio.Color = Color.Red;
-            lineRatio.MarkerSize = 10; // 선 두께 설정
+            lineRatioGraph2.ChartAreas[0].AxisY.Title = "전자밀도";
+            lineRatioGraph2.ChartAreas[0].AxisX.Title = "전자온도 (eV)";
+
+            lineRatioGraph3.ChartAreas[0].AxisY.Title = "전자밀도";
+            lineRatioGraph3.ChartAreas[0].AxisX.Title = "전자온도 (eV)";
+
+            lineRatioGraph4.ChartAreas[0].AxisY.Title = "전자밀도";
+            lineRatioGraph4.ChartAreas[0].AxisX.Title = "전자온도 (eV)";
+            //Series lineRatio = this.lineRatioGraph.Series.Add("Line Ratio");
+            //lineRatio.ChartType = SeriesChartType.Spline;
+            //lineRatio.Color = Color.Red;
+            //lineRatio.MarkerSize = 10; // 선 두께 설정
 
             Series Te = this.lineRatioGraph.Series.Add("Electron Temperature");
             Te.ChartType = SeriesChartType.Spline;
             Te.MarkerSize = 30; // 선 두께 설정
             Te.Color = Color.Blue;
 
-            for (int rowNum = 0; rowNum <= dtA.Rows.Count - 1; rowNum++)
+            Series Te2 = this.lineRatioGraph2.Series.Add("Electron Temperature");
+            Te2.ChartType = SeriesChartType.Spline;
+            Te2.MarkerSize = 30; // 선 두께 설정
+            Te2.Color = Color.Blue;
+
+            Series Te3 = this.lineRatioGraph3.Series.Add("Electron Temperature");
+            Te3.ChartType = SeriesChartType.Spline;
+            Te3.MarkerSize = 30; // 선 두께 설정
+            Te3.Color = Color.Blue;
+
+            Series Te4 = this.lineRatioGraph4.Series.Add("Electron Temperature");
+            Te4.ChartType = SeriesChartType.Spline;
+            Te4.MarkerSize = 30; // 선 두께 설정
+            Te4.Color = Color.Blue;
+
+
+            Series electronDensity = this.lineRatioGraph.Series.Add("Electron Density_A_16.4_15.6");
+            electronDensity.ChartType = SeriesChartType.Spline;
+            electronDensity.MarkerSize = 30;
+            electronDensity.Color = Color.Red;
+
+            Series electronDensity2 = this.lineRatioGraph2.Series.Add("Electron Density_A_14.7381_13.4798");
+            electronDensity2.ChartType = SeriesChartType.Spline;
+            electronDensity2.MarkerSize = 30;
+            electronDensity2.Color = Color.Red;
+
+            Series electronDensity3 = this.lineRatioGraph3.Series.Add("Electron Density_simpleA_16.4_15.6");
+            electronDensity3.ChartType = SeriesChartType.Spline;
+            electronDensity3.MarkerSize = 30;
+            electronDensity3.Color = Color.Red;
+
+            Series electronDensity4 = this.lineRatioGraph4.Series.Add("Electron Density_simpleA_14.7381_13.4798");
+            electronDensity4.ChartType = SeriesChartType.Spline;
+            electronDensity4.MarkerSize = 30;
+            electronDensity4.Color = Color.Red;
+
+
+
+            for (int rowNum = 35; rowNum <= 79; rowNum++)
             {
-                lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
-                Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_Te"]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+                //lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
+                //Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_Te"]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+                electronDensity.Points.AddXY(dtA.Rows[rowNum]["Te"], dtA.Rows[rowNum]["electronDensity_16.4_15.6"]);
+                electronDensity3.Points.AddXY(dtA.Rows[rowNum]["Te"], dtA.Rows[rowNum]["electronDensity_simpleA_16.4_15.6"]);
+            }
+
+            for (int rowNum = 19; rowNum <= 73; rowNum++)
+            {
+                //lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]); //  lineRatio.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["lineRatio"]);
+                //Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["movingAverageFiltered_Te"]); //  Te.Points.AddXY(dtA.Rows[rowNum]["Time(sec)"], dtA.Rows[rowNum]["Te"]);
+                electronDensity2.Points.AddXY(dtA.Rows[rowNum]["Te_14.7381_13.4798"], dtA.Rows[rowNum]["electronDensity_14.7381_13.4798"]);
+                electronDensity4.Points.AddXY(dtA.Rows[rowNum]["Te_14.7381_13.4798"], dtA.Rows[rowNum]["electronDensity_simpleA_14.7381_13.4798"]);
             }
         }
 
