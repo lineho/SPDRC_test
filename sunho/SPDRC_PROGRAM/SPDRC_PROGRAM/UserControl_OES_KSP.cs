@@ -24,11 +24,11 @@ namespace SPDRC_PROGRAM
         Boolean cbBoxWavelength2Checked = false;
         Dictionary<string, object> waveLength_thresholdEnergy = new Dictionary<string, object>();
 
-
         public UserControl_OES_KSP()
         {
             // -----------------------------'-------------'---------주석처리하고 commit해야 하는 부분-------------------------'---------------------------'---------------------------------------------
             InitializeComponent();
+            Console.WriteLine(Math.Pow(10,-2));
             lineRatioGraph.Series.Clear();
             KSPwaveLengthChooseSetting();
             dtA = Basic_CSVconvertToDataTable("C:/Users/com/Documents/GitHub/SPDRC_test/sunho/SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv"); //@"../SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/wavelength_thresholdEnergy.csv"
@@ -386,10 +386,10 @@ namespace SPDRC_PROGRAM
                 double simple_A = (Math.Exp(-16.4 / double.Parse(dtA.Rows[rowNum]["Te"].ToString()))) / Math.Exp(-15.6 / double.Parse(dtA.Rows[rowNum]["Te"].ToString()));
                 double simple_A_14_7381_13_4798 = (Math.Exp(-14.7381 / double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString()))) / Math.Exp(-13.4798 / double.Parse(dtA.Rows[rowNum]["Te_14.7381_13.4798"].ToString()));
 
-                dtA.Rows[rowNum]["electronDensity_16.4_15.6"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - A) / (A / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
-                dtA.Rows[rowNum]["electronDensity_14.7381_13.4798"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - A_14_7381_13_4798) / (A_14_7381_13_4798 / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
-                dtA.Rows[rowNum]["electronDensity_simpleA_16.4_15.6"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - simple_A) / (simple_A / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
-                dtA.Rows[rowNum]["electronDensity_simpleA_14.7381_13.4798"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - simple_A_14_7381_13_4798) / (simple_A_14_7381_13_4798 / Math.Pow(3.3 * Math.Pow(10, 11), -1) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_16.4_15.6"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - A) / (A / (3.3 * Math.Pow(10, 11)) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_14.7381_13.4798"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - A_14_7381_13_4798) / (A_14_7381_13_4798 / (3.3 * Math.Pow(10, 11)) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_simpleA_16.4_15.6"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - simple_A) / (simple_A / (3.3 * Math.Pow(10, 11)) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
+                dtA.Rows[rowNum]["electronDensity_simpleA_14.7381_13.4798"] = (double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()) - simple_A_14_7381_13_4798) / (simple_A_14_7381_13_4798 / (3.3 * Math.Pow(10, 11)) - Math.Pow(10, -12) * double.Parse(dtA.Rows[rowNum]["lineRatio"].ToString()));
             }
 
         }
@@ -508,14 +508,37 @@ namespace SPDRC_PROGRAM
             lineRatioGraph.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
             lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true;
             lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+        }   
+
+        private void lineRatioGraph2_Click_1(object sender, EventArgs e)
+        {
+            lineRatioGraph2.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
+            lineRatioGraph2.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
+            lineRatioGraph2.ChartAreas[0].CursorX.AutoScroll = true;
+            lineRatioGraph2.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+        }
+
+        private void lineRatioGraph3_Click_1(object sender, EventArgs e)
+        {
+            lineRatioGraph3.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
+            lineRatioGraph3.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
+            lineRatioGraph3.ChartAreas[0].CursorX.AutoScroll = true;
+            lineRatioGraph3.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+        }
+
+        private void lineRatioGraph4_Click_1(object sender, EventArgs e)
+        {
+            lineRatioGraph4.ChartAreas[0].AxisX.ScaleView.Zoomable = true;   // graph zoom 
+            lineRatioGraph4.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
+            lineRatioGraph4.ChartAreas[0].CursorX.AutoScroll = true;
+            lineRatioGraph4.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
+
         }
 
         private void dgv_1_CellContentClick(object sender, DataGridViewCellEventArgs e) // 
         {
 
         }
-
-    
 
     }
 }

@@ -247,6 +247,7 @@
             this.lineRatioGraph2.Size = new System.Drawing.Size(754, 434);
             this.lineRatioGraph2.TabIndex = 0;
             this.lineRatioGraph2.Text = "chart2";
+            this.lineRatioGraph2.Click += new System.EventHandler(this.lineRatioGraph2_Click_1);
             // 
             // tabPage3
             // 
@@ -274,6 +275,7 @@
             this.lineRatioGraph3.Size = new System.Drawing.Size(755, 431);
             this.lineRatioGraph3.TabIndex = 0;
             this.lineRatioGraph3.Text = "chart3";
+            this.lineRatioGraph3.Click += new System.EventHandler(this.lineRatioGraph3_Click_1);
             // 
             // tabPage4
             // 
@@ -301,6 +303,7 @@
             this.lineRatioGraph4.Size = new System.Drawing.Size(757, 433);
             this.lineRatioGraph4.TabIndex = 0;
             this.lineRatioGraph4.Text = "chart4";
+            this.lineRatioGraph4.Click += new System.EventHandler(this.lineRatioGraph4_Click_1);
             // 
             // UserControl_OES_KSP
             // 
