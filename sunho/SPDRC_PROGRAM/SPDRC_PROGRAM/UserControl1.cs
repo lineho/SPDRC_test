@@ -547,7 +547,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtA.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtA.Rows)
                 {
-                    if (cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString()) && Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum)
+                    if (cbB_aStartRowNum <= selectedRangeOf_dtA.Rows.IndexOf(row)+1  && selectedRangeOf_dtA.Rows.IndexOf(row)+1 <= cbB_aFinishRowNum)
                         ;
                     else
                         row.Delete();
@@ -558,7 +558,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtB.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtB.Rows)
                 {
-                    if (cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString()) && Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum + cbB_aFinishRowNum - cbB_aStartRowNum)
+                    if (cbB_bStartRowNum <= selectedRangeOf_dtB.Rows.IndexOf(row) +1 && selectedRangeOf_dtB.Rows.IndexOf(row) +1 <= cbB_bStartRowNum + cbB_aFinishRowNum - cbB_aStartRowNum)
                         ;
                     else
                         row.Delete();
@@ -644,11 +644,21 @@ namespace SPDRC_PROGRAM
 
                 selectedRangeOf_dtB.AcceptChanges();
                 //--------------------------------------------------------------------selectedRangeOf_dtA의 내용에서 selectedRangeOf_dtB 내용들을 빼기 하는 부분-------------------------------------------------------------------------------------------
+                if (selectedRangeOf_dtA.Columns.Contains("lineNum"))
+                    selectedRangeOf_dtA.Columns.Remove("lineNum");
+                if (selectedRangeOf_dtB.Columns.Contains("lineNum"))
+                    selectedRangeOf_dtB.Columns.Remove("lineNum");
+
                 preProcessedDt = selectedRangeOf_dtA.Copy(); //형식 복사
+                for (int num=0; num <= selectedRangeOf_dtA.Columns.Count-1; num++)
+                {
+                    preProcessedDt.Columns[num].ColumnName = (selectedRangeOf_dtA.Columns[num]+" - "+selectedRangeOf_dtB.Columns[num]);
+                }
+                //preProcessedDt.AcceptChanges();
 
                 for (int rowNum = 0; rowNum <= selectedRangeOf_dtA.Rows.Count - 1; rowNum++)
                 {
-                    for (int columnNum = 0; columnNum <= selectedRangeOf_dtA.Columns.Count - 1; columnNum++)
+                    for (int columnNum = 0; columnNum <= selectedRangeOf_dtA.Columns.Count-1 ; columnNum++)
                     {
                         preProcessedDt.Rows[rowNum][columnNum] = (Int32.Parse(selectedRangeOf_dtA.Rows[rowNum][columnNum].ToString()) - Int32.Parse(selectedRangeOf_dtB.Rows[rowNum][columnNum].ToString())).ToString();
                     }
@@ -672,6 +682,11 @@ namespace SPDRC_PROGRAM
             }
 
             dgv_3.DataSource = preProcessedDt;
+
+        }
+
+        private void dgv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

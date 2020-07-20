@@ -55,7 +55,6 @@
             this.cbB_bFinishRow = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btn_cal = new System.Windows.Forms.Button();
             this.btn_graph = new System.Windows.Forms.Button();
             this.btn_cSaveFile = new System.Windows.Forms.Button();
             this.lineRatioGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -103,6 +102,7 @@
             this.dgv_1.Size = new System.Drawing.Size(944, 442);
             this.dgv_1.TabIndex = 0;
             this.dgv_1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellClick);
+            this.dgv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellContentClick);
             this.dgv_1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_1_CellMouseUp);
             // 
             // dgv_2
@@ -336,21 +336,10 @@
             this.label11.TabIndex = 1;
             this.label11.Text = "시작할 행 값(좌클릭)";
             // 
-            // btn_cal
-            // 
-            this.btn_cal.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_cal.Location = new System.Drawing.Point(1009, 799);
-            this.btn_cal.Name = "btn_cal";
-            this.btn_cal.Size = new System.Drawing.Size(199, 23);
-            this.btn_cal.TabIndex = 11;
-            this.btn_cal.Text = "연산하기";
-            this.btn_cal.UseVisualStyleBackColor = true;
-            this.btn_cal.Click += new System.EventHandler(this.btn_cal_Click);
-            // 
             // btn_graph
             // 
             this.btn_graph.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_graph.Location = new System.Drawing.Point(1008, 828);
+            this.btn_graph.Location = new System.Drawing.Point(1008, 826);
             this.btn_graph.Name = "btn_graph";
             this.btn_graph.Size = new System.Drawing.Size(199, 23);
             this.btn_graph.TabIndex = 12;
@@ -361,7 +350,7 @@
             // btn_cSaveFile
             // 
             this.btn_cSaveFile.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_cSaveFile.Location = new System.Drawing.Point(1007, 855);
+            this.btn_cSaveFile.Location = new System.Drawing.Point(1008, 855);
             this.btn_cSaveFile.Name = "btn_cSaveFile";
             this.btn_cSaveFile.Size = new System.Drawing.Size(199, 23);
             this.btn_cSaveFile.TabIndex = 13;
@@ -591,11 +580,11 @@
             // btn_calc
             // 
             this.btn_calc.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_calc.Location = new System.Drawing.Point(1006, 770);
+            this.btn_calc.Location = new System.Drawing.Point(1008, 799);
             this.btn_calc.Name = "btn_calc";
             this.btn_calc.Size = new System.Drawing.Size(199, 23);
             this.btn_calc.TabIndex = 16;
-            this.btn_calc.Text = "연산하기_테스트중";
+            this.btn_calc.Text = "연산하기";
             this.btn_calc.UseVisualStyleBackColor = true;
             this.btn_calc.Click += new System.EventHandler(this.btn_calc_Click);
             // 
@@ -609,7 +598,6 @@
             this.Controls.Add(this.lineRatioGraph);
             this.Controls.Add(this.btn_cSaveFile);
             this.Controls.Add(this.btn_graph);
-            this.Controls.Add(this.btn_cal);
             this.Controls.Add(this.grpB_bSetRow);
             this.Controls.Add(this.grpB_aSetRow);
             this.Controls.Add(this.grpB_fileLoad);
@@ -660,7 +648,6 @@
         private System.Windows.Forms.ComboBox cbB_bFinishRow;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btn_cal;
         private System.Windows.Forms.Button btn_graph;
         private System.Windows.Forms.Button btn_cSaveFile;
         private System.Windows.Forms.ComboBox cbB_bStartRow;
