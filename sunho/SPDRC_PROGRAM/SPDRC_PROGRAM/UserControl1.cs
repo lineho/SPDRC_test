@@ -650,10 +650,7 @@ namespace SPDRC_PROGRAM
                 {
                     for (int columnNum = 0; columnNum <= selectedRangeOf_dtA.Columns.Count - 1; columnNum++)
                     {
-                        if (columnNum == 0)
-                            preProcessedDt.Rows[rowNum][columnNum] = (rowNum + 1).ToString();
-                        else
-                            preProcessedDt.Rows[rowNum][columnNum] = (Int32.Parse(selectedRangeOf_dtA.Rows[rowNum][columnNum].ToString()) - Int32.Parse(selectedRangeOf_dtB.Rows[rowNum][columnNum].ToString())).ToString();
+                        preProcessedDt.Rows[rowNum][columnNum] = (Int32.Parse(selectedRangeOf_dtA.Rows[rowNum][columnNum].ToString()) - Int32.Parse(selectedRangeOf_dtB.Rows[rowNum][columnNum].ToString())).ToString();
                     }
                 }
 
@@ -668,20 +665,10 @@ namespace SPDRC_PROGRAM
             preProcessedDt.Columns.Add("lineRatio");
             preProcessedDt.Columns.Add("Te");
 
-            string[] waveLength1 = new string[preProcessedDt.Rows.Count];
-            string[] waveLength2 = new string[preProcessedDt.Rows.Count];
-
             for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
             {
-                waveLength1[rowNum] = preProcessedDt.Rows[rowNum][1].ToString(); // preProcessedDt의 column number가 0부터 시작된다고 가정했을 때 column number가 1인 열의 데이터들을 모두 하나의 배열에 담음
-                waveLength2[rowNum] = preProcessedDt.Rows[rowNum][2].ToString(); // preProcessedDt의 column number가 0부터 시작된다고 가정했을 때 column number가 2인 열의 데이터들을 모두 하나의 배열에 담음
-                Console.WriteLine(waveLength1[rowNum]);
-            }
-
-            for (int rowNum = 0; rowNum <= preProcessedDt.Rows.Count - 1; rowNum++)
-            {
-                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]);  // line ratio를 구해서 preProcessedDt의 "lineRatio" column 부분에 차곡차곡 데이터를 입력 
-                preProcessedDt.Rows[rowNum]["Te"] = -2 / Math.Log(double.Parse(waveLength1[rowNum]) / double.Parse(waveLength2[rowNum]));  //  electron temperature를 구해서 preProcessedDt의 "Te" column 부분에 차곡차곡 데이터를 입력
+                preProcessedDt.Rows[rowNum]["lineRatio"] = double.Parse(preProcessedDt.Rows[rowNum][0].ToString()) / double.Parse(preProcessedDt.Rows[rowNum][1].ToString());  // line ratio를 구해서 preProcessedDt의 "lineRatio" column 부분에 차곡차곡 데이터를 입력 
+                preProcessedDt.Rows[rowNum]["Te"] = -2 / Math.Log(double.Parse(preProcessedDt.Rows[rowNum][0].ToString()) / double.Parse(preProcessedDt.Rows[rowNum][1].ToString()));  //  electron temperature를 구해서 preProcessedDt의 "Te" column 부분에 차곡차곡 데이터를 입력
             }
 
             dgv_3.DataSource = preProcessedDt;
