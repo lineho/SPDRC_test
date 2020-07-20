@@ -547,7 +547,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtA.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtA.Rows)
                 {
-                    if (cbB_aStartRowNum <= Int32.Parse(row["lineNum"].ToString()) && Int32.Parse(row["lineNum"].ToString()) <= cbB_aFinishRowNum)
+                    if (cbB_aStartRowNum <= Int32.Parse(row[0].ToString()) && Int32.Parse(row[0].ToString()) <= cbB_aFinishRowNum)
                         ;
                     else
                         row.Delete();
@@ -558,7 +558,7 @@ namespace SPDRC_PROGRAM
                 selectedRangeOf_dtB.AcceptChanges();
                 foreach (DataRow row in selectedRangeOf_dtB.Rows)
                 {
-                    if (cbB_bStartRowNum <= Int32.Parse(row["lineNum"].ToString()) && Int32.Parse(row["lineNum"].ToString()) <= cbB_bStartRowNum + cbB_aFinishRowNum - cbB_aStartRowNum)
+                    if (cbB_bStartRowNum <= Int32.Parse(row[0].ToString()) && Int32.Parse(row[0].ToString()) <= cbB_bStartRowNum + cbB_aFinishRowNum - cbB_aStartRowNum)
                         ;
                     else
                         row.Delete();
