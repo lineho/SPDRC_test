@@ -64,11 +64,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl1.cs">
+    <Compile Include="UserControl_LAM_KIYO.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="UserControl_LAM_KIYO.Designer.cs">
+      <DependentUpon>UserControl_LAM_KIYO.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl_OES_KSP.cs">
       <SubType>UserControl</SubType>
@@ -98,8 +98,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl_LAM_KIYO.resx">
+      <DependentUpon>UserControl_LAM_KIYO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_OES_KSP.resx">
       <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>

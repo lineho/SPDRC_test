@@ -36,7 +36,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.userControl_TES_EPD1 = new SPDRC_PROGRAM.UserControl_TES_EPD();
             this.userControl_OES_KSP1 = new SPDRC_PROGRAM.UserControl_OES_KSP();
-            this.userControl11 = new SPDRC_PROGRAM.UserControl1();
+            this.userControl11 = new SPDRC_PROGRAM.UserControl_LAM_KIYO();
             this.grp_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,10 +93,6 @@
             this.btn_OesLam.UseVisualStyleBackColor = true;
             this.btn_OesLam.Click += new System.EventHandler(this.btn_Oes_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // userControl_TES_EPD1
             // 
             this.userControl_TES_EPD1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -118,7 +114,6 @@
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(1216, 895);
             this.userControl11.TabIndex = 0;
-            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // Form_main
             // 
@@ -132,7 +127,6 @@
             this.Controls.Add(this.userControl11);
             this.Name = "Form_main";
             this.Text = "SPDRC";
-            this.Load += new System.EventHandler(this.Form_main_Load);
             this.grp_Menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -140,7 +134,7 @@
 
         #endregion
 
-        private UserControl1 userControl11;
+        private UserControl_LAM_KIYO userControl11;
         private System.Windows.Forms.GroupBox grp_Menu;
         private System.Windows.Forms.Button btn_Rga;
         private System.Windows.Forms.Button btn_OesLam;

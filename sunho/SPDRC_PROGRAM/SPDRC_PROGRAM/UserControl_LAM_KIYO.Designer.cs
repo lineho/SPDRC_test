@@ -1,6 +1,6 @@
 ﻿namespace SPDRC_PROGRAM
 {
-    partial class UserControl1
+    partial class UserControl_LAM_KIYO
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.

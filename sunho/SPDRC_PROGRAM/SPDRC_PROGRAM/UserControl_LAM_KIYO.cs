@@ -13,7 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SPDRC_PROGRAM
 {
-    public partial class UserControl1 : UserControl
+    public partial class UserControl_LAM_KIYO : UserControl
     {
 
         DataTable dtA = new DataTable();
@@ -28,7 +28,7 @@ namespace SPDRC_PROGRAM
         bool cbB_aFinishRowIsChecked = false;
         bool cbB_bStartRowIsChecked = false;
 
-        public UserControl1()
+        public UserControl_LAM_KIYO()
         {
             InitializeComponent();
             this.lineRatioGraph.Series.Clear();

@@ -31,26 +31,11 @@ namespace SPDRC_PROGRAM
             userControl_OES_KSP1.Hide();
         }
 
-        private void userControl11_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form_main_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_OesKSP_Click(object sender, EventArgs e)
         {
             userControl11.Hide();
             userControl_TES_EPD1.Hide();
             userControl_OES_KSP1.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_TES_EPD_Click(object sender, EventArgs e)
@@ -60,9 +45,5 @@ namespace SPDRC_PROGRAM
             userControl_TES_EPD1.Show();
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
     }
 }
