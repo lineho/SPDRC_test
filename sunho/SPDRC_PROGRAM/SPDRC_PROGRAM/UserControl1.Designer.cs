@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgv_1 = new System.Windows.Forms.DataGridView();
             this.dgv_2 = new System.Windows.Forms.DataGridView();
             this.dgv_3 = new System.Windows.Forms.DataGridView();
@@ -79,6 +79,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btn_calc = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).BeginInit();
@@ -102,7 +103,6 @@
             this.dgv_1.Size = new System.Drawing.Size(944, 442);
             this.dgv_1.TabIndex = 0;
             this.dgv_1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellClick);
-            this.dgv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellContentClick);
             this.dgv_1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_1_CellMouseUp);
             // 
             // dgv_2
@@ -360,16 +360,16 @@
             // lineRatioGraph
             // 
             this.lineRatioGraph.AccessibleDescription = "ph";
-            chartArea3.Name = "ChartArea1";
-            this.lineRatioGraph.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.lineRatioGraph.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.lineRatioGraph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.lineRatioGraph.Legends.Add(legend1);
             this.lineRatioGraph.Location = new System.Drawing.Point(11, 513);
             this.lineRatioGraph.Name = "lineRatioGraph";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.lineRatioGraph.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.lineRatioGraph.Series.Add(series1);
             this.lineRatioGraph.Size = new System.Drawing.Size(974, 365);
             this.lineRatioGraph.TabIndex = 14;
             this.lineRatioGraph.Text = "chart1";
@@ -380,6 +380,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(14, 11);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -588,6 +589,16 @@
             this.btn_calc.UseVisualStyleBackColor = true;
             this.btn_calc.Click += new System.EventHandler(this.btn_calc_Click);
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(966, 474);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -675,5 +686,6 @@
         private System.Windows.Forms.ComboBox cbB_bTotalColumnName;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_calc;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }

@@ -24,7 +24,6 @@ namespace SPDRC_PROGRAM
         Boolean cbBoxWavelength2Checked = false;
         Dictionary<string, object> waveLength_thresholdEnergy = new Dictionary<string, object>();
 
-
         public UserControl_OES_KSP()
         {
             InitializeComponent();
@@ -37,20 +36,6 @@ namespace SPDRC_PROGRAM
             //}
         }
 
-        private void UserControl_OES_KSP_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void KSPwaveLengthChooseSetting( )
         {
@@ -201,7 +186,6 @@ namespace SPDRC_PROGRAM
             Console.WriteLine(waveLength2);
 
         }
-
         private DataTable CSVdataSortByWaveLengths(string filePath)
         {
             //Int16 headWordIndex_lineNum = 0;
@@ -390,6 +374,9 @@ namespace SPDRC_PROGRAM
             dgv_1.DataSource = dtA;
         }
 
+        /// <summary>
+        /// 그래프그리기.
+        /// </summary>
         private void DrawGraph()
         {
             this.lineRatioGraph.Series.Clear(); // 그래프 초기화
@@ -422,11 +409,6 @@ namespace SPDRC_PROGRAM
             lineRatioGraph.ChartAreas[0].AxisY.ScaleView.Zoomable = true; // graph zoom
             lineRatioGraph.ChartAreas[0].CursorX.AutoScroll = true;
             lineRatioGraph.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
-        }
-
-        private void dgv_1_CellContentClick(object sender, DataGridViewCellEventArgs e) // 
-        {
-
         }
 
     

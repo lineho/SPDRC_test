@@ -171,7 +171,6 @@
             this.dgv_1.RowTemplate.Height = 23;
             this.dgv_1.Size = new System.Drawing.Size(427, 473);
             this.dgv_1.TabIndex = 2;
-            this.dgv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_1_CellContentClick);
             // 
             // UserControl_OES_KSP
             // 
@@ -186,7 +185,6 @@
             this.Controls.Add(this.checkedListBox_OESdataCollect);
             this.Name = "UserControl_OES_KSP";
             this.Size = new System.Drawing.Size(1274, 838);
-            this.Load += new System.EventHandler(this.UserControl_OES_KSP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lineRatioGraph)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
