@@ -21,7 +21,8 @@ namespace SPDRC_PROGRAM
         {
             userControl_OES_KSP1.Hide();
             userControl_TES_EPD1.Hide();
-            userControl11.Show();
+            userControl11.Hide();
+            userControl_LAM_KIYO_TEST1.Show();
         }
 
         private void btn_Rga_Click(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace SPDRC_PROGRAM
             userControl11.Hide();
             userControl_TES_EPD1.Hide();
             userControl_OES_KSP1.Hide();
+            userControl_LAM_KIYO_TEST1.Hide();
         }
 
         private void btn_OesKSP_Click(object sender, EventArgs e)
@@ -36,6 +38,7 @@ namespace SPDRC_PROGRAM
             userControl11.Hide();
             userControl_TES_EPD1.Hide();
             userControl_OES_KSP1.Show();
+            userControl_LAM_KIYO_TEST1.Hide();
         }
 
         private void btn_TES_EPD_Click(object sender, EventArgs e)
@@ -43,7 +46,12 @@ namespace SPDRC_PROGRAM
             userControl11.Hide();
             userControl_OES_KSP1.Hide();
             userControl_TES_EPD1.Show();
+            userControl_LAM_KIYO_TEST1.Hide();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

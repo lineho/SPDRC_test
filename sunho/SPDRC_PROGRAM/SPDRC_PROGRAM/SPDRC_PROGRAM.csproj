@@ -70,6 +70,12 @@
     <Compile Include="UserControl_LAM_KIYO.Designer.cs">
       <DependentUpon>UserControl_LAM_KIYO.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_LAM_KIYO_NOTNOISE.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_LAM_KIYO_NOTNOISE.Designer.cs">
+      <DependentUpon>UserControl_LAM_KIYO_NOTNOISE.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_OES_KSP.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="UserControl_LAM_KIYO.resx">
       <DependentUpon>UserControl_LAM_KIYO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl_LAM_KIYO_NOTNOISE.resx">
+      <DependentUpon>UserControl_LAM_KIYO_NOTNOISE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl_OES_KSP.resx">
       <DependentUpon>UserControl_OES_KSP.cs</DependentUpon>

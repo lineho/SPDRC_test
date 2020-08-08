@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grp_Menu = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_TES_EPD = new System.Windows.Forms.Button();
             this.btn_OesKSP = new System.Windows.Forms.Button();
             this.btn_Rga = new System.Windows.Forms.Button();
@@ -36,12 +37,14 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.userControl_TES_EPD1 = new SPDRC_PROGRAM.UserControl_TES_EPD();
             this.userControl_OES_KSP1 = new SPDRC_PROGRAM.UserControl_OES_KSP();
+            this.userControl_LAM_KIYO_TEST1 = new SPDRC_PROGRAM.UserControl_LAM_KIYO_NOTNOISE();
             this.userControl11 = new SPDRC_PROGRAM.UserControl_LAM_KIYO();
             this.grp_Menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // grp_Menu
             // 
+            this.grp_Menu.Controls.Add(this.button1);
             this.grp_Menu.Controls.Add(this.btn_TES_EPD);
             this.grp_Menu.Controls.Add(this.btn_OesKSP);
             this.grp_Menu.Controls.Add(this.btn_Rga);
@@ -53,9 +56,19 @@
             this.grp_Menu.TabStop = false;
             this.grp_Menu.Text = "Menu";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(232, 43);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "OES_LAM";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_TES_EPD
             // 
-            this.btn_TES_EPD.Location = new System.Drawing.Point(7, 168);
+            this.btn_TES_EPD.Location = new System.Drawing.Point(7, 217);
             this.btn_TES_EPD.Name = "btn_TES_EPD";
             this.btn_TES_EPD.Size = new System.Drawing.Size(232, 43);
             this.btn_TES_EPD.TabIndex = 3;
@@ -65,7 +78,7 @@
             // 
             // btn_OesKSP
             // 
-            this.btn_OesKSP.Location = new System.Drawing.Point(7, 70);
+            this.btn_OesKSP.Location = new System.Drawing.Point(7, 119);
             this.btn_OesKSP.Name = "btn_OesKSP";
             this.btn_OesKSP.Size = new System.Drawing.Size(232, 43);
             this.btn_OesKSP.TabIndex = 2;
@@ -75,7 +88,7 @@
             // 
             // btn_Rga
             // 
-            this.btn_Rga.Location = new System.Drawing.Point(7, 119);
+            this.btn_Rga.Location = new System.Drawing.Point(7, 168);
             this.btn_Rga.Name = "btn_Rga";
             this.btn_Rga.Size = new System.Drawing.Size(232, 43);
             this.btn_Rga.TabIndex = 1;
@@ -85,11 +98,11 @@
             // 
             // btn_OesLam
             // 
-            this.btn_OesLam.Location = new System.Drawing.Point(7, 21);
+            this.btn_OesLam.Location = new System.Drawing.Point(6, 70);
             this.btn_OesLam.Name = "btn_OesLam";
             this.btn_OesLam.Size = new System.Drawing.Size(232, 43);
             this.btn_OesLam.TabIndex = 0;
-            this.btn_OesLam.Text = "OES_Lam";
+            this.btn_OesLam.Text = "OES_Lam_NotNoise";
             this.btn_OesLam.UseVisualStyleBackColor = true;
             this.btn_OesLam.Click += new System.EventHandler(this.btn_Oes_Click);
             // 
@@ -108,6 +121,13 @@
             this.userControl_OES_KSP1.Size = new System.Drawing.Size(1210, 908);
             this.userControl_OES_KSP1.TabIndex = 3;
             // 
+            // userControl_LAM_KIYO_TEST1
+            // 
+            this.userControl_LAM_KIYO_TEST1.Location = new System.Drawing.Point(258, 12);
+            this.userControl_LAM_KIYO_TEST1.Name = "userControl_LAM_KIYO_TEST1";
+            this.userControl_LAM_KIYO_TEST1.Size = new System.Drawing.Size(1224, 880);
+            this.userControl_LAM_KIYO_TEST1.TabIndex = 5;
+            // 
             // userControl11
             // 
             this.userControl11.Location = new System.Drawing.Point(258, 12);
@@ -120,11 +140,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1479, 874);
+            this.ClientSize = new System.Drawing.Size(1479, 899);
+            this.Controls.Add(this.grp_Menu);
+            this.Controls.Add(this.userControl_LAM_KIYO_TEST1);
+            this.Controls.Add(this.userControl11);
             this.Controls.Add(this.userControl_TES_EPD1);
             this.Controls.Add(this.userControl_OES_KSP1);
-            this.Controls.Add(this.grp_Menu);
-            this.Controls.Add(this.userControl11);
             this.Name = "Form_main";
             this.Text = "SPDRC";
             this.grp_Menu.ResumeLayout(false);
@@ -143,6 +164,8 @@
         private UserControl_OES_KSP userControl_OES_KSP1;
         private System.Windows.Forms.Button btn_TES_EPD;
         private UserControl_TES_EPD userControl_TES_EPD1;
+        private UserControl_LAM_KIYO_NOTNOISE userControl_LAM_KIYO_TEST1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
