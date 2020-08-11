@@ -614,7 +614,6 @@
             this.Controls.Add(this.grpB_fileLoad);
             this.Name = "UserControl_LAM_KIYO";
             this.Size = new System.Drawing.Size(1224, 881);
-            this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_3)).EndInit();

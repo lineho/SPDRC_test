@@ -51,7 +51,10 @@ namespace SPDRC_PROGRAM
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            userControl11.Show();
+            userControl_OES_KSP1.Hide();
+            userControl_TES_EPD1.Hide();
+            userControl_LAM_KIYO_TEST1.Hide();
         }
     }
 }

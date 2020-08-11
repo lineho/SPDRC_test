@@ -34,11 +34,6 @@ namespace SPDRC_PROGRAM
             this.lineRatioGraph.Series.Clear();
         }
 
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// DataTable에서 컬럼 이름 얻어오는 메서드
         /// </summary>
@@ -611,7 +606,6 @@ namespace SPDRC_PROGRAM
             dgv_3.DataSource = preProcessedDt;
             preProcessedDt.Columns["time"].SetOrdinal(0);
         }
-
 
 
     }
