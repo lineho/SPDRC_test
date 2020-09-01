@@ -1,0 +1,2 @@
+accessdatabaseengine 은 엑셀표보기위해 필요
+ndp48은 닷넷 4.7이상이어야 되므로 4.8설치로 필요

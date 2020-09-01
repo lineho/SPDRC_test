@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\User\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\User\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_SPDRC_PROGRAM.-139134694.00" t="ExcludeRecursive" />
+    <e p="C:\Users\User\Dropbox\Coding\csharp\study\SPDRC_test\sunho\SPDRC_PROGRAM" t="IncludeFlat">
+      <e p=".editorconfig" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Solution Items" t="Include" />
+      <e p="SPDRC_PROGRAM" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DatabaseLoadForm.cs" t="Include" />
+        <e p="DatabaseLoadForm.Designer.cs" t="Include" />
+        <e p="DatabaseLoadForm.resx" t="Include" />
+        <e p="Form1.cs" t="Include" />
+        <e p="Form1.Designer.cs" t="Include" />
+        <e p="Form1.resx" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="전자온도 관련 식.PNG" t="Include" />
+        </e>
+        <e p="SPDRC_PROGRAM.csproj" t="IncludeRecursive" />
+        <e p="UserControl_LAM_KIYO.cs" t="Include" />
+        <e p="UserControl_LAM_KIYO.Designer.cs" t="Include" />
+        <e p="UserControl_LAM_KIYO.resx" t="Include" />
+        <e p="UserControl_LAM_KIYO_NOTNOISE.cs" t="Include" />
+        <e p="UserControl_LAM_KIYO_NOTNOISE.Designer.cs" t="Include" />
+        <e p="UserControl_LAM_KIYO_NOTNOISE.resx" t="Include" />
+        <e p="UserControl_OES_KSP.cs" t="Include" />
+        <e p="UserControl_OES_KSP.Designer.cs" t="Include" />
+        <e p="UserControl_OES_KSP.resx" t="Include" />
+        <e p="UserControl_TES_EPD.cs" t="Include" />
+        <e p="UserControl_TES_EPD.designer.cs" t="Include" />
+        <e p="UserControl_TES_EPD.resx" t="Include" />
+      </e>
+      <e p="SPDRC_PROGRAM.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
