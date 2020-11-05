@@ -16,8 +16,8 @@ namespace SPDRC_PROGRAM
 {
     public partial class UserControl_TES_EPD : UserControl
     {
-        DataTable dtA;
-        string waveLength1 = "";
+        DataTable dtA;  
+        string waveLength1 = "";   // test commit
         string waveLength2 = "";
         string timeRate = "0.1";
         Boolean cbBoxWavelength1Checked = false;
