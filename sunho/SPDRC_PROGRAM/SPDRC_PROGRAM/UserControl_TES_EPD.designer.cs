@@ -96,9 +96,9 @@
             this.o_label.AutoSize = true;
             this.o_label.Location = new System.Drawing.Point(39, 33);
             this.o_label.Name = "o_label";
-            this.o_label.Size = new System.Drawing.Size(113, 12);
+            this.o_label.Size = new System.Drawing.Size(45, 12);
             this.o_label.TabIndex = 4;
-            this.o_label.Text = "CO 560.041 , 560.11";
+            this.o_label.Text = "288.141";
             this.o_label.Click += new System.EventHandler(this.o_label_Click);
             // 
             // co_label
@@ -106,9 +106,9 @@
             this.co_label.AutoSize = true;
             this.co_label.Location = new System.Drawing.Point(188, 32);
             this.co_label.Name = "co_label";
-            this.co_label.Size = new System.Drawing.Size(110, 12);
+            this.co_label.Size = new System.Drawing.Size(45, 12);
             this.co_label.TabIndex = 5;
-            this.co_label.Text = "O 777.042 , 777.013";
+            this.co_label.Text = "288.421";
             this.co_label.Click += new System.EventHandler(this.co_label_Click);
             // 
             // checkedListBox_OESdataCollect
