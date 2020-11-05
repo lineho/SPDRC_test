@@ -36,7 +36,7 @@ namespace SPDRC_PROGRAM
 
         private void KSPwaveLengthChooseSetting()
         {
-            string filePath = "kspOES_baseWaveLength.csv";
+            //string filePath = "C:/Users/com/Documents/GitHub/SPDRC_testWithSunho/SPDRC_test/sunho/SPDRC_PROGRAM/SPDRC_PROGRAM/dataset/OES_KSP/kspOES_baseWaveLength.csv";
             string[] lines = System.IO.File.ReadAllLines(filePath);
 
             if (lines.Length > 0)
