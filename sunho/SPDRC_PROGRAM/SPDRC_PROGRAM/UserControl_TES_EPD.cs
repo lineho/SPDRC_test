@@ -351,5 +351,15 @@ namespace SPDRC_PROGRAM
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CO_519_label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

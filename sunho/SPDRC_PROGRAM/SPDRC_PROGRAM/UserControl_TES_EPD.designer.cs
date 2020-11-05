@@ -49,6 +49,8 @@
             this.cbBox_waveLength1 = new System.Windows.Forms.ComboBox();
             this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.CO_519_label = new System.Windows.Forms.Label();
+            this.CO_519_CB = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.EPD_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
             this.groupBox_EPD.SuspendLayout();
@@ -162,13 +164,15 @@
             // 
             // groupBox_chooseWavelength
             // 
+            this.groupBox_chooseWavelength.Controls.Add(this.CO_519_CB);
+            this.groupBox_chooseWavelength.Controls.Add(this.CO_519_label);
             this.groupBox_chooseWavelength.Controls.Add(this.cbBox_waveLength1);
             this.groupBox_chooseWavelength.Controls.Add(this.cbBox_waveLength2);
             this.groupBox_chooseWavelength.Controls.Add(this.o_label);
             this.groupBox_chooseWavelength.Controls.Add(this.co_label);
             this.groupBox_chooseWavelength.Location = new System.Drawing.Point(22, 11);
             this.groupBox_chooseWavelength.Name = "groupBox_chooseWavelength";
-            this.groupBox_chooseWavelength.Size = new System.Drawing.Size(332, 96);
+            this.groupBox_chooseWavelength.Size = new System.Drawing.Size(490, 106);
             this.groupBox_chooseWavelength.TabIndex = 10;
             this.groupBox_chooseWavelength.TabStop = false;
             this.groupBox_chooseWavelength.Text = "파장 선택";
@@ -206,6 +210,24 @@
             this.chart1.Size = new System.Drawing.Size(8, 8);
             this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
+            // 
+            // CO_519_label
+            // 
+            this.CO_519_label.AutoSize = true;
+            this.CO_519_label.Location = new System.Drawing.Point(344, 32);
+            this.CO_519_label.Name = "CO_519_label";
+            this.CO_519_label.Size = new System.Drawing.Size(45, 12);
+            this.CO_519_label.TabIndex = 9;
+            this.CO_519_label.Text = "519.743";
+            this.CO_519_label.Click += new System.EventHandler(this.CO_519_label_Click);
+            // 
+            // CO_519_CB
+            // 
+            this.CO_519_CB.FormattingEnabled = true;
+            this.CO_519_CB.Location = new System.Drawing.Point(346, 59);
+            this.CO_519_CB.Name = "CO_519_CB";
+            this.CO_519_CB.Size = new System.Drawing.Size(121, 20);
+            this.CO_519_CB.TabIndex = 10;
             // 
             // UserControl_TES_EPD
             // 
@@ -246,5 +268,7 @@
         private System.Windows.Forms.ComboBox cbBox_waveLength1;
         private System.Windows.Forms.ListBox listBox_EPD;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label CO_519_label;
+        private System.Windows.Forms.ComboBox CO_519_CB;
     }
 }
