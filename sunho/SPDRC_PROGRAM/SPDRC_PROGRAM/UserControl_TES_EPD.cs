@@ -17,7 +17,7 @@ namespace SPDRC_PROGRAM
     public partial class UserControl_TES_EPD : UserControl
     {
         DataTable dtA;  
-        string waveLength1 = "";   // test commit
+        string waveLength1 = "";   // test commit TES_EPD test
         string waveLength2 = "";
         string timeRate = "0.1";
         Boolean cbBoxWavelength1Checked = false;
@@ -343,6 +343,11 @@ namespace SPDRC_PROGRAM
         }
 
         private void listBox_EPD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void co_label_Click(object sender, EventArgs e)
         {
 
         }

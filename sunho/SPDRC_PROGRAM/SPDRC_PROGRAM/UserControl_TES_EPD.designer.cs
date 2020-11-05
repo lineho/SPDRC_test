@@ -44,10 +44,10 @@
             this.btn_FileLoad = new System.Windows.Forms.Button();
             this.btn_FindEPD = new System.Windows.Forms.Button();
             this.groupBox_EPD = new System.Windows.Forms.GroupBox();
+            this.listBox_EPD = new System.Windows.Forms.ListBox();
             this.groupBox_chooseWavelength = new System.Windows.Forms.GroupBox();
             this.cbBox_waveLength1 = new System.Windows.Forms.ComboBox();
             this.cbBox_waveLength2 = new System.Windows.Forms.ComboBox();
-            this.listBox_EPD = new System.Windows.Forms.ListBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.EPD_chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_1)).BeginInit();
@@ -109,6 +109,7 @@
             this.co_label.Size = new System.Drawing.Size(110, 12);
             this.co_label.TabIndex = 5;
             this.co_label.Text = "O 777.042 , 777.013";
+            this.co_label.Click += new System.EventHandler(this.co_label_Click);
             // 
             // checkedListBox_OESdataCollect
             // 
@@ -149,6 +150,16 @@
             this.groupBox_EPD.TabStop = false;
             this.groupBox_EPD.Text = "EPD";
             // 
+            // listBox_EPD
+            // 
+            this.listBox_EPD.FormattingEnabled = true;
+            this.listBox_EPD.ItemHeight = 12;
+            this.listBox_EPD.Location = new System.Drawing.Point(23, 53);
+            this.listBox_EPD.Name = "listBox_EPD";
+            this.listBox_EPD.Size = new System.Drawing.Size(155, 64);
+            this.listBox_EPD.TabIndex = 11;
+            this.listBox_EPD.SelectedIndexChanged += new System.EventHandler(this.listBox_EPD_SelectedIndexChanged);
+            // 
             // groupBox_chooseWavelength
             // 
             this.groupBox_chooseWavelength.Controls.Add(this.cbBox_waveLength1);
@@ -179,16 +190,6 @@
             this.cbBox_waveLength2.Size = new System.Drawing.Size(121, 20);
             this.cbBox_waveLength2.TabIndex = 7;
             this.cbBox_waveLength2.SelectedIndexChanged += new System.EventHandler(this.cbBox_waveLength2_SelectedIndexChanged);
-            // 
-            // listBox_EPD
-            // 
-            this.listBox_EPD.FormattingEnabled = true;
-            this.listBox_EPD.ItemHeight = 12;
-            this.listBox_EPD.Location = new System.Drawing.Point(23, 53);
-            this.listBox_EPD.Name = "listBox_EPD";
-            this.listBox_EPD.Size = new System.Drawing.Size(155, 64);
-            this.listBox_EPD.TabIndex = 11;
-            this.listBox_EPD.SelectedIndexChanged += new System.EventHandler(this.listBox_EPD_SelectedIndexChanged);
             // 
             // chart1
             // 
